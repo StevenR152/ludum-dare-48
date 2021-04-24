@@ -32,7 +32,7 @@ Crafty.c("LevelGenerator", {
 	    for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 			var x_tiles = [];
 			for (var lvl_y = 0; lvl_y < levels_size[level]; lvl_y++) {
-				var key = Math.ceil(Math.random() * (5)); //first X tiles you can walk on
+				var key = Math.ceil(Math.random() * (4.1)); //first X tiles you can walk on
 				x_tiles.push(key);
 			}
 			temp_tiles_map.push(x_tiles);
