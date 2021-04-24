@@ -47,17 +47,19 @@ Crafty.defineScene("Game", function() {
 
 	var map = [temp_tiles_map,temp_objects_map];
 
-		for (var l = 0; l < map.length; l++) {
-			for (var c = 0; c < map[l].length; c++) {
-				for (var r = 0; r < map[l][c].length; r++) {
-					var mapPosition = map[l][c][r];
-					var tile = tileMap[mapPosition];
-					if(typeof tile !== 'undefined') {
-						isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r,c,0);
-					}
-				}
-			}
-		}
+	Crafty.e("LoadLevel").load_a_level(current_level, map, isos);
+
+		// for (var l = 0; l < map.length; l++) {
+		// 	for (var c = 0; c < map[l].length; c++) {
+		// 		for (var r = 0; r < map[l][c].length; r++) {
+		// 			var mapPosition = map[l][c][r];
+		// 			var tile = tileMap[mapPosition];
+		// 			if(typeof tile !== 'undefined') {
+		// 				isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r,c,0);
+		// 			}
+		// 		}
+		// 	}
+		// }
 
 		isos.place(Crafty.e(stairs).attr({w:TILE_WIDTH, h:TILE_HEIGHT}), stairs_x, stairs_y, 0);
 
