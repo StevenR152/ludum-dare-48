@@ -19,17 +19,18 @@ Crafty.defineScene("Game", function() {
 
 	var map = [
 		[
+			// level one
 			[
 			// Tiles
-				[1,0,0,0,0,0,0,0,0,1,1,1],
-				[0,0,0,1,0,0,0,0,0,0,0,0],
-				[0,0,0,0,0,0,0,0,0,0,0,0],
+				[1,0,0,0,0,1,1,1,1,1,1,1],
+				[0,0,0,1,1,1,0,0,0,0,0,0],
+				[0,0,0,0,0,1,0,0,0,0,0,0],
 				[0,0,0,0,0,1,1,1,0,0,0,0],
-				[0,0,0,0,0,0,0,1,0,0,0,0],
-				[0,0,0,0,0,0,0,1,0,0,0,0],
-				[0,0,0,1,1,0,0,1,0,0,0,1],
-				[0,0,0,0,0,0,0,1,0,0,0,0],
-				[0,0,0,0,0,0,0,1,0,0,0,0],
+				[0,0,0,0,1,1,1,1,0,0,0,0],
+				[0,0,0,0,1,1,1,1,0,0,0,0],
+				[0,0,0,1,1,1,1,1,1,1,1,1],
+				[0,0,0,0,0,0,0,1,0,0,1,0],
+				[0,0,0,0,0,0,0,1,0,0,1,0],
 				[0,0,0,0,0,0,0,1,0,0,1,0],
 			],
 			[
@@ -81,18 +82,30 @@ Crafty.defineScene("Game", function() {
 					var mapPosition = map[ol][l][c][r];
 					var tile = tileMap[mapPosition];
 					if(typeof tile !== 'undefined') {
-						isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r+10,c-5,ol);
+						isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r+8,c-4,ol);
 					}
 				}
 			}
 		}
 	}
 
-	isos.place(player, player.posx+10, player.posy-5, 1);
+	isos.place(player, player.posx+8, player.posy-4, 1);
+
   Crafty.bind('Movement', function(e) {
-		// if (map[0][player.posx][player.posy] == 1) {
-				isos.place(player, (player.posx + e.x + 10), (player.posy + e.y - 5), 1);
-		// }
+		var debugy = player.posy+e.y-1;
+		var debugx = player.posx+e.x-1;
+		if (map[0] !== 'undefined' &&
+			map[0][0] !== 'undefined' &&
+			map[0][0][player.posy+e.y-1] !== 'undefined' &&
+			map[0][0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
+				if (map[0][0][player.posy+e.y-1][player.posx+e.x-1] === 1) {
+					player.posx += e.x;
+					player.posy += e.y;
+					isos.place(player, (player.posx + 8), (player.posy - 4), 1);
+					console.log("we be moving");
+				}
+		}
+
 	})
 
 });
