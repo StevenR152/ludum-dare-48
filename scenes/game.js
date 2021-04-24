@@ -3,7 +3,6 @@ var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
 
 Crafty.defineScene("Game", function() {
-	Crafty.viewport.scale(0.3);
 
 	var ground = '2D, DOM, Color, tile';
 	var sand = '2D, DOM, Color, tile';
@@ -11,6 +10,7 @@ Crafty.defineScene("Game", function() {
 	var player = Crafty.e('Player');
 
     makeCameraTrackEntity(player, 75);
+	Crafty.viewport.scale(0.3);
 
 	var tileMap = {
 		1 : ground,
