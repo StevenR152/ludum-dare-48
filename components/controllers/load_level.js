@@ -1,5 +1,5 @@
 Crafty.c("LoadLevel", {
-	loadLevel: function(player, tileMap, level, map, isos) {
+	loadLevel: function(player, level, map, isos) {
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
