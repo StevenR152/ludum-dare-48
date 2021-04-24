@@ -9,7 +9,7 @@ Crafty.c("Player", {
             posx : 6,
             posy : 4,
             w : 256,
-            h : 128,
+            h : 531,
           })
       this.bind('KeyDown', function(e) {
         if(e.key == Crafty.keys.LEFT_ARROW) {
