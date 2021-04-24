@@ -8,10 +8,40 @@ var gameAssets = {
  	//    },
     "sprites": {
       //tiles
-      "assets/images/tile.png": {
+      "assets/images/tile_blue.png": {
         "tile" : 256,
         "tileh": 128,
-        "map": {"tile": [0, 0]}
+        "map": {"tile_blue": [0, 0]}
+      },
+      "assets/images/tile_green.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_green": [0, 0]}
+      },
+      "assets/images/tile_pink.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_pink": [0, 0]}
+      },
+      "assets/images/tile_purple.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_purple": [0, 0]}
+      },
+      "assets/images/tile_spikes.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spikes": [0, 0]}
+      },
+      "assets/images/tile_spikeholes.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spikeholes": [0, 0]}
+      },
+      "assets/images/tile_spiketips.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spiketips": [0, 0]}
       },
       "assets/images/basic_tile_1.png": {
         "tile" : 256,

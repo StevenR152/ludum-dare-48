@@ -4,16 +4,14 @@ var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
 var current_level = 0;
 var MAX_STAIRS = 3;
 
-
 Crafty.defineScene("Game", function() {
 
 	var player = Crafty.e('Player');
-
-    makeCameraTrackEntity(player, 75);
+	makeCameraTrackEntity(player, 75);
 	Crafty.viewport.scale(0.3);
 
 	map = Crafty.e("LevelGenerator").generate_levels();
-	Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos); // will need to be called whenever stairs are accessed
+	Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
 
   Crafty.bind('PlayerMovement', function(e) { //this probably can stay inside the game component but we could also extract it later
 		if (map !== 'undefined' &&
@@ -27,16 +25,13 @@ Crafty.defineScene("Game", function() {
 					Crafty.trigger("GoDownAFloor", {});
 					return;
 				}
-
-				// the array 1,2,3,4,5 here is all tiles the player can walk on - can parametarise later.
+				// the array 1,2,3,4,5 here is all tiles mapped that the player can walk on - can parametarise later.
 				else if ([1,2,3,4,5].indexOf(map[current_level][0][player.posy+e.y-1][player.posx+e.x-1]) > -1) {
 					player.posx += e.x;
 					player.posy += e.y;
 					isos.place(player, (player.posx), (player.posy), 1);
 				}
-
 		}
-
 	});
 
 	Crafty.bind('GoDownAFloor', function(e) {
@@ -51,5 +46,4 @@ Crafty.defineScene("Game", function() {
 			Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
 		}
 	});
-
 });
