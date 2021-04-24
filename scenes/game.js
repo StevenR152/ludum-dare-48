@@ -12,9 +12,9 @@ Crafty.defineScene("Game", function() {
 	var tile_leave1 = '2D, DOM, Color, tile_leaves_1';
 	var tile_leave2 = '2D, DOM, Color, tile_leaves_2';
 	var tile_cracked = '2D, DOM, Color, tile_cracked_1';
+	var stairs = '2D, DOM, Color, stairs';
 
 	var sand = '2D, DOM, Color, tile';
-	var stairs = '2D, DOM, Color, stairs';
 	// var wall = '2D, DOM, Color, wall';
 	var player = Crafty.e('Player');
 
@@ -26,8 +26,7 @@ Crafty.defineScene("Game", function() {
 		2 : basic_tile_2,
 		3 : tile_leave1,
 		4 : tile_leave2,
-		5 : tile_cracked,
-		6 : stairs
+		5 : tile_cracked
 	}
 	var tileMapLength = Object.keys(tileMap).length;
  	var levels_size = [5,9,13,17,27,39];
