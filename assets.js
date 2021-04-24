@@ -7,16 +7,27 @@ var gameAssets = {
 	// 	"unlock" : ["assets/sounds/unlock.wav"]
  	//    },
     "sprites": {
-      "assets/images/basic_tile_1.png": {
+      //tiles
+      "assets/images/tile.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"tile": [0, 0]}
-         },
+      },
+      "assets/images/tile_cracked_1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile": [0, 0]}
+      },
+      "assets/images/tile_leaves_1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile": [0, 0]}
+      },
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
         "map": {"player": [0, 0]}
-         },
+        },
       "assets/images/urn.png": {
         "tile" : 256,
         "tileh": 128,
