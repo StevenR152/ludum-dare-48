@@ -15,7 +15,6 @@ Crafty.defineScene("Game", function() {
 
 	var tileMap = {
 		1 : ground,
-		5 : wall,
 		3 : urn
 	}
 
