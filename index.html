@@ -1,22 +1,54 @@
 <html>
   <head>
   	<title>Ludum Dare #48</title>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0EW4MLNZW3"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-0EW4MLNZW3');
+    </script>
   </head>
   <body>
     <h2> Ludum Dare #48 </h2>
-    <div id="game"></div>
-	<style>
+    
+    <div id="wrapper">
+        <div id="game"></div>
+
+        <div id="instructions">
+            Our game is about....
+            <h3>Controls</h3>
+            <ul>
+                <li>Use keys to...</li>
+                <li>Space bar to reset</li>
+            </ul>
+        </div>
+    </div>
+    <style>
       h2 {
         text-align: center;
         margin: 20px;
       }
-	    body {
-	        background-color: #EEE;
-	        width: 800px; margin: 0px auto;
-	    }
-	    #game {
-	        box-shadow: 0px 0px 100px 100px rgba(0, 0, 0, .15);
-	    }
+        body {
+            background-color: #EEE;
+            width: 900px; margin: 0px auto;
+        }
+        #game {
+
+        }
+        #instructions {
+            width: 95%;
+            height: 240px;
+            margin: 20px auto;
+            padding: 5px;
+            background-color: #EEE;
+        }
+
+        #wrapper {
+            box-shadow: 0px 0px 25px 25px rgba(0, 0, 0, .15);
+        }
     </style>
 
     <script type="text/javascript" src="https://rawgithub.com/craftyjs/Crafty/release/dist/crafty-min.js"></script>
