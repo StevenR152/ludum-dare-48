@@ -7,6 +7,12 @@ var current_level = 0;
 Crafty.defineScene("Game", function() {
 
 	var ground = '2D, DOM, Color, tile';
+	var basic_tile_1 = '2D, DOM, Color, basic_tile_1';
+	var basic_tile_2 = '2D, DOM, Color, basic_tile_2';
+	var tile_leave1 = '2D, DOM, Color, tile_leaves_1';
+	var tile_leave2 = '2D, DOM, Color, tile_leaves_2';
+	var tile_cracked = '2D, DOM, Color, tile_cracked_1';
+
 	var sand = '2D, DOM, Color, tile';
 	var stairs = '2D, DOM, Color, stairs';
 	// var wall = '2D, DOM, Color, wall';
@@ -16,10 +22,14 @@ Crafty.defineScene("Game", function() {
 	Crafty.viewport.scale(0.3);
 
 	var tileMap = {
-		1 : ground,
-		3 : stairs
+		1 : basic_tile_1,
+		2 : basic_tile_2,
+		3 : tile_leave1,
+		4 : tile_leave2,
+		5 : tile_cracked,
+		6 : stairs
 	}
-
+	var tileMapLength = Object.keys(tileMap).length;
  	var levels_size = [5,9,13,17,27,39];
 
 	min = 0;
@@ -31,7 +41,9 @@ Crafty.defineScene("Game", function() {
   for (var lvl_x = 0; lvl_x < levels_size[current_level]; lvl_x++) {
 		var x_tiles = [];
 		for (var lvl_y = 0; lvl_y < levels_size[current_level]; lvl_y++) {
-			x_tiles.push(1);
+			var key = Math.ceil(Math.random() * tileMapLength);
+			console.log(key, tileMap[key]);
+			x_tiles.push(key);
 		}
 		temp_tiles_map.push(x_tiles);
 	};
