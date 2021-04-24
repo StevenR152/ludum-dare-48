@@ -7,7 +7,7 @@ var gameAssets = {
 	// 	"unlock" : ["assets/sounds/unlock.wav"]
  	//    },
     "sprites": {
-      "assets/images/tile.png": {
+      "assets/images/basic tile 1.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"tile": [0, 0]}
@@ -20,7 +20,7 @@ var gameAssets = {
       "assets/images/urn.png": {
         "tile" : 256,
         "tileh": 128,
-        "map": {"urn": [0, 0]}
+        "map": {"stairs": [0, 0]}
          },
 
       //start screen
