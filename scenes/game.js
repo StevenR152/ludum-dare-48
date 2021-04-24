@@ -2,7 +2,7 @@ var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
 var current_level = 0;
-var MAX_STAIRS = 3;
+var MAX_STAIRS = 1;
 
 Crafty.defineScene("Game", function() {
 
@@ -19,10 +19,17 @@ Crafty.defineScene("Game", function() {
 			map[current_level][0][player.posy+e.y-1] !== 'undefined' &&
 			map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
 				if (map[current_level][1][player.posy+e.y-1][player.posx+e.x-1] === 8) {
-					player.posx += e.x;
+					player.posx += 1 + e.x;
 					player.posy += e.y;
 					isos.place(player, (player.posx), (player.posy), 1);
 					Crafty.trigger("GoDownAFloor", {});
+					return;
+				}
+				else if (map[current_level][1][player.posy+e.y-1][player.posx+e.x-1] === 9) {
+					player.posx += e.x;
+					player.posy += e.y;
+					isos.place(player, (player.posx), (player.posy), 1);
+					Crafty.trigger("GoUpAFloor", {});
 					return;
 				}
 				// the array 1,2,3,4,5 here is all tiles mapped that the player can walk on - can parametarise later.
