@@ -90,9 +90,9 @@ Crafty.defineScene("Game", function() {
 
 	isos.place(player, player.posx+10, player.posy-5, 1);
   Crafty.bind('Movement', function(e) {
-		isos.place(player, (player.posx + e.x + 10), (player.posy + e.y - 5), 1);
+		// if (map[0][player.posx][player.posy] == 1) {
+				isos.place(player, (player.posx + e.x + 10), (player.posy + e.y - 5), 1);
+		// }
 	})
-
-
 
 });
