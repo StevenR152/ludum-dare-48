@@ -32,6 +32,9 @@ Crafty.defineScene("Game", function() {
 					Crafty.trigger("GoUpAFloor", {});
 					return;
 				}
+				else if (map[current_level][1][player.posy+e.y-1][player.posx+e.x-1] > 10) {
+					return;
+				}
 				// the array 1,2,3,4,5 here is all tiles mapped that the player can walk on - can parametarise later.
 				else if ([1,2,3,4,5].indexOf(map[current_level][0][player.posy+e.y-1][player.posx+e.x-1]) > -1) {
 					player.posx += e.x;
