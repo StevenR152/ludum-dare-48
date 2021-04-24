@@ -9,21 +9,21 @@ Crafty.c("Player", {
             posx : 6,
             posy : 4,
             w : 256,
-            h : 531,
+            h : 128,
           })
       this.bind('KeyDown', function(e) {
         if(e.key == Crafty.keys.LEFT_ARROW) {
-          this.posx -= 1;
 					Crafty.trigger("Movement", {x : -1, y : 0});
+					this.posx -= 1;
         } else if(e.key == Crafty.keys.RIGHT_ARROW) {
-          this.posx += 1;
 					Crafty.trigger("Movement", {x : 1, y : 0});
+					this.posx += 1;
         } else if(e.key == Crafty.keys.UP_ARROW) {
-          this.posy -= 1;
 					Crafty.trigger("Movement", {x : 0, y : -1});
+					this.posy -= 1;
         } else if(e.key == Crafty.keys.DOWN_ARROW) {
-          this.posy += 1;
 					Crafty.trigger("Movement", {x : 0, y : 1});
+					this.posy += 1;
         }
       });
     }
