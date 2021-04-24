@@ -14,7 +14,7 @@ var gameAssets = {
          },
       "assets/images/player.png": {
         "tile" : 256,
-        "tileh": 531,
+        "tileh": 480,
         "map": {"player": [0, 0]}
          },
       "assets/images/urn.png": {
