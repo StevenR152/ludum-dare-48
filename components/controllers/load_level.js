@@ -1,8 +1,9 @@
 Crafty.c("LoadLevel", {
 	loadLevel: function(player, level, map) {
 		Crafty("object").each(function(i) {
-      this.destroy();
+      		this.destroy();
 		});
+		
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
