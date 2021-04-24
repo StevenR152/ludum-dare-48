@@ -18,15 +18,17 @@ Crafty.defineScene("Game", function() {
 
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
+			console.log("down", newy, newx);
 			player.posx += 1 + e.x;
 			player.posy += e.y;
 			isos.place(player, (player.posx), (player.posy), 1);
 			Crafty.trigger("GoDownAFloor", {});
 			return;
 		}
-		
+
 		// Stairs up
 		if (map[current_level][1][newy][newx] === 9) {
+			console.log("up", newy, newx);
 			player.posx += e.x;
 			player.posy += e.y;
 			isos.place(player, (player.posx), (player.posy), 1);
@@ -39,14 +41,11 @@ Crafty.defineScene("Game", function() {
 			return;
 		}
 
-		// the array 1,2,3,4,5 here is all tiles mapped that the player can walk on - can parametarise later.
-		if ([1,2,3,4,5].indexOf(map[current_level][0][newy][newx]) > -1) {
-			player.posx += e.x;
-			player.posy += e.y;
-			isos.place(player, (player.posx), (player.posy), 1);
-			return;
-		}
-		
+		// if we haven't returned already, we must be able to move there.
+		player.posx += e.x;
+		player.posy += e.y;
+		isos.place(player, (player.posx), (player.posy), 1);
+		return;		
 	});
 
 	Crafty.bind('GoDownAFloor', function(e) {

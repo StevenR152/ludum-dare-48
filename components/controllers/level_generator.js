@@ -32,7 +32,7 @@ Crafty.c("LevelGenerator", {
 					if (object_chance <= chance && temp_tiles_map[lvl_x][lvl_y] !== 0) {
 						//coming later, choose an object or have this work as part of puzzles
 						x_tiles.push(11); //pillar
-					} else {
+					}else {
 						x_tiles.push(0);
 					}
 				}
