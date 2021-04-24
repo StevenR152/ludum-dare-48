@@ -29,5 +29,5 @@ Crafty.defineScene("End", function() {
         .text("Time Elapsed: ")
         .attr({x: 330, y: GAME_SCREEN_HEIGHT-240});
 
-   
+
 });
