@@ -100,6 +100,11 @@ var gameAssets = {
         "tileh": 130,
          "map": {"play_button": [0, 0]}
       },
+      "assets/images/play_mouse.png": {
+        "tile" : 339,
+        "tileh": 130,
+         "map": {"play_mouse": [0, 0]}
+      },
       "assets/images/start_screen.png": {
          "tile" : 2250,
          "tileh": 1500,

@@ -1,3 +1,5 @@
+
+
 Crafty.defineScene("Start", function() {
 
     //background
@@ -5,15 +7,16 @@ Crafty.defineScene("Start", function() {
 
     //buttons
     var playGameButton = Crafty.e("2D, DOM, Image, Mouse, play_button")
-        .attr({
-            x: GAME_SCREEN_WIDTH/2-50,
-            y: GAME_SCREEN_HEIGHT/2+15,
-            w: 141,
-            h: 51
+        .attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
+        .bind('Click', function(MouseEvent){ Crafty.scene('Game'); })
+        .bind('MouseOver', function(e) {
+            this.removeComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
+            this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})   
         })
-        .bind('Click', function(MouseEvent){
-            Crafty.scene('Game');
-        });
+        .bind('MouseOut', function(e) {
+            this.addComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
+            this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
+         });
 
     var muteMusic = Crafty.e("2D, Color, Mouse, DOM, mute_button");
         muteMusic.attr({x: 30, y: 30, w: 38, h:42, vx:5});
@@ -47,3 +50,4 @@ Crafty.defineScene("Start", function() {
         .text("Game Dev by ")
         .attr({x: 650, y: GAME_SCREEN_HEIGHT-37});
 });
+n
