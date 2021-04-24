@@ -22,5 +22,10 @@ var gameAssets = {
         "tileh": 128,
         "map": {"urn": [0, 0]}
          },
+         "assets/images/WALL.png": {
+           "tile" : 256,
+           "tileh": 128,
+           "map": {"wall": [0, 0]}
+            },
    }
 }

@@ -7,6 +7,7 @@ Crafty.defineScene("Game", function() {
 	var ground = '2D, DOM, Color, tile';
 	var sand = '2D, DOM, Color, tile';
 	var urn = '2D, DOM, Color, urn';
+	var wall = '2D, DOM, Color, wall';
 	var player = Crafty.e('Player');
 
     makeCameraTrackEntity(player, 75);
@@ -14,7 +15,7 @@ Crafty.defineScene("Game", function() {
 
 	var tileMap = {
 		1 : ground,
-		5 : sand,
+		5 : wall,
 		3 : urn
 	}
 
@@ -36,7 +37,7 @@ Crafty.defineScene("Game", function() {
 			],
 			[
 			// Objects
-				[5,0,0,0,0,0,0,0,0,3,0,3],
+				[5,5,5,5,5,5,5,5,5,5,5,5],
 				[0,0,0,0,0,0,0,0,0,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0,0,0],
 				[0,0,0,0,0,0,0,0,0,0,0,0],
