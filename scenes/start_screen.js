@@ -29,7 +29,7 @@ Crafty.defineScene("Start", function() {
                 audioController.playTrack("bgAudio", -1, 0.25)
             }
         });
-    
+
     //texts
     var title = Crafty.e("2D, DOM, GameTitle")
         .text("Ludum dare 48")

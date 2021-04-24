@@ -1,9 +1,5 @@
 Crafty.c("LoadLevel", {
-	init: function() {
-        this.required('2D, DOM, Text, Delay, Keyboard');
-    },
-
-	 load_a_level : function() {
+	loadLevel: function(player, tileMap, level, map, isos) {
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
@@ -15,5 +11,6 @@ Crafty.c("LoadLevel", {
 				}
 			}
 		}
-	}
+		isos.place(player, player.posx, player.posy, 1);
+    },
 })

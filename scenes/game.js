@@ -1,7 +1,7 @@
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
-var current_level = 2;
+var current_level = 0;
 
 
 Crafty.defineScene("Game", function() {
@@ -45,9 +45,9 @@ Crafty.defineScene("Game", function() {
 		temp_objects_map.push(x_tiles);
 	};
 
-	var map = [temp_tiles_map,temp_objects_map];
+	var map = [[temp_tiles_map,temp_objects_map]];
 
-	Crafty.e("LoadLevel").load_a_level(current_level, map, isos);
+	Crafty.e("LoadLevel").loadLevel(player, tileMap, current_level, map, isos);
 
 		// for (var l = 0; l < map.length; l++) {
 		// 	for (var c = 0; c < map[l].length; c++) {
@@ -64,14 +64,13 @@ Crafty.defineScene("Game", function() {
 		isos.place(Crafty.e(stairs).attr({w:TILE_WIDTH, h:TILE_HEIGHT}), stairs_x, stairs_y, 0);
 
 
-	isos.place(player, player.posx, player.posy, 1);
-
-  Crafty.bind('Movement', function(e) {
+  Crafty.bind('PlayerMovement', function(e) {
 		if (map !== 'undefined' &&
-			map[0] !== 'undefined' &&
-			map[0][player.posy+e.y-1] !== 'undefined' &&
-			map[0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
-				if (map[0][player.posy+e.y-1][player.posx+e.x-1] === 1) {
+			map[current_level][0] !== 'undefined' &&
+			map[current_level][0][player.posy+e.y-1] !== 'undefined' &&
+			map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
+				if (map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] === 1) {
+							console.log("move me");
 					player.posx += e.x;
 					player.posy += e.y;
 					isos.place(player, (player.posx), (player.posy), 1);
