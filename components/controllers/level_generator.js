@@ -1,10 +1,11 @@
 var levels_size = [5,9,13,17,27,39]; // to move to constants later
-var basic_tile_1 = '2D, DOM, Color, basic_tile_1';
-var basic_tile_2 = '2D, DOM, Color, basic_tile_2';
-var tile_leave1 = '2D, DOM, Color, tile_leaves_1';
-var tile_leave2 = '2D, DOM, Color, tile_leaves_2';
-var tile_cracked = '2D, DOM, Color, tile_cracked_1';
-var stairs = '2D, DOM, Color, stairs';
+var basic_tile_1 = 'object, 2D, DOM, Color, basic_tile_1';
+var basic_tile_2 = 'object, 2D, DOM, Color, basic_tile_2';
+var tile_leave1 = 'object, 2D, DOM, Color, tile_leaves_1';
+var tile_leave2 = 'object, 2D, DOM, Color, tile_leaves_2';
+var tile_cracked = 'object, 2D, DOM, Color, tile_cracked_1';
+var stairs = 'object, 2D, DOM, Color, stairs';
+var stairs_up = 'object, 2D, DOM, Color, stairs_up';
 
 var tileMap = {
 		1 : basic_tile_1,
@@ -12,7 +13,8 @@ var tileMap = {
 		3 : tile_leave1,
 		4 : tile_leave2,
 		5 : tile_cracked,
-		8 : stairs
+		8 : stairs,
+		9 : stairs_up
 }
 
 Crafty.c("LevelGenerator", {
@@ -30,7 +32,7 @@ Crafty.c("LevelGenerator", {
 	    for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 			var x_tiles = [];
 			for (var lvl_y = 0; lvl_y < levels_size[level]; lvl_y++) {
-				var key = Math.ceil(Math.random() * (tileMapLength-1));
+				var key = Math.ceil(Math.random() * (5)); //first X tiles you can walk on
 				x_tiles.push(key);
 			}
 			temp_tiles_map.push(x_tiles);
@@ -45,6 +47,12 @@ Crafty.c("LevelGenerator", {
 			temp_objects_map.push(x_tiles);
 		};
 		//place stairs on the edges
+		if (next_level_stairs !== undefined) {
+			for (var stairs_up = 0; stairs_up < next_level_stairs.length; stairs_up++) {
+				temp_objects_map[next_level_stairs[stairs_up].stairX][next_level_stairs[stairs_up].stairY] = 9;
+			}
+		}
+		var next_level_stairs = [];
 		var stairsList = [
 			{ stairX: Math.floor(Math.random() * max), stairY: 0 },
 			{ stairX: Math.floor(Math.random() * max), stairY: max - 1 },
@@ -57,6 +65,7 @@ Crafty.c("LevelGenerator", {
 			var index = Math.floor(Math.random() * newStairsList.length)
 			var strs = newStairsList[index];
 			temp_objects_map[strs.stairX][strs.stairY] = 8;
+			next_level_stairs.push(strs);
 
 			//remove it from the list so that it doesn't pick the same item
 			newStairsList.splice(index, 1);

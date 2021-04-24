@@ -73,6 +73,11 @@ var gameAssets = {
         "tileh": 128,
         "map": {"stairs": [0, 0]}
       },
+      "assets/images/tile_stairs_up.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"stairs_up": [0, 0]}
+      },
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
