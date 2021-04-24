@@ -84,8 +84,8 @@ Crafty.defineScene("Game", function() {
 		isos.place(Crafty.e('2D, DOM, Color, stairs')
 			.attr({w:TILE_WIDTH, h:TILE_HEIGHT}), strs.stairX, strs.stairY, 0);
 		
-		//remove it from the list so that it doesn't pick the same item
-		newStairsList = newStairsList.filter(x => x.stairX != strs.stairX && x.stairY != strs.stairY );
+		//remove it from the list so that it doesn't pick the same item			
+		newStairsList.splice(index, 1);
 	}
 
 
