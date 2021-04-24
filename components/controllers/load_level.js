@@ -3,6 +3,10 @@ Crafty.c("LoadLevel", {
 		Crafty("object").each(function(i) {
       this.destroy();
 		});
+		for (var y = 0; y < map[level].length; y++) {
+			isos.place(Crafty.e("WallLeft"),0,y,1);
+			isos.place(Crafty.e("WallRight"),y,0,1);
+		}
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
