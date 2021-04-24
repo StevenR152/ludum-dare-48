@@ -10,6 +10,7 @@ Crafty.defineScene("Game", function() {
 	var urn = '2D, DOM, Color, urn';
 	var player = Crafty.e('Player');
 
+    makeCameraTrackEntity(player, 75);
 
 	var tileMap = {
 		1 : ground,
