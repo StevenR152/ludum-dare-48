@@ -17,7 +17,7 @@ Crafty.defineScene("Game", function() {
 
 	var tileMap = {
 		1 : ground,
-		3 : stairs
+		8 : stairs
 	}
 
 	map = Crafty.e("LevelGenerator").generate_levels();
@@ -28,13 +28,29 @@ Crafty.defineScene("Game", function() {
 			map[current_level][0] !== 'undefined' &&
 			map[current_level][0][player.posy+e.y-1] !== 'undefined' &&
 			map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
-				if (map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] === 1) {
+				if (map[current_level][1][player.posy+e.y-1][player.posx+e.x-1] === 8) {
+					player.posx += e.x;
+					player.posy += e.y;
+					isos.place(player, (player.posx), (player.posy), 1);
+					Crafty.trigger("GoDownAFloor", {});
+					return;
+				}
+				// the array 1,2,3,4,5 here is all tiles the player can walk on - can parametarise later.
+				else if ([1,2,3,4,5].indexOf(map[current_level][0][player.posy+e.y-1][player.posx+e.x-1]) > -1) {
 					player.posx += e.x;
 					player.posy += e.y;
 					isos.place(player, (player.posx), (player.posy), 1);
 				}
+
 		}
 
-	})
+	});
+
+	Crafty.bind('GoDownAFloor', function(e) {
+		if (current_level < levels_size.length) {
+			current_level += 1;
+			Crafty.e("LoadLevel").loadLevel(player, tileMap, current_level, map, isos);
+		}
+	});
 
 });

@@ -1,7 +1,8 @@
+var levels_size = [5,9,13,17,27,39]; // to move to constants later
+
 Crafty.c("LevelGenerator", {
 	// this components will generate all the levels of the pyramid on every play
 	generate_levels: function() {
-		var levels_size = [5,9,13,17,27,39];
 		var map = [];
 
 		for (var level = 0; level < levels_size.length; level++) {
@@ -27,7 +28,7 @@ Crafty.c("LevelGenerator", {
 			}
 			temp_objects_map.push(x_tiles);
 		};
-		temp_objects_map[stairs_x][stairs_y] = 3;
+		temp_objects_map[stairs_x][stairs_y] = 8;
 
 		 map.push([temp_tiles_map,temp_objects_map]);
     }
