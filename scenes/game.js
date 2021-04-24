@@ -1,9 +1,3 @@
-var TILE_HEIGHT = 128;
-var TILE_WIDTH = 256;
-var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
-var current_level = 0;
-var MAX_STAIRS = 1;
-
 Crafty.defineScene("Game", function() {
 
 	var player = Crafty.e('Player');
