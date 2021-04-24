@@ -41,10 +41,6 @@ Crafty.c("LevelGenerator", {
 			temp_objects_map.push(x_tiles);
 		};
 
-		var chance = 3;// the % chance of spawning this item
-		var object_x = Math.floor(Math.random() * 100);
-
-
 		// STAIRS CODE
 		//place stairs on the edges
 		if (next_level_stairs !== undefined) {
