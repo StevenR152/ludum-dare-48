@@ -7,20 +7,51 @@ var gameAssets = {
 	// 	"unlock" : ["assets/sounds/unlock.wav"]
  	//    },
     "sprites": {
-      "assets/images/basic_tile_1.png": {
+      //tiles
+      "assets/images/tile.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"tile": [0, 0]}
-         },
-      "assets/images/player.png": {
+      },
+      "assets/images/basic_tile_1.png": {
         "tile" : 256,
-        "tileh": 480,
-        "map": {"player": [0, 0]}
-         },
+        "tileh": 128,
+        "map": {"basic_tile_1": [0, 0]}
+      },
+      "assets/images/basic_tile_2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"basic_tile_2": [0, 0]}
+      },
+      "assets/images/tile_cracked_1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_cracked_1": [0, 0]}
+      },
+      "assets/images/tile_leaves_1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_leaves_1": [0, 0]}
+      },
+      "assets/images/tile_leaves_2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_leaves_2": [0, 0]}
+      },
       "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"stairs": [0, 0]}
+      },
+      "assets/images/player.png": {
+        "tile" : 256,
+        "tileh": 480,
+        "map": {"player": [0, 0]}
+        },
+      "assets/images/urn.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"urn": [0, 0]}
          },
 
       //start screen

@@ -1,24 +1,25 @@
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
-var current_level = 0;
+var current_level = 2;
+var MAX_STAIRS = 3;
 
 
 Crafty.defineScene("Game", function() {
 
 	var ground = '2D, DOM, Color, tile';
+	var basic_tile_1 = '2D, DOM, Color, basic_tile_1';
+	var basic_tile_2 = '2D, DOM, Color, basic_tile_2';
+	var tile_leave1 = '2D, DOM, Color, tile_leaves_1';
+	var tile_leave2 = '2D, DOM, Color, tile_leaves_2';
+	var tile_cracked = '2D, DOM, Color, tile_cracked_1';
+
 	var sand = '2D, DOM, Color, tile';
-	var stairs = '2D, DOM, Color, stairs';
 	// var wall = '2D, DOM, Color, wall';
 	var player = Crafty.e('Player');
 
     makeCameraTrackEntity(player, 75);
 	Crafty.viewport.scale(0.3);
-
-	var tileMap = {
-		1 : ground,
-		8 : stairs
-	}
 
 	map = Crafty.e("LevelGenerator").generate_levels();
 	Crafty.e("LoadLevel").loadLevel(player, tileMap, current_level, map, isos); // will need to be called whenever stairs are accessed
