@@ -50,4 +50,3 @@ Crafty.defineScene("Start", function() {
         .text("Game Dev by ")
         .attr({x: 650, y: GAME_SCREEN_HEIGHT-37});
 });
-n

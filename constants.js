@@ -1,3 +1,8 @@
+var GAME_SCREEN_WIDTH = 900;
+var GAME_SCREEN_HEIGHT = 600;
+var numberOfResets = 0;
+
+
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
