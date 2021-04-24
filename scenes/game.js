@@ -2,27 +2,54 @@ var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 
 Crafty.defineScene("Game", function() {
-	
-	// var redSquare = Crafty.e('2D, DOM, Color')
-	// 	.attr({x: 0, y: 0, w: 100, h: 100})
-	// 	.color('#F00');
-Crafty.viewport.scale(0.4);
+	Crafty.viewport.scale(0.2);
+
 	var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
-	for (var y = 0; y < 20; y++) {
-		for (var x = 0; x < 20; x++) {
-			isos.place(Crafty.e('2D, DOM, Color, tile').attr({w:TILE_WIDTH, h:TILE_HEIGHT}),x+10,y,0);
-		}
+	var ground = '2D, DOM, Color, tile';
+	var sand = '2D, DOM, Color, tile';
+
+	var tileMap = {
+		1 : ground,
+		2 : sand
 	}
 
-	for (var y = 0; y < 5; y++) {
-		for (var x = 0; x < 5; x++) {
-			isos.place(Crafty.e('2D, DOM, Color, tile').attr({w:TILE_WIDTH, h:TILE_HEIGHT}),x+10,y,4);
-		}
-	}
 
-	for (var y = 0; y < 5; y++) {
-		for (var x = 0; x < 5; x++) {
-			isos.place(Crafty.e('2D, DOM, Color, tile').attr({w:TILE_WIDTH, h:TILE_HEIGHT}),x+10,y,5);
+	var map = [
+		[
+			[1,0,0,0,0,0,0,0,0,1,1,1],
+			[0,0,0,1,0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,1,1,1,0,0,0,0],
+			[0,0,0,0,0,0,0,1,0,0,0,0],
+			[0,0,0,0,0,0,0,1,0,0,0,0],
+			[0,0,0,1,1,0,0,1,0,0,0,1],
+			[0,0,0,0,0,0,0,1,0,0,0,0],
+			[0,0,0,0,0,0,0,1,0,0,0,0],
+			[0,0,0,0,0,0,0,1,0,0,1,0],
+		],
+		[
+			[2,0,0,0,0,0,0,0,0,2,2,2],
+			[0,0,0,2,2,2,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,2,0,0,0,0,0,0],
+			[0,2,2,0,0,0,0,0,0,2,0,0],
+			[0,0,0,0,0,2,0,0,0,0,0,0],
+			[0,0,0,0,0,2,0,0,0,0,0,0],
+			[0,0,0,0,0,2,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0,0,0,0,0],
+			[0,0,0,0,0,0,0,0,0,0,2,0],
+		]
+	];
+
+	for (var l = 0; l < map.length; l++) {
+		for (var c = 0; c < map[l].length; c++) {
+			for (var r = 0; r < map[l][c].length; r++) {
+				var mapPosition = map[l][c][r];
+				var tile = tileMap[mapPosition];
+				if(typeof tile !== 'undefined') {
+					isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r+10,c-5,l);
+				}
+			}
 		}
 	}
 });
