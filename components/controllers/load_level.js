@@ -9,12 +9,13 @@ Crafty.c("LoadLevel", {
 					var mapPosition = map[level][l][c][r];
 					var tile = tileMap[mapPosition];
 					if(typeof tile !== 'undefined') {
-						// if (l === 1) {
-						// 	isos.place(Crafty.e(tile),r+1,c+1,1);
-						// }
-						// else {
-							isos.place(Crafty.e(tile),r,c,0);
-						// }
+						// as we're grouping 2 layers into one for tiles and objects
+						if (l % 2 != 0) {
+							isos.place(Crafty.e(tile),r+1,c+1,l);
+						}
+						else {
+							isos.place(Crafty.e(tile),r,c,l);
+						}
 					}
 				}
 			}
