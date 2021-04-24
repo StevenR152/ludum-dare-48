@@ -8,6 +8,7 @@ Crafty.c("LevelGenerator", {
 		  	max = levels_size[level];
 			var tileMapLength = Object.keys(tileMap).length;
 
+			// generate ground tiles
 			temp_tiles_map = [];
 		    for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 				var x_tiles = [];
@@ -23,6 +24,7 @@ Crafty.c("LevelGenerator", {
 				temp_tiles_map.push(x_tiles);
 			};
 
+			// generate add objects on tiles
 			temp_objects_map = [];
 		  	for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 				var x_tiles = [];
@@ -39,8 +41,7 @@ Crafty.c("LevelGenerator", {
 				temp_objects_map.push(x_tiles);
 			};
 
-			// STAIRS CODE
-			//place stairs on the edges
+			// generate stairs on the edges
 			if (next_level_stairs !== undefined) {
 				for (var stairs_up = 0; stairs_up < next_level_stairs.length; stairs_up++) {
 					temp_objects_map[next_level_stairs[stairs_up].stairX][next_level_stairs[stairs_up].stairY] = 9;
@@ -66,7 +67,7 @@ Crafty.c("LevelGenerator", {
 			}
 
 			// put this level together into the map
-			 map.push([temp_tiles_map,temp_objects_map]);
+			map.push([temp_tiles_map,temp_objects_map]);
 	    }
 
 		return map;
