@@ -30,10 +30,12 @@ Crafty.c("LoadLevel", {
 
     tryPlaceWall: function (l, c, r) {
     	if(l == 0 && c == 0){
+    	console.log("called");
 	    	isos.place(Crafty.e("WallRight"),r,c,0);
 	    	return;
 	    }
 	    if(l == 0 && r == 0){
+    	console.log("called");
 	    	isos.place(Crafty.e("WallLeft"),r,c,0);
 	    	return;
 	    }
