@@ -39,12 +39,18 @@ var gameAssets = {
          "tileh": 105,
          "map": {"mute_button": [0, 0]}
       },
+
+      //end screen
+      "assets/images/play_again_button.png": {
+        "tile" : 352,
+        "tileh": 127,
+        "map": {"play_again_button": [0, 0]}
+      },
+
       "assets/images/WALL.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"wall": [0, 0]}
-         },
-
-      //end screen
+      },
    }
 }
