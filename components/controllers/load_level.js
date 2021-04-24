@@ -1,5 +1,5 @@
 Crafty.c("LoadLevel", {
-	loadLevel: function(player, level, map, isos) {
+	loadLevel: function(player, level, map) {
 		Crafty("object").each(function(i) {
       this.destroy();
 		});

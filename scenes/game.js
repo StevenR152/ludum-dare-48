@@ -44,13 +44,13 @@ Crafty.defineScene("Game", function() {
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
-			Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
+			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
 		}
 	});
 	Crafty.bind('GoUpAFloor', function(e) {
 		if (current_level > 0) {
 			current_level -= 1;
-			Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
+			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
 		}
 	});
 });
