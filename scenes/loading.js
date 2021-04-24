@@ -8,7 +8,7 @@ Crafty.defineScene("Loading", function() {
           .textColor("#111");
  	
     // Game Assets would be a list of images, but this tutorial doesn't use them.
-    var gameAssets = {};
+    // var gameAssets = {};
 
   	Crafty.load(gameAssets, function(){
        setTimeout(function () {
