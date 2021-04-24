@@ -8,8 +8,8 @@ var gameAssets = {
     },
     "sprites": {
        "assets/images/tile.png": {
-           "tile" : 194,
-           "tileh": 135,
+           "tile" : 256,
+           "tileh": 128,
            "map": {"tile": [0, 0]}
        }
    }
