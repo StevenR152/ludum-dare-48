@@ -6,6 +6,7 @@ var tile_leave2 = 'object, 2D, DOM, Color, tile_leaves_2';
 var tile_cracked = 'object, 2D, DOM, Color, tile_cracked_1';
 var stairs = 'object, 2D, DOM, Color, stairs';
 var stairs_up = 'object, 2D, DOM, Color, stairs_up';
+var pillar1 = 'object, 2D, DOM, Color, pillar1';
 
 var tileMap = {
 		1 : basic_tile_1,
@@ -14,7 +15,8 @@ var tileMap = {
 		4 : tile_leave2,
 		5 : tile_cracked,
 		8 : stairs,
-		9 : stairs_up
+		9 : stairs_up,
+		10 : pillar1
 }
 
 Crafty.c("LevelGenerator", {

@@ -63,6 +63,11 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_leaves_1": [0, 0]}
       },
+      "assets/images/pillar1.png": {
+        "tile" : 256,
+        "tileh": 309,
+        "map": {"pillar1": [0, 0]}
+      },
       "assets/images/tile_leaves_2.png": {
         "tile" : 256,
         "tileh": 128,
