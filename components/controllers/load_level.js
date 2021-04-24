@@ -2,6 +2,7 @@ Crafty.c("LoadLevel", {
 	loadLevel: function(player, tileMap, level, map, isos) {
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
+				console.log(l);
 				for (var r = 0; r < map[level][l][c].length; r++) {
 					var mapPosition = map[level][l][c][r];
 					var tile = tileMap[mapPosition];

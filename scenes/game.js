@@ -20,57 +20,15 @@ Crafty.defineScene("Game", function() {
 		3 : stairs
 	}
 
- 	var levels_size = [5,9,13,17,27,39];
+	map = Crafty.e("LevelGenerator").generate_levels();
+	Crafty.e("LoadLevel").loadLevel(player, tileMap, current_level, map, isos); // will need to be called whenever stairs are accessed
 
-	min = 0;
-  max = levels_size[current_level];
-	stairs_x = Math.floor(Math.random() * (max - min) + min);
-	stairs_y = Math.floor(Math.random() * (max - min) + min);
-
-	temp_tiles_map = [];
-  for (var lvl_x = 0; lvl_x < levels_size[current_level]; lvl_x++) {
-		var x_tiles = [];
-		for (var lvl_y = 0; lvl_y < levels_size[current_level]; lvl_y++) {
-			x_tiles.push(1);
-		}
-		temp_tiles_map.push(x_tiles);
-	};
-
-	temp_objects_map = [];
-  for (var lvl_x = 0; lvl_x < levels_size[current_level]; lvl_x++) {
-		var x_tiles = [];
-		for (var lvl_y = 0; lvl_y < levels_size[current_level]; lvl_y++) {
-			x_tiles.push(0);
-		}
-		temp_objects_map.push(x_tiles);
-	};
-
-	var map = [[temp_tiles_map,temp_objects_map]];
-
-	Crafty.e("LoadLevel").loadLevel(player, tileMap, current_level, map, isos);
-
-		// for (var l = 0; l < map.length; l++) {
-		// 	for (var c = 0; c < map[l].length; c++) {
-		// 		for (var r = 0; r < map[l][c].length; r++) {
-		// 			var mapPosition = map[l][c][r];
-		// 			var tile = tileMap[mapPosition];
-		// 			if(typeof tile !== 'undefined') {
-		// 				isos.place(Crafty.e(tile).attr({w:TILE_WIDTH, h:TILE_HEIGHT}),r,c,0);
-		// 			}
-		// 		}
-		// 	}
-		// }
-
-		isos.place(Crafty.e(stairs).attr({w:TILE_WIDTH, h:TILE_HEIGHT}), stairs_x, stairs_y, 0);
-
-
-  Crafty.bind('PlayerMovement', function(e) {
+  Crafty.bind('PlayerMovement', function(e) { //this probably can stay inside the game component but we could also extract it later
 		if (map !== 'undefined' &&
 			map[current_level][0] !== 'undefined' &&
 			map[current_level][0][player.posy+e.y-1] !== 'undefined' &&
 			map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] !== 'undefined') {
 				if (map[current_level][0][player.posy+e.y-1][player.posx+e.x-1] === 1) {
-							console.log("move me");
 					player.posx += e.x;
 					player.posy += e.y;
 					isos.place(player, (player.posx), (player.posy), 1);
