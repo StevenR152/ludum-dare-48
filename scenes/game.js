@@ -1,7 +1,7 @@
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
-var current_level = 0;
+var current_level = 2;
 
 
 Crafty.defineScene("Game", function() {
@@ -23,7 +23,7 @@ Crafty.defineScene("Game", function() {
  	var levels_size = [5,9,13,17,27,39];
 
 	min = 0;
-  max = levels_size[current_level] + 1;
+  max = levels_size[current_level];
 	stairs_x = Math.floor(Math.random() * (max - min) + min);
 	stairs_y = Math.floor(Math.random() * (max - min) + min);
 

@@ -17,7 +17,7 @@ var gameAssets = {
         "tileh": 480,
         "map": {"player": [0, 0]}
          },
-      "assets/images/urn.png": {
+      "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
         "map": {"stairs": [0, 0]}
