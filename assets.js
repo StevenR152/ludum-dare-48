@@ -75,8 +75,13 @@ var gameAssets = {
       },
       "assets/images/object_vase1.png": {
         "tile" : 256,
-        "tileh": 309,
+        "tileh": 256,
         "map": {"vase": [0, 0]}
+      },
+      "assets/images/object_vase2.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"vase2": [0, 0]}
       },
       "assets/images/tile_leaves_2.png": {
         "tile" : 256,

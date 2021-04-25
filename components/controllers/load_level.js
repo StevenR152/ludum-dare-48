@@ -1,6 +1,6 @@
 Crafty.c("LoadLevel", {
 	loadLevel: function(player, level, map) {
-		Crafty("object").each(function(i) {
+		Crafty("Destroyable").each(function(i) {
       		this.destroy();
 		});
 		for (var l = 0; l < map[level].length; l++) {
