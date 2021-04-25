@@ -24,7 +24,7 @@ Crafty.c("TilePurple", {
 
 Crafty.c("TileSpikes", {
 	init: function() {
-    this.pressed = false;
+    this.pressed = true;
     this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spikeholes");
     this.attach(Crafty.e("CentralHitbox"))
     this.bind("PLAYER_STOOD_ON", function () {
@@ -54,23 +54,51 @@ Crafty.c("CentralHitbox", {
     this.bind("HitOn", function (hitData) {
       this._parent.trigger("PLAYER_STOOD_ON");
     })
+    this.bind("HitOff", function (hitData) {
+      this._parent.trigger("PLAYER_STOOD_OFF");
+    })
   }
 });
-  
+
 Crafty.c("Button", {
   init: function() {
-    this.pressed = false;
-    this.addComponent("2D, Destroyable, Collision, DOM, Color, Keyboard, button_unpressed");
-    this.attach(Crafty.e("CentralHitbox"))
-    this.bind("PLAYER_STOOD_ON", function () {
-      if(!this.pressed) {
-        this.removeComponent("button_unpressed");
-        this.addComponent("button_pressed");
-      } else {
+    this.addComponent("2D, Destroyable, Delay, Collision, DOM, Color, Keyboard, button_unpressed");
+    this.hitbox = Crafty.e("CentralHitbox");
+    this.attach(this.hitbox);
+
+    this.triggerButton = function() {
+      // TODO Play button press sound here
+      // TODO play a mechanism sound here for the trap going off?
+
+      // Clear the Delay on reset as player stood on the button
+      if(typeof this.activeDelay !== "undefined") {
+        this.cancelDelay(this.activeDelay);
+      }
+
+      this.removeComponent("button_unpressed");
+      this.addComponent("button_pressed");
+    };
+
+    this.releaseButton = function() {
+      // Only reset button if player no longer stands on it.
+      if(!this.hitbox.hit("PlayerHitbox")) {
         this.removeComponent("button_pressed");
         this.addComponent("button_unpressed");
       }
-      this.pressed = !this.pressed;
+    };
+
+    this.bind("PLAYER_STOOD_OFF", function() {
+      this.activeDelay = this.delay(function() {
+        this.releaseButton();
+        console.log("stood off animation")
+      }, 800, 1, function() {
+        Crafty.log("reset button");
+        this.activeDelay = null;
+      });
+    });
+
+    this.bind("PLAYER_STOOD_ON", function () {
+        this.triggerButton()
     })
   },
 });
