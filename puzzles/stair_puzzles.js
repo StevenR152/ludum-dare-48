@@ -17,13 +17,14 @@ var simple_puzzle_ywall_stair = [
 ];
 
 
-function get_stair_puzzle(sizex, sizey, startx, starty) {
-  if (startx === 0 && sizey === simple_puzzle_xwall_stair.length &&
+function get_stair_puzzle(sizex, sizey, startrow, startcol) {
+  if (startrow === 0 && sizey === simple_puzzle_xwall_stair.length &&
       sizex === simple_puzzle_xwall_stair[0].length) {
-    return simple_puzzle_xwall_stair;
-  }
-  else if (starty === 0 && sizey === simple_puzzle_ywall_stair.length &&
-      sizex === simple_puzzle_ywall_stair[0].length) {
     return simple_puzzle_ywall_stair;
   }
+  else if (startcol === 0 && sizey === simple_puzzle_ywall_stair.length &&
+      sizex === simple_puzzle_ywall_stair[0].length) {
+    return simple_puzzle_xwall_stair;
+  }
+
 }

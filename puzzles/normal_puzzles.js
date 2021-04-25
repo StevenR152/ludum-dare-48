@@ -11,8 +11,29 @@ var big_puzzle = [
   [12, 00, 12, 12, 12, 12, 12, 00, 12],
 ];
 
-function get_normal_puzzle(sizex, sizey, startx, starty) {
-  if (sizex === 9 && sizey === 7) {
+var spike_line = [
+  [20, 20, 20],
+  [12, 21, 12],
+  [12, 21, 12],
+  [12, 21, 12],
+  [12, 00, 12],
+  [12, 12, 12]
+];
+
+var spike_row = [
+  [20, 12, 12, 12, 12, 12],
+  [20, 21, 21, 21, 00, 12],
+  [20, 12, 12, 12, 12, 12]
+];
+
+function get_normal_puzzle(columns, rows) {
+  if (columns === 9 && rows === 7) {
     return big_puzzle;
+  }
+  else if (columns === 3 && rows === 6) {
+    return spike_line;
+  }
+  else if (columns === 6 && rows === 3) {
+    return spike_row;
   }
 }
