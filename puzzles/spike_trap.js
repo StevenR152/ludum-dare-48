@@ -1,37 +1,40 @@
 // all the versions of spike trap puzzles go into this file
 var simple_puzzle_xwall_stair = [
-  [12, 0, 8, 0, 12],
-  [12, 0, 0, 0, 12],
+  [12, 00, 08, 00, 12],
+  [12, 00, 00, 00, 12],
   [12, 13, 13, 13, 12], //13 to be replaced with spikes
-  [12, 0, 0, 0, 12],
-  [0, 0, 11, 0, 0], // 12 to be replaced with button
+  [12, 00, 00, 00, 12],
+  [00, 00, 20, 00, 00], // 12 to be replaced with button
 ];
 
 var simple_puzzle_ywall_stair = [
-  [12, 12, 12, 12, 0],
-  [0, 0, 13, 0, 0],
-  [8, 0, 13, 0, 11],
-  [0, 0, 13, 0, 0],
-  [12, 12, 12, 12, 0],
+  [12, 12, 12, 12, 00],
+  [00, 00, 13, 00, 00],
+  [08, 00, 13, 00, 20],
+  [00, 00, 13, 00, 00],
+  [12, 12, 12, 12, 00],
 ];
 
 var big_puzzle = [
   [00, 00, 00, 12, 12, 12, 12, 12, 12],
-  [12, 11, 12, 00, 00, 00, 12, 11, 12],
-  [12, 00, 13, 00, 12, 11, 12, 13, 12],
-  [12, 00, 13, 00, 12, 12, 12, 00, 11],
+  [12, 20, 12, 00, 00, 00, 12, 20, 12],
+  [12, 00, 13, 00, 12, 20, 12, 13, 12],
+  [12, 00, 13, 00, 12, 12, 12, 00, 20],
   [12, 00, 12, 00, 13, 00, 00, 00, 12],
-  [12, 11, 12, 12, 12, 12, 12, 13, 12],
+  [12, 20, 12, 00, 13, 00, 00, 13, 12],
+  [12, 00, 12, 12, 12, 12, 12, 00, 12],
 ];
 
 function get_spike_puzzle(sizex, sizey, startx, starty) {
-  if (startx === 0) {
+  if (startx === 0 && sizey === simple_puzzle_xwall_stair.length &&
+      sizex === simple_puzzle_xwall_stair[0].length) {
     return simple_puzzle_xwall_stair;
   }
-  else if (starty === 0) {
+  else if (starty === 0 && sizey === simple_puzzle_ywall_stair.length &&
+      sizex === simple_puzzle_ywall_stair[0].length) {
     return simple_puzzle_ywall_stair;
   }
-  else if (sizex === 6 && sizey === 9) {
+  else if (sizex === 7 && sizey === 9) {
     return big_puzzle;
   }
 }

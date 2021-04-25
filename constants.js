@@ -20,6 +20,7 @@ var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
 var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
 var vase = 'Destroyable, 2D, DOM, Color, vase';
 var chest = 'Destroyable, 2D, DOM, Color, chest';
+var button = 'Destroyable, 2D, DOM, Color, Button';
 
 //Keep 10+ index values for solid objects
 var tileMap = {
@@ -32,7 +33,8 @@ var tileMap = {
 		9 : stairs_up,
 		11 : pillar1,
 		12 : vase,
-		13 : chest
+		13 : chest,
+		20 : button
 }
 
 
