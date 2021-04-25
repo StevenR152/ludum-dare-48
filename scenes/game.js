@@ -1,9 +1,11 @@
-	
+
 
 Crafty.defineScene("Game", function() {
-	Crafty.e("MusicIcon")
+	var musicIcon = Crafty.e("MusicIcon")
 		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
+		.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS)
 		.initClick(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS, GAME_MUSIC_BUTTON_WIDTH, GAME_MUSIC_BUTTON_HEIGHT)
+	
 
 	var player = Crafty.e('Player');
 	makeCameraTrackEntity(player, 75);
@@ -19,9 +21,9 @@ Crafty.defineScene("Game", function() {
 
 		// walked outside of map, don't allow it.
   		if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
-  			return;
-  		}
-
+  			return; 
+		}
+		  
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
 			if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
@@ -51,7 +53,8 @@ Crafty.defineScene("Game", function() {
 		}
 
 		// Pillar and other solid objects
-		if (map[current_level][1][newy][newx] > 10) {
+		if (map[current_level][1][newy][newx] > 10 &&
+			 	map[current_level][1][newy][newx] < 20) {
 			return;
 		}
 
@@ -76,6 +79,11 @@ Crafty.defineScene("Game", function() {
 		}
 	});
 
+	//current level label
+	Crafty.e("Level")
+		.attr({x: GAME_SCREEN_WIDTH * 2.8, y: GAME_SCREEN_HEIGHT * 0.15, w: 400, h: 100})
+		.fixedPosition(GAME_SCREEN_WIDTH * 2.8, GAME_SCREEN_HEIGHT * 0.15)
+		.text("Level: " + (current_level + 1) + " of " + map.length)
 
 
 });

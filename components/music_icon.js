@@ -1,6 +1,6 @@
 Crafty.c("MusicIcon", {
     init: function(){
-        this.addComponent('2D, Color, Mouse, DOM, music_on')
+        this.addComponent('2D, Color, Mouse, DOM, HUD, music_on')
     },
     initClick: function(mx, my, mw, mh) {
         this.bind('Click', function(e){

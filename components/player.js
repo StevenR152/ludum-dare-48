@@ -7,8 +7,8 @@ Crafty.c("Player", {
 		// this.has_key = false; // has a key for the door
     this.addComponent("2D, DOM, Color, Collision, Keyboard, player");
     this.attr({
-      posx : 2,
-      posy : 2,
+      posx : 1,
+      posy : 5,
       w : 256,
       h : 480,
     })

@@ -24,8 +24,9 @@ Crafty.defineScene("Start", function() {
          });
 
     Crafty.e("MusicIcon")
-		.attr({x: MUSIC_BUTTON_XPOS, y: MUSIC_BUTTON_YPOS, w: MUSIC_BUTTON_WIDTH, h: MUSIC_BUTTON_HEIGHT})
-		.initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
+        .attr({x: MUSIC_BUTTON_XPOS, y: MUSIC_BUTTON_YPOS, w: MUSIC_BUTTON_WIDTH, h: MUSIC_BUTTON_HEIGHT})
+        .fixedPosition(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS)
+        .initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
     //texts
     var title = Crafty.e("2D, DOM, GameTitle")

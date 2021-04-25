@@ -41,35 +41,53 @@ Crafty.c("LevelGenerator", {
 				temp_objects_map.push(x_tiles);
 			};
 
-			// generate stairs on the edges
-			if (next_level_stairs !== undefined) {
-				for (var stairs_up = 0; stairs_up < next_level_stairs.length; stairs_up++) {
-					temp_objects_map[next_level_stairs[stairs_up].stairX][next_level_stairs[stairs_up].stairY] = 9;
-				}
+			// here we will generate and place STAIR puzzles into the object map
+			if (level % 2 == 0) { // every even level will be stairs on the right corner
+				// make a stairs puzzle at y=0, x = level max
+				temp_objects_map = place_puzzle(5, 5,
+						(levels_size[level] - 5), 0, temp_objects_map, true);
 			}
-			var next_level_stairs = [];
-			var stairsList = [
-				{ stairX: Math.floor(Math.random() * max), stairY: 0 },
-				{ stairX: Math.floor(Math.random() * max), stairY: max - 1 },
-				{ stairX: 0, stairY: Math.floor(Math.random() * max) },
-				{ stairX: max - 1, stairY: Math.floor(Math.random() * max) }
-			];
-
-			var newStairsList = stairsList;
-			for(var count = 0; count < MAX_STAIRS; ++count) {
-				var index = Math.floor(Math.random() * newStairsList.length)
-				var strs = newStairsList[index];
-				if (temp_objects_map[strs.stairX][strs.stairY] === 0) {
-					temp_objects_map[strs.stairX][strs.stairY] = 8;
-					next_level_stairs.push(strs);
-
-					//remove it from the list so that it doesn't pick the same item
-					newStairsList.splice(index, 1);
-				}
-				else {
-					count-=1;
-				}
+			else {
+				// make a stairs puzzle at y=level max, x = 0
+				temp_objects_map = place_puzzle(5, 5,
+						0 , (levels_size[level] - 5), temp_objects_map, true);
 			}
+			// here we will generate and place OTHER puzzles into the object map
+
+
+
+
+			
+
+			// // generate stairs on the edges
+			// if (next_level_stairs !== undefined) {
+			// 	for (var stairs_up = 0; stairs_up < next_level_stairs.length; stairs_up++) {
+			// 		temp_objects_map[next_level_stairs[stairs_up].stairX][next_level_stairs[stairs_up].stairY] = 9;
+			// 	}
+			// }
+			// var next_level_stairs = [];
+			// var stairsList = [
+			// 	{ stairX: Math.floor(Math.random() * max), stairY: 0 },
+			// 	{ stairX: Math.floor(Math.random() * max), stairY: max - 1 },
+			// 	{ stairX: 0, stairY: Math.floor(Math.random() * max) },
+			// 	{ stairX: max - 1, stairY: Math.floor(Math.random() * max) }
+			// ];
+			//
+			// var newStairsList = stairsList;
+			// for(var count = 0; count < MAX_STAIRS; ++count) {
+			// 	var index = Math.floor(Math.random() * newStairsList.length)
+			// 	var strs = newStairsList[index];
+			// 	if (temp_objects_map[strs.stairX][strs.stairY] === 0) {
+			// 		temp_objects_map[strs.stairX][strs.stairY] = 8;
+			// 		next_level_stairs.push(strs);
+			//
+			// 		//remove it from the list so that it doesn't pick the same item
+			// 		newStairsList.splice(index, 1);
+			// 	}
+			// 	else {
+			// 		count-=1;
+			// 	}
+			// }
 
 			// put this level together into the map
 			map.push([temp_tiles_map,temp_objects_map]);
