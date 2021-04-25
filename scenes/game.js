@@ -50,6 +50,7 @@ Crafty.defineScene("Game", function() {
 
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
+			screenComponentsGame.needRedrawDarkness = true;
 			current_level += 1;
 			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
 		}
@@ -57,6 +58,7 @@ Crafty.defineScene("Game", function() {
 
 	Crafty.bind('GoUpAFloor', function(e) {
 		if (current_level > 0) {
+			screenComponentsGame.needRedrawDarkness = true;
 			current_level -= 1;
 			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
 		}

@@ -41,7 +41,7 @@ Crafty.c('LightSource', {
 		// light
 		// https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/globalCompositeOperation
 		ctx.globalCompositeOperation = 'source-atop';
-		var radialgradient = ctx.createRadialGradient(this.x + this.radius, this.y + this.radius, this.radius/2, this.x + this.radius, this.y + this.radius, this.radius);
+		var radialgradient = ctx.createRadialGradient(this.x + this.radius, this.y + this.radius, this.radius/8, this.x + this.radius, this.y + this.radius, this.radius);
 		radialgradient.addColorStop(0, 'rgba(' + this.color + ',' + this.flashrate.toFixed(2) + ')');
 		radialgradient.addColorStop(1, 'rgba(' + this.color + ',0)');
 
