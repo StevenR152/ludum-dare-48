@@ -23,7 +23,7 @@ var chest = 'Destroyable, 2D, DOM, Color, chest';
 var button = 'Button';
 var spikes = 'TileSpikes';
 
-//Keep 10+ index values for solid objects, 20+ for interaction walkables
+//Keep 10-19 index values for solid objects, 20+ for interaction walkables
 // TODO code the interaction walkables functionality properly
 var tileMap = {
 		1 : basic_tile_1,
