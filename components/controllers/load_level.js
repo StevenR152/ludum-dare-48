@@ -17,7 +17,7 @@ Crafty.c("LoadLevel", {
 		isos.place(chest, player.posx+1, player.posy+1, 1);
 
 
-		player.lightSource = Crafty.e('2D, Canvas, LightSource').LightSource(player, 32, '128,128,128', true);
+		player.lightSource = Crafty.e('2D, Canvas, LightSource').LightSource(player, 512, '128,128,128', true);
 
 	    // player.attach(player.lightSource)
 
