@@ -8,7 +8,12 @@ Crafty.defineScene("Start", function() {
     //buttons
     var playGameButton = Crafty.e("2D, DOM, Image, Mouse, play_button")
         .attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
-        .bind('Click', function(MouseEvent){ Crafty.scene('Game'); })
+        .bind('Click', function(MouseEvent) {
+            if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
+                audioController.playTrack("bgAudio", -1, 0.25);
+            } 
+            Crafty.scene('Game'); 
+        })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
             this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})   
@@ -18,20 +23,9 @@ Crafty.defineScene("Start", function() {
             this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
          });
 
-    var muteMusic = Crafty.e("2D, Color, Mouse, DOM, mute_button");
-        muteMusic.attr({x: 30, y: 30, w: 38, h:42, vx:5});
-        muteMusic.bind('Click', function(MouseEvent){
-            if (audioController.muted == false) {
-                audioController.muted = true;
-                this.alpha = 0.2;
-                audioController.pauseTrack("bgAudio", 0)
-            }
-            else {
-                audioController.muted = false;
-                this.alpha = 1;
-                audioController.playTrack("bgAudio", -1, 0.25)
-            }
-        });
+    Crafty.e("MusicIcon")
+		.attr({x: MUSIC_BUTTON_XPOS, y: MUSIC_BUTTON_YPOS, w: MUSIC_BUTTON_WIDTH, h: MUSIC_BUTTON_HEIGHT})
+		.initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
     //texts
     var title = Crafty.e("2D, DOM, GameTitle")
