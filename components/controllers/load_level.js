@@ -30,13 +30,14 @@ Crafty.c("LoadLevel", {
 		var tileSpikes2 = Crafty.e("TileSpikes");
 		isos.place(tileSpikes2, player.posx, player.posy+1, 0);
 		button2.attachLink(tileSpikes2, tileSpikes2.disable);
-
+		button2.attachLink(tileSpikes4, tileSpikes4.enable);
 		var button3 = Crafty.e("Button");
 		isos.place(button3, player.posx+1, player.posy+2, 0);
 		var tileSpikes3 = Crafty.e("TileSpikes");
 		isos.place(tileSpikes3, player.posx, player.posy+2, 0);
 		button3.attachLink(tileSpikes3, tileSpikes3.disable);
-
+		button3.attachLink(tileSpikes1, tileSpikes1.enable);
+		button3.attachLink(tileSpikes2, tileSpikes2.enable);
 		console.log("player placed" , player.posx, player.posy);
     },
 

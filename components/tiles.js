@@ -105,6 +105,18 @@ Crafty.c("TileSpikes", {
     this.removeComponent("tile_spikes");
     this.removeComponent("tile_spiketips");
     this.addComponent("tile_spikeholes");
+  },
+
+  enable : function() {
+    // clear any previous ones just incase.
+    if(typeof this.activeDelay !== "undefined") {
+      this.cancelDelay(this.activeDelay);
+    }
+
+    this.isEnabled = true;
+    this.removeComponent("tile_spikes");
+    this.removeComponent("tile_spikeholes");
+    this.addComponent("tile_spiketips");
   }
 });
 
