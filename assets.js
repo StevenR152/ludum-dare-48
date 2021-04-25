@@ -110,18 +110,22 @@ var gameAssets = {
         "tileh": 256,
         "map": {"wallright": [0, 0]}
       },
-
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
         "map": {"player": [0, 0]}
-        },
-      "assets/images/button_unpressed.png": {
+      },
+      "assets/images/button_unpressed2.png": {
+        "tile" : 256,
+        "tileh": 140,
+        "map": {"button_unpressed": [0, 0]}
+      },
+      "assets/images/button_pressed2.png": {
         "tile" : 256,
         "tileh": 128,
-        "map": {"button_unpressed": [0, 0]}
-         },
-
+        "map": {"button_pressed": [0, 0]}
+      },
+      
       //start screen
       "assets/images/play_button.png": {
         "tile" : 339,
@@ -155,11 +159,5 @@ var gameAssets = {
         "tileh": 130,
         "map": {"play_mouse": [0, 0]}
       },
-
-      "assets/images/button_pressed.png": {
-        "tile" : 256,
-        "tileh": 128,
-        "map": {"button_pressed": [0, 0]}
-         },
    }
 }
