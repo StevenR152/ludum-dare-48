@@ -14,11 +14,9 @@ Crafty.defineScene("End", function() {
             Crafty.scene('Game');
         });
 
-    var muteMusic = Crafty.e("2D, Color, Mouse, DOM, mute_button")
-        .attr({x: 30, y: 30, w: 38, h:42})
-        .bind('Click', function(MouseEvent){
-
-        });
+    Crafty.e("MusicIcon")
+		.attr({x: MUSIC_BUTTON_XPOS, y: MUSIC_BUTTON_YPOS, w: MUSIC_BUTTON_WIDTH, h: MUSIC_BUTTON_HEIGHT})
+		.initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
     //texts
     var score = Crafty.e("Score")

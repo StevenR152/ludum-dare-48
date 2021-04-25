@@ -1,8 +1,14 @@
+	
+
 Crafty.defineScene("Game", function() {
+	Crafty.e("MusicIcon")
+		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
+		.initClick(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS, GAME_MUSIC_BUTTON_WIDTH, GAME_MUSIC_BUTTON_HEIGHT)
 
 	var player = Crafty.e('Player');
 	makeCameraTrackEntity(player, 75);
 	Crafty.viewport.scale(0.3);
+
 
 	map = Crafty.e("LevelGenerator").generate_levels();
 	Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
@@ -71,4 +77,7 @@ Crafty.defineScene("Game", function() {
 			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
 		}
 	});
+
+
+
 });
