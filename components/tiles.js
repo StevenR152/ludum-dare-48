@@ -50,18 +50,30 @@ Crafty.c("TileSpikes", {
     this.addComponent("2D, Destroyable, DOM, Color, Delay, Keyboard, Collision, tile_spiketips");
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
+  
     this.bind("PLAYER_STOOD_ON", function () {
-      if(!this.isEnabled) return;
+      if(!this.isEnabled) {
+        // if in a bad state and player stands on update images.
+        this.disable();
+        return;
+      }
+
+      Crafty.trigger("PLAYER_FROZEN");
+      this.announcementDelay = this.delay(function() {
+        Crafty.trigger("PLAYER_STOOD_SPIKE");
+      }, 350, 0, function () {
+        this.announcementDelay = null;
+      })
 
       this.triggerSpikes();
     })
 
     this.bind("PLAYER_STOOD_OFF", function() {
       if(!this.isEnabled) return;
-      
+
       this.activeDelay = this.delay(function() {
         this.pullBackSpikes();
-      }, 800, 1, function() {
+      }, 800, 0, function() {
         this.activeDelay = null;
       });
     });
@@ -149,7 +161,7 @@ Crafty.c("Button", {
     this.bind("PLAYER_STOOD_OFF", function() {
       this.activeDelay = this.delay(function() {
         this.releaseButton();
-      }, 800, 1, function() {
+      }, 800, 0, function() {
         this.activeDelay = null;
       });
     });

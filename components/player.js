@@ -2,6 +2,7 @@ Crafty.c("Player", {
 	init: function() {
 		// this.direction_force = 0
 		// this.force_level_x = 0
+    this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
     this.addComponent("2D, DOM, Color, Collision, Keyboard, player");
@@ -12,6 +13,7 @@ Crafty.c("Player", {
       h : 480,
     })
     this.bind('KeyDown', function(e) {
+      if(this.isInputFrozen) return;
       var direction = {};
       if(e.key == Crafty.keys.LEFT_ARROW) {
         direction = {x : -1, y : 0};
@@ -26,6 +28,15 @@ Crafty.c("Player", {
       Crafty.trigger("PlayerMovement", direction);
     });
 
+    this.bind("PLAYER_STOOD_SPIKE", function () {
+      Crafty.trigger("PlayerMovement", this.undoLastMove);
+      this.isInputFrozen = false;
+    })
+
+    this.bind("PLAYER_FROZEN", function () {
+      this.isInputFrozen = true;
+    })
+    
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
     this.hitbox.attr({
