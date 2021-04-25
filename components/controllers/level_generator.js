@@ -32,7 +32,7 @@ Crafty.c("LevelGenerator", {
 					var chance = 3;// the % chance of spawning an object
 					var object_chance = Math.random() * 100;
 					if (object_chance <= chance && temp_tiles_map[lvl_x][lvl_y] !== 0) {
-						var randomObject = Math.ceil(Math.random()*3)+10; // plus 10 as all of the object start from 11.
+						var randomObject = Math.ceil(Math.random()*NUMBER_OF_RANDOM_OBJECTS)+10; // plus 10 as all of the object start from 11.
 						x_tiles.push(randomObject);
 					}else {
 						x_tiles.push(0);

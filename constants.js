@@ -2,6 +2,7 @@ var GAME_SCREEN_WIDTH = 900;
 var GAME_SCREEN_HEIGHT = 600;
 var numberOfResets = 0;
 
+var NUMBER_OF_RANDOM_OBJECTS = 4; // vase, vase2, pillar, chest etc - randomly placed.
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
@@ -10,16 +11,17 @@ var current_level = 0;
 var MAX_STAIRS = 1;
 
 var levels_size = [5,9,13,17,27,39]; // to move to constants later
-var basic_tile_1 = 'object, 2D, DOM, Color, basic_tile_1';
-var basic_tile_2 = 'object, 2D, DOM, Color, basic_tile_2';
-var tile_leave1 = 'object, 2D, DOM, Color, tile_leaves_1';
-var tile_leave2 = 'object, 2D, DOM, Color, tile_leaves_2';
-var tile_cracked = 'object, 2D, DOM, Color, tile_cracked_1';
-var stairs = 'object, 2D, DOM, Color, stairs';
-var stairs_up = 'object, 2D, DOM, Color, stairs_up';
-var pillar1 = 'object, 2D, DOM, Color, pillar1';
-var vase = 'object, 2D, DOM, Color, vase';
-var chest = 'object, 2D, DOM, Color, chest';
+var basic_tile_1 = 'Destroyable, 2D, DOM, Color, basic_tile_1';
+var basic_tile_2 = 'Destroyable, 2D, DOM, Color, basic_tile_2';
+var tile_leave1 = 'Destroyable, 2D, DOM, Color, tile_leaves_1';
+var tile_leave2 = 'Destroyable, 2D, DOM, Color, tile_leaves_2';
+var tile_cracked = 'Destroyable, 2D, DOM, Color, tile_cracked_1';
+var stairs = 'Destroyable, 2D, DOM, Color, stairs';
+var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
+var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
+var vase = 'Destroyable, 2D, DOM, Color, vase';
+var vase2 = 'Destroyable, 2D, DOM, Color, vase2';
+var chest = 'Destroyable, 2D, DOM, Color, chest';
 
 //Keep 10+ index values for solid objects
 var tileMap = {
@@ -32,7 +34,8 @@ var tileMap = {
 		9 : stairs_up,
 		11 : pillar1,
 		12 : vase,
-		13 : chest
+		13 : chest,
+		14 : vase2,
 }
 
 

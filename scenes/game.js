@@ -19,7 +19,7 @@ Crafty.defineScene("Game", function() {
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
 			console.log("down", newy, newx);
-			player.posx += 1 + e.x;
+			player.posx += e.x + 1;
 			player.posy += e.y;
 			isos.place(player, (player.posx), (player.posy), 1);
 			Crafty.trigger("GoDownAFloor", {});
@@ -29,7 +29,7 @@ Crafty.defineScene("Game", function() {
 		// Stairs up
 		if (map[current_level][1][newy][newx] === 9) {
 			console.log("up", newy, newx);
-			player.posx += e.x;
+			player.posx += e.x -1;
 			player.posy += e.y;
 			isos.place(player, (player.posx), (player.posy), 1);
 			Crafty.trigger("GoUpAFloor", {});
