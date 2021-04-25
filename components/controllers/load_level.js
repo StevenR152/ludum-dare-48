@@ -3,12 +3,12 @@ Crafty.c("LoadLevel", {
 		Crafty("object").each(function(i) {
       		this.destroy();
 		});
-
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
 					this.tryPlaceWall(l,c,r);
 					this.placeGroundTile(level, l,c,r);
+
 				}
 			}
 		}
@@ -19,12 +19,13 @@ Crafty.c("LoadLevel", {
     	var mapPosition = map[level][l][c][r];
 		var tile = tileMap[mapPosition];
 		if(typeof tile !== 'undefined') {
-			// if (l === 1) {
-			// 	isos.place(Crafty.e(tile),r+1,c+1,1);
-			// }
-			// else {
-				isos.place(Crafty.e(tile),r,c,0);
-			// }
+        // as we're grouping 2 layers into one for tiles and objects
+        if (l % 2 != 0) {
+          isos.place(Crafty.e(tile),r+1,c+1,l);
+        }
+        else {
+          isos.place(Crafty.e(tile),r,c,l);
+        }
 		}
     },
 

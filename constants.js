@@ -1,3 +1,8 @@
+var GAME_SCREEN_WIDTH = 900;
+var GAME_SCREEN_HEIGHT = 600;
+var numberOfResets = 0;
+
+
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
@@ -25,3 +30,9 @@ var tileMap = {
 		9 : stairs_up,
 		11 : pillar1
 }
+
+
+var PLAY_BUTTON_XPOS = GAME_SCREEN_WIDTH/2-50;
+var PLAY_BUTTON_YPOS = GAME_SCREEN_HEIGHT/2+15;
+var PLAY_BUTTON_WIDTH = 141;
+var PLAY_BUTTON_HEIGHT = 51;
