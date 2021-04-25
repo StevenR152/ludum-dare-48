@@ -57,6 +57,8 @@ Crafty.c("TileSpikes", {
     })
 
     this.bind("PLAYER_STOOD_OFF", function() {
+      if(!this.isEnabled) return;
+      
       this.activeDelay = this.delay(function() {
         this.pullBackSpikes();
       }, 800, 1, function() {
@@ -83,6 +85,10 @@ Crafty.c("TileSpikes", {
   },
   
   disable : function() {
+    if(typeof this.activeDelay !== "undefined") {
+      this.cancelDelay(this.activeDelay);
+    }
+
     this.isEnabled = false;
     this.removeComponent("tile_spikes");
     this.removeComponent("tile_spiketips");
