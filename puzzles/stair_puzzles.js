@@ -1,3 +1,5 @@
+// for simplicity all new stair puzzles MUST have the stairs in the same position (-1 for either corner)
+
 //TODO have a grid of different sized stair puzzles for randomness - Y=0
 var simple_puzzle_xwall_stair = [
   [12, 00, 08, 00, 12],
