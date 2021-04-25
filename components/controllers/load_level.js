@@ -12,11 +12,6 @@ Crafty.c("LoadLevel", {
 			}
 		}
 		isos.place(player, player.posx, player.posy, 1);
-
-		var button = Crafty.e("Button");
-		isos.place(button, player.posx+1, player.posy+1, 0);
-		var button = Crafty.e("TileSpikes");
-		isos.place(button, player.posx+2, player.posy+2, 0);
 		console.log("player placed" , player.posx, player.posy);
     },
 
@@ -37,12 +32,10 @@ Crafty.c("LoadLevel", {
 
     tryPlaceWall: function (l, c, r) {
     	if(l == 0 && c == 0){
-    	console.log("called");
 	    	isos.place(Crafty.e("WallRight"),r,c,0);
 	    	return;
 	    }
 	    if(l == 0 && r == 0){
-    	console.log("called");
 	    	isos.place(Crafty.e("WallLeft"),r,c,0);
 	    	return;
 	    }
