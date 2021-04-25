@@ -5,7 +5,7 @@ var numberOfResets = 0;
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
-var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,20,20);
+var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);
 var current_level = 0;
 var MAX_STAIRS = 1;
 

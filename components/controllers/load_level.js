@@ -6,8 +6,8 @@ Crafty.c("LoadLevel", {
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
 				for (var r = 0; r < map[level][l][c].length; r++) {
-					this.tryPlaceWall(l,c,r);
 					this.placeGroundTile(level, l,c,r);
+					this.tryPlaceWall(l,c,r);
 
 				}
 			}
