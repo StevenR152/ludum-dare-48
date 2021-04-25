@@ -44,28 +44,29 @@ Crafty.c("LinkMechanism", {
 
 Crafty.c("TileSpikes", {
 	init: function() {
-    this.isPressed = true;
+    this.isSpikeUp = true;
     this.isEnabled = true; // will spike you if true.
 
-    this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spikeholes");
+    this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spiketips");
     this.attach(Crafty.e("CentralHitbox"))
     this.bind("PLAYER_STOOD_ON", function () {
       if(!this.isEnabled) return;
-
-      if(!this.isPressed) {
-        this.removeComponent("tile_spikes");
-        this.addComponent("tile_spikeholes");
-      } else {
-        this.removeComponent("tile_spikeholes");
+ 
+      if(this.isSpikeUp) {
+        this.removeComponent("tile_spiketips");
         this.addComponent("tile_spikes");
+      } else {
+        this.removeComponent("tile_spikes");
+        this.addComponent("tile_spiketips");
       }
-      this.isPressed = !this.isPressed;
+      this.isSpikeUp = !this.isSpikeUp;
     })
   },
 
   disable : function() {
     this.isEnabled = false;
     this.removeComponent("tile_spikes");
+    this.removeComponent("tile_spiketips");
     this.addComponent("tile_spikeholes");
   }
 });

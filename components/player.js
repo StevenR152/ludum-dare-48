@@ -38,7 +38,7 @@ Crafty.c("Player", {
     this.attach(this.hitbox)
   },
 
-  function invertDirection(direction) {
+  invertDirection : function (direction) {
     return {x : -1* direction.x, y: -1 * direction.y}
   }
 })
