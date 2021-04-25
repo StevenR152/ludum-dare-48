@@ -19,13 +19,14 @@ Crafty.c("LoadLevel", {
     	var mapPosition = map[level][l][c][r];
 		var tile = tileMap[mapPosition];
 		if(typeof tile !== 'undefined') {
-        // as we're grouping 2 layers into one for tiles and objects
-        if (l % 2 != 0) {
-          isos.place(Crafty.e(tile),r+1,c+1,l);
-        }
-        else {
-          isos.place(Crafty.e(tile),r,c,l);
-        }
+	        // as we're grouping 2 layers into one for tiles and objects
+	        // only every even number is a "real" layer of the pyramid
+	        if (l % 2 != 0) {
+	          isos.place(Crafty.e(tile),r+1,c+1,l);
+	        }
+	        else {
+	          isos.place(Crafty.e(tile),r,c,l);
+	        }
 		}
     },
 
