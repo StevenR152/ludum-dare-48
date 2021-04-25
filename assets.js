@@ -1,11 +1,11 @@
 
 //
 var gameAssets = {
-	// "audio": {
-	// 	"bgAudio" : ["assets/sounds/music.mp3"],
+    "audio": {
+	   	"bgAudio" : ["assets/sounds/sand_dune.mp3"],
 	// 	"glass" : ["assets/sounds/glass.wav"],
 	// 	"unlock" : ["assets/sounds/unlock.wav"]
- 	//    },
+    },
     "sprites": {
       //tiles
       "assets/images/tile_blue.png": {
@@ -135,11 +135,16 @@ var gameAssets = {
          "tileh": 1500,
          "map": {"start_screen": [0, 0]}
       },
-      "assets/images/music_mute_button.png": {
-         "tile" : 95,
-         "tileh": 105,
-         "map": {"mute_button": [0, 0]}
+      "assets/images/music_on.png": {
+         "tile" : 350,
+         "tileh": 337,
+         "map": {"music_on": [0, 0]}
       },
+      "assets/images/music_off.png": {
+        "tile" : 350,
+        "tileh": 337,
+        "map": {"music_off": [0, 0]}
+     },
 
       //end screen
       "assets/images/play_mouse.png": {
