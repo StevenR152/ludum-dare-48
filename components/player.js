@@ -36,7 +36,7 @@ Crafty.c("Player", {
     this.bind("PLAYER_FROZEN", function () {
       this.isInputFrozen = true;
     })
-    
+
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
     this.hitbox.attr({
@@ -51,5 +51,10 @@ Crafty.c("Player", {
 
   invertDirection : function (direction) {
     return {x : -1* direction.x, y: -1 * direction.y}
-  }
+  },
+
+	remove : function (e) {
+		console.log("fuck")
+		// Crafty.trigger("MakeANewPlayer", [this.posx,this.posy]);
+	}
 })
