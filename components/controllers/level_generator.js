@@ -41,22 +41,74 @@ Crafty.c("LevelGenerator", {
 				temp_objects_map.push(x_tiles);
 			};
 
+			var puzzle_flag_map = [];
+			for (var a=0; a < levels_size[level]; a++) {
+				var row = []
+				for (var b=0; b < levels_size[level]; b++) {
+					row.push(0); // a 0 here means NO puzzle in this square.
+				}
+				puzzle_flag_map.push(row);
+			}
+
 			// here we will generate and place one stair puzzle into the object map
 			if (level % 2 == 0) { // every even level will be stairs on the right corner
 				// make a stairs puzzle at y=0, x = level max
-				temp_objects_map = place_puzzle(5, 5,
-						(levels_size[level] - 5), 0, temp_objects_map, true);
+				temp_objects_map, puzzle_flag_map = place_puzzle(5, 5,
+						(levels_size[level] - 5), 0, temp_objects_map, true, puzzle_flag_map);
 			}
 			else { // odd levels have stairs in the left corner
 				// make a stairs puzzle at y=level max, x = 0
-				temp_objects_map = place_puzzle(5, 5,
-						0 , (levels_size[level] - 5), temp_objects_map, true);
+				temp_objects_map, puzzle_flag_map = place_puzzle(5, 5,
+						0 , (levels_size[level] - 5), temp_objects_map, true, puzzle_flag_map);
 			}
 
 			// here we will generate and place OTHER puzzles into the object map
+			//so we work out what squares are already filled with a stair puzzle and ignore those
+			// then we cycle through the rest of the grid, and decide if a puzzle will/can go here.
+			// if it can we generate a size of puzzle (we start with 7 * 9 for the moment)
+			// then we must ignore those squares.
+			for (var b=0; b < levels_size[level]; b++) {
+				for (var a=0; a < levels_size[level]; a++) {
+					if (puzzle_flag_map[a][b] === 0) {
+						// then we might be able to place a puzzle here, check the width+height maximum
+						var count = 0;
+						for (var i=a; i < levels_size[level]; i++){
 
+							if (puzzle_flag_map[a][i] === 1) {
+								//there's already a puzzle here
+								break;
+							}
+							count += 1;
+						}
+						var max_width_remain = count;
 
+						var count = 0;
+						for (var i=b; i < levels_size[level]; i++){
 
+							if (puzzle_flag_map[i][b] === 1) {
+								//there's already a puzzle here
+								break;
+							}
+							count += 1;
+						}
+						var max_height_remain = count;
+						// var start_at_x = Math.floor(Math.random() * (2));
+						// var start_at_y = Math.floor(Math.random() * (2));
+						var start_at_x = b;
+						var start_at_y = a;
+						if (max_width_remain > 8 && max_height_remain > 6) {
+							// minimum puzzle size is 3x3
+							var puzzle_width = Math.floor(Math.random() *
+								(Math.floor(max_puzzle_width) - Math.ceil(9)) + Math.ceil(9));
+							var puzzle_height = Math.floor(Math.random() *
+								(Math.floor(max_puzzle_height+1) - Math.ceil(7)) + Math.ceil(7))
+
+							temp_objects_map, puzzle_flag_map = place_puzzle(puzzle_width, puzzle_height,
+								start_at_x, start_at_y, temp_objects_map, false, puzzle_flag_map);
+						}
+					}
+				}
+			}
 
 
 

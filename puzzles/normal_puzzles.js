@@ -1,4 +1,4 @@
-// all the versions of spike trap puzzles go into this file
+// all non stair puzzles go into this file.
 
 
 var big_puzzle = [
@@ -12,7 +12,7 @@ var big_puzzle = [
 ];
 
 function get_normal_puzzle(sizex, sizey, startx, starty) {
-  if (sizex === 7 && sizey === 9) {
+  if (sizex === 9 && sizey === 7) {
     return big_puzzle;
   }
 }

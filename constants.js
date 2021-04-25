@@ -6,7 +6,7 @@ var numberOfResets = 0;
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);
-var current_level = 0;
+var current_level = 3;
 var MAX_STAIRS = 1;
 
 var levels_size = [5,9,13,17,25,37];
@@ -22,6 +22,8 @@ var vase = 'Destroyable, 2D, DOM, Color, vase';
 var chest = 'Destroyable, 2D, DOM, Color, chest';
 var button = 'Button';
 var spikes = 'TileSpikes';
+var max_puzzle_width = 9;
+var max_puzzle_height = 7;
 
 //Keep 10-19 index values for solid objects, 20+ for interaction walkables
 // TODO code the interaction walkables functionality properly
