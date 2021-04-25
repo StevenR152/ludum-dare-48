@@ -1,4 +1,4 @@
-	
+
 
 Crafty.defineScene("Game", function() {
 	var musicIcon = Crafty.e("MusicIcon")
@@ -53,7 +53,8 @@ Crafty.defineScene("Game", function() {
 		}
 
 		// Pillar and other solid objects
-		if (map[current_level][1][newy][newx] > 10) {
+		if (map[current_level][1][newy][newx] > 10 &&
+			 	map[current_level][1][newy][newx] < 20) {
 			return;
 		}
 
