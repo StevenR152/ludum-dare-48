@@ -2,7 +2,6 @@ var GAME_SCREEN_WIDTH = 900;
 var GAME_SCREEN_HEIGHT = 600;
 var numberOfResets = 0;
 
-var NUMBER_OF_RANDOM_OBJECTS = 4; // vase, vase2, pillar, chest etc - randomly placed.
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
@@ -20,7 +19,6 @@ var stairs = 'Destroyable, 2D, DOM, Color, stairs';
 var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
 var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
 var vase = 'Destroyable, 2D, DOM, Color, vase';
-var vase2 = 'Destroyable, 2D, DOM, Color, vase2';
 var chest = 'Destroyable, 2D, DOM, Color, chest';
 
 //Keep 10+ index values for solid objects
@@ -34,8 +32,7 @@ var tileMap = {
 		9 : stairs_up,
 		11 : pillar1,
 		12 : vase,
-		13 : chest,
-		14 : vase2,
+		13 : chest
 }
 
 

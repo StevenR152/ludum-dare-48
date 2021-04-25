@@ -8,11 +8,11 @@ Crafty.c("LoadLevel", {
 				for (var r = 0; r < map[level][l][c].length; r++) {
 					this.placeGroundTile(level, l,c,r);
 					this.tryPlaceWall(l,c,r);
-
 				}
 			}
 		}
 		isos.place(player, player.posx, player.posy, 1);
+		console.log("player placed" , player.posx, player.posy);
     },
 
     placeGroundTile : function (level, l, c, r) {
