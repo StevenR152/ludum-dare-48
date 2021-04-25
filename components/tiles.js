@@ -24,9 +24,20 @@ Crafty.c("TilePurple", {
 
 Crafty.c("TileSpikes", {
 	init: function() {
-    this.addComponent("2D, Destroyable, DOM, Color, Keyboard, tile_spikes");
+    this.pressed = false;
+    this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spikeholes");
+    this.attach(Crafty.e("CentralHitbox"))
+    this.bind("PLAYER_STOOD_ON", function () {
+      if(!this.pressed) {
+        this.removeComponent("tile_spikes");
+        this.addComponent("tile_spikeholes");
+      } else {
+        this.removeComponent("tile_spikeholes");
+        this.addComponent("tile_spikes");
+      }
+      this.pressed = !this.pressed;
+    })
   },
-  // TODO to add some way for spikes to change or be updated?
 });
 
 Crafty.c("CentralHitbox", {
