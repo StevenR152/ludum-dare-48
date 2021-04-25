@@ -22,22 +22,52 @@ Crafty.c("TilePurple", {
   },
 });
 
+Crafty.c("LinkMechanism", {
+  init: function() {
+    this.linkedEntities = [];
+  },
+
+  attachLink: function (entity, callback) {
+    this.linkedEntities.push([entity, callback]);
+  },
+
+  triggerLinks: function () {
+    for (var i = 0; i < this.linkedEntities.length; i++) {
+      var entity = this.linkedEntities[i][0];
+      var callback = this.linkedEntities[i][1];
+      if(typeof callback !== 'undefined') {
+        callback.call(entity);
+      }
+    }
+  }
+});
+
 Crafty.c("TileSpikes", {
 	init: function() {
-    this.pressed = true;
+    this.isPressed = true;
+    this.isEnabled = true; // will spike you if true.
+
     this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spikeholes");
     this.attach(Crafty.e("CentralHitbox"))
     this.bind("PLAYER_STOOD_ON", function () {
-      if(!this.pressed) {
+      if(!this.isEnabled) return;
+
+      if(!this.isPressed) {
         this.removeComponent("tile_spikes");
         this.addComponent("tile_spikeholes");
       } else {
         this.removeComponent("tile_spikeholes");
         this.addComponent("tile_spikes");
       }
-      this.pressed = !this.pressed;
+      this.isPressed = !this.isPressed;
     })
   },
+
+  disable : function() {
+    this.isEnabled = false;
+    this.removeComponent("tile_spikes");
+    this.addComponent("tile_spikeholes");
+  }
 });
 
 Crafty.c("CentralHitbox", {
@@ -62,7 +92,7 @@ Crafty.c("CentralHitbox", {
 
 Crafty.c("Button", {
   init: function() {
-    this.addComponent("2D, Destroyable, Delay, Collision, DOM, Color, Keyboard, button_unpressed");
+    this.addComponent("2D, Destroyable, Delay, Collision, DOM, Color, Keyboard, LinkMechanism, button_unpressed");
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
 
@@ -77,6 +107,9 @@ Crafty.c("Button", {
 
       this.removeComponent("button_unpressed");
       this.addComponent("button_pressed");
+
+      // think actions on anything this button is linked to.
+      this.triggerLinks();
     };
 
     this.releaseButton = function() {
@@ -90,9 +123,7 @@ Crafty.c("Button", {
     this.bind("PLAYER_STOOD_OFF", function() {
       this.activeDelay = this.delay(function() {
         this.releaseButton();
-        console.log("stood off animation")
       }, 800, 1, function() {
-        Crafty.log("reset button");
         this.activeDelay = null;
       });
     });

@@ -15,21 +15,27 @@ Crafty.c("LoadLevel", {
 
 		var button = Crafty.e("Button");
 		isos.place(button, player.posx+1, player.posy+1, 0);
-		var button = Crafty.e("TileSpikes");
-		isos.place(button, player.posx, player.posy, 0);
+		var tileSpikes1 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes1, player.posx, player.posy, 0);
+		button.attachLink(tileSpikes1, tileSpikes1.disable);
+		var tileSpikes4 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes4, player.posx-1, player.posy, 0);
+		button.attachLink(tileSpikes4, tileSpikes4.disable);		
+		var tileSpikes5 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes5, player.posx-1, player.posy+1, 0);
+		button.attachLink(tileSpikes5, tileSpikes4.disable);
 
+		var button2 = Crafty.e("Button");
+		isos.place(button2, player.posx+1, player.posy, 0);
+		var tileSpikes2 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes2, player.posx, player.posy+1, 0);
+		button2.attachLink(tileSpikes2, tileSpikes2.disable);
 
-		var button = Crafty.e("Button");
-		isos.place(button, player.posx+1, player.posy, 0);
-		var button = Crafty.e("TileSpikes");
-		isos.place(button, player.posx, player.posy+1, 0);
-
-
-		var button = Crafty.e("Button");
-		isos.place(button, player.posx+2, player.posy+1, 0);
-		var button = Crafty.e("TileSpikes");
-		isos.place(button, player.posx, player.posy+2, 0);
-
+		var button3 = Crafty.e("Button");
+		isos.place(button3, player.posx+1, player.posy+2, 0);
+		var tileSpikes3 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes3, player.posx, player.posy+2, 0);
+		button3.attachLink(tileSpikes3, tileSpikes3.disable);
 
 		console.log("player placed" , player.posx, player.posy);
     },
@@ -51,12 +57,10 @@ Crafty.c("LoadLevel", {
 
     tryPlaceWall: function (l, c, r) {
     	if(l == 0 && c == 0){
-    	console.log("called");
 	    	isos.place(Crafty.e("WallRight"),r,c,0);
 	    	return;
 	    }
 	    if(l == 0 && r == 0){
-    	console.log("called");
 	    	isos.place(Crafty.e("WallLeft"),r,c,0);
 	    	return;
 	    }
