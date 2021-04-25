@@ -12,7 +12,52 @@ Crafty.c("LoadLevel", {
 				}
 			}
 		}
+		
+		var chest = Crafty.e("Chest");
+		isos.place(chest, player.posx+1, player.posy+1, 1);
+
+
+		player.lightSource = Crafty.e('2D, Canvas, LightSource').LightSource(player, 64, '128,128,128', true);
+
+	    player.attach(player.lightSource)
+	    
+	    player.bind("EnterFrame", function (frameObj) {
+			if (player.lightSource) {
+				player.lightSource.attr({ x: player.x - player.lightSource.radius + player.w / 2, y: player.y - player.lightSource.radius + 7 * player.h / 8, z: player.z - 20 });
+			}
+		});
+
+	    player.bind("EnterFrame", function () {
+	    	if (screenComponentsGame.needRedrawDarkness) {
+				// darkness for the world
+				var lights = Crafty('LightSource');
+				var ctxDark = screenComponentsGame.darkscreen.getContext('2d');
+				ctxDark.globalCompositeOperation = "source-over";
+				ctxDark.clearRect(0, 0, screenComponentsGame.darkscreen.width, screenComponentsGame.darkscreen.height);
+				ctxDark.fillStyle = 'rgba(64,64,64,' + screenComponentsGame.darknessLevel + ')';
+				ctxDark.fillRect(0, 0, screenComponentsGame.darkscreen.width, screenComponentsGame.darkscreen.height);
+				for (var i=0;i<lights.length;i++) {
+					var light = Crafty(lights[i]);
+					ctxDark.globalCompositeOperation = 'destination-out';
+					var x = light.x;
+					var y = light.y;
+					var radgrad = ctxDark.createRadialGradient(x + light.radius, y + light.radius, light.radius/8, x + light.radius, y + light.radius, light.radius);
+					radgrad.addColorStop(0, 'rgba(0,0,0,1)');
+					radgrad.addColorStop(1, 'rgba(0,0,0,0)');
+					ctxDark.fillStyle = radgrad;
+					ctxDark.beginPath();
+					ctxDark.arc(x + light.radius, y + light.radius, light.radius, 0, Math.PI*2, false);
+					ctxDark.closePath();
+					ctxDark.fill();
+				}
+
+				screenComponentsGame.needRedrawDarkness = false;
+			}
+	    })
+			
+
 		isos.place(player, player.posx, player.posy, 1);
+
     },
 
     placeGroundTile : function (level, l, c, r) {
