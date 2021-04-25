@@ -29,14 +29,14 @@ Crafty.c("LevelGenerator", {
 		  	for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 				var x_tiles = [];
 				for (var lvl_y = 0; lvl_y < levels_size[level]; lvl_y++) {
-					var chance = 3;// the % chance of spawning an object
-					var object_chance = Math.random() * 100;
-					if (object_chance <= chance && temp_tiles_map[lvl_x][lvl_y] !== 0) {
-						var randomObject = Math.ceil(Math.random()*NUMBER_OF_RANDOM_OBJECTS)+10; // plus 10 as all of the object start from 11.
-						x_tiles.push(randomObject);
-					}else {
+					// var chance = 3;// the % chance of spawning an object
+					// var object_chance = Math.random() * 100;
+					// if (object_chance <= chance && temp_tiles_map[lvl_x][lvl_y] !== 0) {
+					// 	var randomObject = Math.ceil(Math.random()*NUMBER_OF_RANDOM_OBJECTS)+10; // plus 10 as all of the object start from 11.
+					// 	x_tiles.push(randomObject);
+					// } else {
 						x_tiles.push(0);
-					}
+					// }
 				}
 				temp_objects_map.push(x_tiles);
 			};
@@ -59,11 +59,16 @@ Crafty.c("LevelGenerator", {
 			for(var count = 0; count < MAX_STAIRS; ++count) {
 				var index = Math.floor(Math.random() * newStairsList.length)
 				var strs = newStairsList[index];
-				temp_objects_map[strs.stairX][strs.stairY] = 8;
-				next_level_stairs.push(strs);
+				if (temp_objects_map[strs.stairX][strs.stairY] === 0) {
+					temp_objects_map[strs.stairX][strs.stairY] = 8;
+					next_level_stairs.push(strs);
 
-				//remove it from the list so that it doesn't pick the same item
-				newStairsList.splice(index, 1);
+					//remove it from the list so that it doesn't pick the same item
+					newStairsList.splice(index, 1);
+				}
+				else {
+					count-=1;
+				}
 			}
 
 			// put this level together into the map
