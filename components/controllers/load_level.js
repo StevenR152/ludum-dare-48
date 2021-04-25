@@ -17,15 +17,15 @@ Crafty.c("LoadLevel", {
 		isos.place(chest, player.posx+1, player.posy+1, 1);
 
 
-		player.lightSource = Crafty.e('2D, Canvas, LightSource').LightSource(player, 64, '128,128,128', true);
+		player.lightSource = Crafty.e('2D, Canvas, LightSource').LightSource(player, 32, '128,128,128', true);
 
-	    player.attach(player.lightSource)
-	    
-	    player.bind("EnterFrame", function (frameObj) {
-			if (player.lightSource) {
-				player.lightSource.attr({ x: player.x - player.lightSource.radius + player.w / 2, y: player.y - player.lightSource.radius + 7 * player.h / 8, z: player.z - 20 });
-			}
-		});
+	    // player.attach(player.lightSource)
+
+	 //    player.bind("EnterFrame", function (frameObj) {
+		// 	if (player.lightSource) {
+		// 		player.lightSource.attr({ x: player.x - player.lightSource.radius + player.w / 2, y: player.y - player.lightSource.radius + 7 * player.h / 8, z: player.z - 20 });
+		// 	}
+		// });
 
 	    player.bind("EnterFrame", function () {
 	    	if (screenComponentsGame.needRedrawDarkness) {
@@ -34,7 +34,7 @@ Crafty.c("LoadLevel", {
 				var ctxDark = screenComponentsGame.darkscreen.getContext('2d');
 				ctxDark.globalCompositeOperation = "source-over";
 				ctxDark.clearRect(0, 0, screenComponentsGame.darkscreen.width, screenComponentsGame.darkscreen.height);
-				ctxDark.fillStyle = 'rgba(64,64,64,' + screenComponentsGame.darknessLevel + ')';
+				ctxDark.fillStyle = 'rgba(70,70,70,' + 0.8 + ')';
 				ctxDark.fillRect(0, 0, screenComponentsGame.darkscreen.width, screenComponentsGame.darkscreen.height);
 				for (var i=0;i<lights.length;i++) {
 					var light = Crafty(lights[i]);
