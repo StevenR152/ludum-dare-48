@@ -3,15 +3,26 @@ Crafty.c("LoadLevel", {
 		Crafty("Destroyable").each(function(i) {
       		this.destroy();
 		});
+		console.log(Crafty("Player"));
 		for (var l = 0; l < map[level].length; l++) {
 			for (var c = 0; c < map[level][l].length; c++) {
+
 				for (var r = 0; r < map[level][l][c].length; r++) {
+					console.log(player.posx, player.posy);
+          console.log(Crafty("Player"));
+					if (player.posx == c && player.posy == r && l ==1) {
+						console.log("working");
+						continue;
+					}
 					this.placeGroundTile(level, l,c,r);
 					this.tryPlaceWall(l,c,r);
+
 				}
 			}
 		}
-		isos.place(player, player.posx, player.posy, 1);
+		console.log(Crafty("Player"));
+
+		isos.place(player, player.posx, player.posy,1);
 
 		// var button = Crafty.e("Button");
 		// isos.place(button, player.posx+1, player.posy+1, 0);
@@ -20,7 +31,7 @@ Crafty.c("LoadLevel", {
 		// button.attachLink(tileSpikes1, tileSpikes1.disable);
 		// var tileSpikes4 = Crafty.e("TileSpikes");
 		// isos.place(tileSpikes4, player.posx-1, player.posy, 0);
-		// button.attachLink(tileSpikes4, tileSpikes4.disable);		
+		// button.attachLink(tileSpikes4, tileSpikes4.disable);
 		// var tileSpikes5 = Crafty.e("TileSpikes");
 		// isos.place(tileSpikes5, player.posx-1, player.posy+1, 0);
 		// button.attachLink(tileSpikes5, tileSpikes4.disable);
@@ -39,7 +50,10 @@ Crafty.c("LoadLevel", {
 		// button3.attachLink(tileSpikes1, tileSpikes1.enable);
 		// button3.attachLink(tileSpikes2, tileSpikes2.enable);
 		console.log("player placed" , player.posx, player.posy);
+		return player;
     },
+
+
 
     placeGroundTile : function (level, l, c, r) {
     	var mapPosition = map[level][l][c][r];
