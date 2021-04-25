@@ -44,25 +44,44 @@ Crafty.c("LinkMechanism", {
 
 Crafty.c("TileSpikes", {
 	init: function() {
-    this.isSpikeUp = true;
+    this.activeDelay = null;
     this.isEnabled = true; // will spike you if true.
 
-    this.addComponent("2D, Destroyable, DOM, Color, Keyboard, Collision, tile_spiketips");
-    this.attach(Crafty.e("CentralHitbox"))
+    this.addComponent("2D, Destroyable, DOM, Color, Delay, Keyboard, Collision, tile_spiketips");
+    this.hitbox = Crafty.e("CentralHitbox");
+    this.attach(this.hitbox);
     this.bind("PLAYER_STOOD_ON", function () {
       if(!this.isEnabled) return;
- 
-      if(this.isSpikeUp) {
-        this.removeComponent("tile_spiketips");
-        this.addComponent("tile_spikes");
-      } else {
-        this.removeComponent("tile_spikes");
-        this.addComponent("tile_spiketips");
-      }
-      this.isSpikeUp = !this.isSpikeUp;
+
+      this.triggerSpikes();
     })
+
+    this.bind("PLAYER_STOOD_OFF", function() {
+      this.activeDelay = this.delay(function() {
+        this.pullBackSpikes();
+      }, 800, 1, function() {
+        this.activeDelay = null;
+      });
+    });
   },
 
+  triggerSpikes : function() {
+    // Clear the Delay on reset as player stood on the button
+    if(typeof this.activeDelay !== "undefined") {
+      this.cancelDelay(this.activeDelay);
+    }
+
+    this.removeComponent("tile_spiketips");
+    this.addComponent("tile_spikes");
+  },
+
+  pullBackSpikes : function() {
+    if(!this.hitbox.hit("PlayerHitbox")) {
+      this.removeComponent("tile_spikes");
+      this.addComponent("tile_spiketips");
+    }
+  },
+  
   disable : function() {
     this.isEnabled = false;
     this.removeComponent("tile_spikes");
