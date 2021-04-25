@@ -13,6 +13,10 @@ Crafty.c("LoadLevel", {
 		}
 		isos.place(player, player.posx, player.posy, 1);
 
+		var button = Crafty.e("Button");
+		isos.place(button, player.posx+1, player.posy+1, 0);
+		var button = Crafty.e("TileSpikes");
+		isos.place(button, player.posx+2, player.posy+2, 0);
 		console.log("player placed" , player.posx, player.posy);
     },
 
