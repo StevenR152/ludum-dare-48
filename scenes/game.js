@@ -5,7 +5,7 @@ Crafty.defineScene("Game", function() {
 		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
 		.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS)
 		.initClick(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS, GAME_MUSIC_BUTTON_WIDTH, GAME_MUSIC_BUTTON_HEIGHT)
-	
+
 
 	var player = Crafty.e('Player');
 	makeCameraTrackEntity(player, 75);
@@ -13,7 +13,8 @@ Crafty.defineScene("Game", function() {
 
 
 	map = Crafty.e("LevelGenerator").generate_levels();
-	Crafty.e("LoadLevel").loadLevel(player, current_level, map, isos);
+	var leveloader = Crafty.e("LoadLevel");
+	leveloader.loadLevel(player, current_level, map, isos);
 
   	Crafty.bind('PlayerMovement', function(e) { //this probably can stay inside the game component but we could also extract it later
   		var newy = player.posy+e.y-1;
@@ -21,9 +22,9 @@ Crafty.defineScene("Game", function() {
 
 		// walked outside of map, don't allow it.
   		if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
-  			return; 
+  			return;
 		}
-		  
+
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
 			if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
@@ -68,15 +69,24 @@ Crafty.defineScene("Game", function() {
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
-			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
+			player = leveloader.loadLevel(player, current_level, map);
 		}
 	});
 
 	Crafty.bind('GoUpAFloor', function(e) {
 		if (current_level > 0) {
 			current_level -= 1;
-			Crafty.e("LoadLevel").loadLevel(player, current_level, map);
+			console.log(Crafty("Player"));
+			player = leveloader.loadLevel(player, current_level, map);
 		}
+	});
+
+	Crafty.bind("MakeANewPlayer", function(e) {
+		newplayer = Crafty.e("Player");
+		newplayer.posx = e[0];
+		newplayer.posy = e[1];
+		player = newplayer;
+		isos.place(player, player.posx, player.posy, 1);
 	});
 
 	//current level label
