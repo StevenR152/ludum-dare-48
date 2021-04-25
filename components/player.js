@@ -12,15 +12,18 @@ Crafty.c("Player", {
       h : 480,
     })
     this.bind('KeyDown', function(e) {
+      var direction = {};
       if(e.key == Crafty.keys.LEFT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : -1, y : 0});
+        direction = {x : -1, y : 0};
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : 1, y : 0});
+				direction = {x : 1, y : 0};
       } else if(e.key == Crafty.keys.UP_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : 0, y : -1});
+				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : 0, y : 1});
+				direction = {x : 0, y : 1};
       }
+      this.undoLastMove = this.invertDirection(direction);
+      Crafty.trigger("PlayerMovement", direction);
     });
 
     // ------- Hitbox under the Mummys feet ------- //
@@ -34,4 +37,8 @@ Crafty.c("Player", {
     });
     this.attach(this.hitbox)
   },
+
+  function invertDirection(direction) {
+    return {x : -1* direction.x, y: -1 * direction.y}
+  }
 })
