@@ -22,12 +22,9 @@ Crafty.c("Player", {
 				Crafty.trigger("PlayerMovement", {x : 0, y : 1});
       }
     });
-    this.checkHits("Hitable")
-    this.bind("HitOn", function (hitData) {
-        // assuming button for now as its only Hitable.
-        console.log(hitData);
-    })
-    this.hitbox = Crafty.e("2D, Color, DOM, Collision");
+
+    // ------- Hitbox under the Mummys feet ------- //
+    this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
     this.hitbox.attr({
       w:96,
       h:48,
@@ -35,7 +32,6 @@ Crafty.c("Player", {
       y:480-24-70, // mummy height - half hitbox height - extra to move to feet of mummy.
       z:4000
     });
-    this.hitbox.color("red");
     this.attach(this.hitbox)
   },
 })
