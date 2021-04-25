@@ -24,7 +24,6 @@ Crafty.defineScene("Game", function() {
 
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
-			console.log("down", newy, newx);
 			if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
 				player.posx += e.x;
 				player.posy += e.y + 1;
@@ -39,7 +38,6 @@ Crafty.defineScene("Game", function() {
 
 		// Stairs up
 		if (map[current_level][1][newy][newx] === 9) {
-			console.log("up", newy, newx);
 			if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
 				player.posx += e.x +1 ;
 				player.posy += e.y;
