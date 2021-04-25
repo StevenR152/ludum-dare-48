@@ -19,15 +19,9 @@ Crafty.defineScene("Game", function() {
 
 		// walked outside of map, don't allow it.
   		if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
-<<<<<<< HEAD
-  			return;
-  		}
-
-=======
   			return; 
-		  }
+		}
 		  
->>>>>>> Added music btn to hud
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
 			console.log("down", newy, newx);
