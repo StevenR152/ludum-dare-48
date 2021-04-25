@@ -73,7 +73,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"chest": [0, 0]}
       },
-      "assets/images/object_vase1.png": {
+      "assets/images/object_vase1_shadow.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"vase": [0, 0]}
