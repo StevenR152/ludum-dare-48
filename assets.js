@@ -68,6 +68,16 @@ var gameAssets = {
         "tileh": 309,
         "map": {"pillar1": [0, 0]}
       },
+      "assets/images/object_treasurechest.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"chest": [0, 0]}
+      },
+      "assets/images/object_vase1.png": {
+        "tile" : 256,
+        "tileh": 309,
+        "map": {"vase": [0, 0]}
+      },
       "assets/images/tile_leaves_2.png": {
         "tile" : 256,
         "tileh": 128,

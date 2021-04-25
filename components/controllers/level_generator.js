@@ -29,11 +29,11 @@ Crafty.c("LevelGenerator", {
 		  	for (var lvl_x = 0; lvl_x < levels_size[level]; lvl_x++) {
 				var x_tiles = [];
 				for (var lvl_y = 0; lvl_y < levels_size[level]; lvl_y++) {
-					var chance = 0.5;// the % chance of spawning an object
+					var chance = 3;// the % chance of spawning an object
 					var object_chance = Math.random() * 100;
 					if (object_chance <= chance && temp_tiles_map[lvl_x][lvl_y] !== 0) {
-						//coming later, choose an object or have this work as part of puzzles
-						x_tiles.push(11); //pillar
+						var randomObject = Math.ceil(Math.random()*3)+10; // plus 10 as all of the object start from 11.
+						x_tiles.push(randomObject);
 					}else {
 						x_tiles.push(0);
 					}

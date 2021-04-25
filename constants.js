@@ -18,6 +18,8 @@ var tile_cracked = 'object, 2D, DOM, Color, tile_cracked_1';
 var stairs = 'object, 2D, DOM, Color, stairs';
 var stairs_up = 'object, 2D, DOM, Color, stairs_up';
 var pillar1 = 'object, 2D, DOM, Color, pillar1';
+var vase = 'object, 2D, DOM, Color, vase';
+var chest = 'object, 2D, DOM, Color, chest';
 
 //Keep 10+ index values for solid objects
 var tileMap = {
@@ -28,7 +30,9 @@ var tileMap = {
 		5 : tile_cracked,
 		8 : stairs,
 		9 : stairs_up,
-		11 : pillar1
+		11 : pillar1,
+		12 : vase,
+		13 : chest
 }
 
 
