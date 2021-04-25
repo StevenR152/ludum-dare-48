@@ -41,23 +41,24 @@ Crafty.c("LevelGenerator", {
 				temp_objects_map.push(x_tiles);
 			};
 
-			// here we will generate and place STAIR puzzles into the object map
+			// here we will generate and place one stair puzzle into the object map
 			if (level % 2 == 0) { // every even level will be stairs on the right corner
 				// make a stairs puzzle at y=0, x = level max
 				temp_objects_map = place_puzzle(5, 5,
 						(levels_size[level] - 5), 0, temp_objects_map, true);
 			}
-			else {
+			else { // odd levels have stairs in the left corner
 				// make a stairs puzzle at y=level max, x = 0
 				temp_objects_map = place_puzzle(5, 5,
 						0 , (levels_size[level] - 5), temp_objects_map, true);
 			}
+
 			// here we will generate and place OTHER puzzles into the object map
 
 
 
 
-			
+
 
 			// // generate stairs on the edges
 			// if (next_level_stairs !== undefined) {

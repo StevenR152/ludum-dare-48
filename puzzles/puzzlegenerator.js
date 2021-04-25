@@ -6,7 +6,13 @@ function place_puzzle(sizex, sizey, startx, starty, object_map, stairs) {
 
   //here usually you would choose a puzzle based on coordinates given
   //instead i'll keep it simple for now
-  var puzzle_map = get_spike_puzzle(sizex, sizey, startx, starty);
+
+  if (stairs === true) {
+    var puzzle_map = get_stair_puzzle(sizex, sizey, startx, starty);
+  }
+  else {
+    var puzzle_map = get_normal_puzzle(sizex, sizey, startx, starty);
+  }
 
    if (puzzle_map !== undefined) {
     for (var row=0; row < sizex; row++) {
