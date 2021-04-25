@@ -4,6 +4,7 @@ Crafty.defineScene("Game", function() {
 	var musicIcon = Crafty.e("MusicIcon")
 		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
 		.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS)
+		.initClick(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS, GAME_MUSIC_BUTTON_WIDTH, GAME_MUSIC_BUTTON_HEIGHT)
 		
 	var player = Crafty.e('Player');
 	makeCameraTrackEntity(player, 75);
@@ -19,15 +20,9 @@ Crafty.defineScene("Game", function() {
 
 		// walked outside of map, don't allow it.
   		if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
-<<<<<<< HEAD
-  			return;
-  		}
-
-=======
   			return; 
-		  }
+		}
 		  
->>>>>>> Added music btn to hud
 		// stairs down
 		if (map[current_level][1][newy][newx] === 8) {
 			console.log("down", newy, newx);
