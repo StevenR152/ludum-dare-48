@@ -1,5 +1,23 @@
 // all non stair puzzles go into this file.
-
+var fourbyfour = [[
+  [20, 12, 12, 12],
+  [21, 00, 00, 12],
+  [12, 00, 00, 21],
+  [12, 12, 12, 20]
+],
+[
+  [12, 12, 21, 20],
+  [12, 00, 00, 12],
+  [12, 00, 00, 12],
+  [20, 21, 12, 12]
+],
+[
+  [00, 00, 00, 00],
+  [00, 12, 12, 00],
+  [00, 12, 12, 00],
+  [00, 00, 00, 00]
+]
+];
 
 var big_puzzle = [
   [00, 00, 00, 12, 12, 12, 12, 12, 12],
@@ -35,5 +53,8 @@ function get_normal_puzzle(columns, rows) {
   }
   else if (columns === 6 && rows === 3) {
     return spike_row;
+  }
+  else if (columns === 4 && rows === 4) {
+    return fourbyfour[~~(fourbyfour.length * Math.random())];
   }
 }
