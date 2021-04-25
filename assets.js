@@ -113,8 +113,23 @@ var gameAssets = {
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
-        "map": {"player": [0, 0]}
+        "map": {
+            "player1": [0, 0]
+        }
       },
+
+      "assets/images/spritesheet.png": {
+        "tile" : 256,
+        "tileh": 480,
+        "map": {
+            "player": [0, 0],
+            "PlayerIdle1": [19,0],
+            "PlayerLeftFootForward": [0,0],
+            "PlayerIdle2": [39,0],
+            "PlayerRightFootForward": [20,0]
+        }
+      },
+     
       "assets/images/button_unpressed2.png": {
         "tile" : 256,
         "tileh": 140,
