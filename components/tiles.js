@@ -138,7 +138,6 @@ Crafty.c("CentralHitbox", {
       y:128-24-70, // mummy height - half hitbox height - extra to move to feet of mummy.
       z:4000
     });
-    this.color("red");
     this.checkHits("PlayerHitbox")
     this.bind("HitOn", function (hitData) {
       this._parent.trigger("PLAYER_STOOD_ON");
