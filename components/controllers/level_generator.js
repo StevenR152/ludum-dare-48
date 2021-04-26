@@ -5,7 +5,7 @@ function place_collectible(puzzle_flag_map, temp_objects_map, level) {
 	console.log(items_to_be_placed);
 
 	//find a puzzle location
-	for (var max_attempts=0; max_attempts < 1000; max_attempts++) {
+	for (var max_attempts=0; max_attempts < 10000; max_attempts++) {
 		random_row = Math.floor(Math.random() * levels_size[level]);
 		random_col = Math.floor(Math.random() * levels_size[level]);
 		if (puzzle_flag_map[random_row][random_col] === 1
