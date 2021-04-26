@@ -112,9 +112,6 @@ var randomFloor = [
 ];
 
 var randomBlockingObjects = [
-	concreteblock,
-	concreteblock,
-	concreteblock,
 	vase,
 	vase,
 	vase,
