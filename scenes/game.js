@@ -12,20 +12,21 @@ Crafty.defineScene("Game", function() {
 	// Crafty.viewport.scale(0.4);
 
 	map = Crafty.e("LevelGenerator").generate_levels();
-	Crafty.e("LoadLevel").loadLevel(current_level, map, isos);
+	levelLoader = Crafty.e("LoadLevel");
+	levelLoader.loadLevel(current_level, map, isos);
 
   	
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
-			Crafty.e("LoadLevel").loadLevel(current_level, map);
+			levelLoader.loadLevel(current_level, map);
 		}
 	});
 
 	Crafty.bind('GoUpAFloor', function(e) {
 		if (current_level > 0) {
 			current_level -= 1;
-			Crafty.e("LoadLevel").loadLevel(current_level, map);
+			levelLoader.loadLevel(current_level, map);
 		}
 	});
 
