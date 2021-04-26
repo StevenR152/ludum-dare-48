@@ -8,7 +8,7 @@ Crafty.c("LoadLevel", {
 				for (var r = 0; r < map[level][l][c].length; r++) {
 					this.placeGroundTile(level, l,c,r);
 					this.tryPlaceWall(l,c,r);
-					this.tryPlaceBoundary(map, l,c,r);
+					this.tryPlaceBoundary(map[level], l,c,r);
 				}
 			}
 		}
@@ -155,20 +155,20 @@ Crafty.c("LoadLevel", {
 	  	}
     },
 
-    tryPlaceBoundary: function (map, l, c, r) {
-    	console.log(map)
+    tryPlaceBoundary: function (levelMap, l, c, r) {
+    	var size = levelMap[0].length -1;
     	// Edge of map.
-    	if(l == 0 && r == 4) {
+    	if(l == 0 && r == size) {
     		var boundaryBlock = Crafty.e("EdgeTile_Right");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
 
-	    if(l == 0 && c == 4){
+	    if(l == 0 && c == size){
     		var boundaryBlock = Crafty.e("EdgeTile_Left");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
 
-		if(l == 0 && c == 4 && r == 4){
+		if(l == 0 && c == size && r == size){
     		var boundaryBlock = Crafty.e("EdgeTile_Corner");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
