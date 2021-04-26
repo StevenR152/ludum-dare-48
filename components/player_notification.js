@@ -55,7 +55,7 @@ Crafty.c("PlayerNotification", {
         	this.trigger("InstructionText", "Mafdet! Yay, I found you! Now Osiris will be able to rest in peace.");
         }),
 				this.bind("NoScrollGuard", function () {
-        	this.trigger("InstructionText", "Password?");
+        	this.trigger("InstructionText", "-Password?");
 					this.delay(this.respondGuard1, 1500);
         }),
 				this.bind("YourResponse", function () {
@@ -63,10 +63,10 @@ Crafty.c("PlayerNotification", {
 					this.delay(this.respondGuard2, 1500);
         }),
 				this.bind("TheirResponse", function () {
-        	this.trigger("InstructionText", "Then, no entry. You need the password first.");
+        	this.trigger("InstructionText", "-Then, no entry. You need the password first.");
         }),
 				this.bind("YesScrollGuard", function () {
-        	this.trigger("InstructionText", "Password?");
+        	this.trigger("InstructionText", "-Password please?");
 					this.delay(this.respondGuard3, 1500);
         }),
 				this.bind("YourGoodResponse", function () {
@@ -74,15 +74,15 @@ Crafty.c("PlayerNotification", {
 					this.delay(this.respondGuard4, 1500);
         }),
 				this.bind("TheirGoodResponse", function () {
-        	this.trigger("InstructionText", "Granted. Have a great eternal slumber.");
+        	this.trigger("InstructionText", "-Granted. Have a great eternal slumber.");
 					Crafty.trigger('WalkPastGuard');
         }),
 				this.bind("FoundSarcophagusNoCat", function () {
-        	this.trigger("InstructionText", "-I appreciate you making the effort to come here. I am, howoever, disappointed you did not bring Mafdet with you. Don't expect any favours from me for the next eternity.-");
+        	this.trigger("InstructionText", "-I appreciate you making the effort to come here. I am, however, disappointed you did not bring Mafdet with you. Don't expect any favours from me for the next eternity.");
 					this.delay(this.triggerEnd, 4000);
 				}),
 				this.bind("FoundSarcophagusCat", function () {
-        	this.trigger("InstructionText", "-Thank you so very much for bringing Mafdet home to me. Crazy cat always getting out and running wild. Now we can all rest in peace.-");
+        	this.trigger("InstructionText", "-Thank you so very much for bringing Mafdet home to me. Crazy cat always getting out and running wild. Now we can all rest in peace.");
 					this.delay(this.triggerEnd, 4000);
         })
     },

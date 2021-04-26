@@ -5,24 +5,24 @@ Crafty.defineScene("End", function() {
     audioController.delay(function() {audioController.playTrack("bgIntro", -1, 0.10)}, 8000);
 
     //buttons
-    var playGameButton = Crafty.e("2D, DOM, Image, Mouse, play_button")
+    var playAgainGameButton = Crafty.e("2D, DOM, Image, Mouse, play_again")
         .attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         .bind('Click', function(MouseEvent) {
             if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
                 audioController.stopTrack();
                 audioController.playTrack("bgAudio", -1, 0.10);
             }
-            
+
             gameController.resetGame();
         })
         .bind('MouseOver', function(e) {
-            this.removeComponent("play_button").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
+            this.removeComponent("play_again").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
             this.addComponent("play_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         })
         .bind('MouseOut', function(e) {
-            this.addComponent("play_button").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
+            this.addComponent("play_again").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
             this.removeComponent("play_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
@@ -38,14 +38,14 @@ Crafty.defineScene("End", function() {
         .text("Collected")
         .attr({x: END_PLAY_BUTTON_XPOS - 30, y: END_PLAY_BUTTON_YPOS + 90});
 
-    if(!has_cat) 
+    if(!has_cat)
         Crafty.e("item_cat").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 130, w: PROPS_WIDTH, h: PROPS_HEIGHT})
-    
-    if(!has_key) 
+
+    if(!has_key)
         Crafty.e("item_key").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 170, w: PROPS_WIDTH, h: PROPS_HEIGHT})
 
-    if(!has_scroll)
-        Crafty.e("item_scroll").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 210, w: PROPS_WIDTH, h: PROPS_HEIGHT})     
+    if(!passed_guard)
+        Crafty.e("item_scroll").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 210, w: PROPS_WIDTH, h: PROPS_HEIGHT})
 
 
 
