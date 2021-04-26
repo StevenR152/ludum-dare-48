@@ -16,67 +16,42 @@ Crafty.c("Player", {
 
     this.reel("idle", 1000, [
       [20, 0], [21, 0], [22, 0], [23, 0], [24, 0],[25, 0], [26, 0], [27, 0],[28, 0], [29, 0],[30, 0], [31, 0], [32, 0], [33, 0], [34, 0],[35, 0], [36, 0], [37, 0],[38, 0], [39, 0]]);
-     this.reel("walking_up", 1000, [
-     [20, 0], [21, 0], [22, 0], [23, 0],[24, 0],[25, 0], [26, 0],[27, 0], [28, 0], [29, 0]]);
 
-     //.reel('PlayerRunning', 20, 0, 0, 3) // setup animation
-     //.animate('PlayerRunning', -1);
-
-    this.animate("walking_down_l", -1);
+    this.animate("idle", -1);
     this.attr({
           posx : 1,
           posy : 50,
           w : 256,
           h : 480,
     })
+    this.bind('KeyUp', function(e) {
+        this.delay(function () {
+             this.animate("idle", -1)
+        }.bind(this), 450, 0);
+    })
     this.bind('KeyDown', function(e) {
       if(this.isInputFrozen) return;
       var direction = {};
       if(e.key == Crafty.keys.LEFT_ARROW) {
         direction = {x : -1, y : 0};
+        this.animate("walking_down_l", -1);
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
 				direction = {x : 1, y : 0};
+        this.animate("walking_down_l", -1);
       } else if(e.key == Crafty.keys.UP_ARROW) {
-        this.animate("walking_up", -1);
+        this.animate("walking_down_l", -1);
 				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
-
-        if(leftstep == true) {
-           this.animate("walking_down_l", -1);          
-        } else {
-           this.animate("walking_down_r", -1);
-        }
-
-        leftstep = ! leftstep;
+        this.animate("walking_down_l", -1);
+      
 				direction = {x : 0, y : 1};
-
-//THIS IS SUPPOSED TO DO IT BUT DOES NOT
-        this.delay(function () {
-             this.animate("idle", -1)
-        }.bind(this), 500, 0);
-
-        // var ent = Crafty.e("Delay").delay(this.animate("idle", -1), 500, -1);
-
-
-      } else 
+      }
       this.undoLastMove = this.invertDirection(direction);
       Crafty.trigger("PlayerMovement", direction);
+      //   this.delay(function () {
+      //        this.animate("idle", -1)
+      //   }.bind(this), 450, 0);
 
-    });
-
-
-    this.bind('KeyUp', function(e) {
-      if(e.key == Crafty.keys.LEFT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : -1, y : 0});
-      } else if(e.key == Crafty.keys.RIGHT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : 1, y : 0});
-      } else if(e.key == Crafty.keys.UP_ARROW) {
-       // this.pauseAnimation()
-				Crafty.trigger("PlayerMovement", {x : 0, y : -1});
-      } else if(e.key == Crafty.keys.DOWN_ARROW) {
-        //this.pauseAnimation()
-				Crafty.trigger("PlayerMovement", {x : 0, y : 1});
-      }
     });
 
     this.bind("PLAYER_STOOD_SPIKE", function () {

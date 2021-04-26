@@ -229,7 +229,7 @@ var gameAssets = {
       },
       "assets/images/spritesheet.png": {
         "tile" : 256,
-        "tileh": 480,
+        "tileh": 512,
         "map": {
             "player": [14, 0],
             "PlayerIdle1": [0,0],
