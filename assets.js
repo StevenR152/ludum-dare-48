@@ -192,7 +192,21 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_spiketips": [0, 0]}
       },
-
+      "assets/images/object_leverleft.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_left": [0, 0]}
+      },
+      "assets/images/object_levermiddle.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_middle": [0, 0]}
+      },
+      "assets/images/object_leverright.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_right": [0, 0]}
+      },
       "assets/images/props_scroll.png": {
         "tile" : 256,
         "tileh": 128,
@@ -205,21 +219,12 @@ var gameAssets = {
       },
 
       //wall
-      "assets/images/leftwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallleft": [0, 0]}
-      },
-      "assets/images/rightwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallright": [0, 0]}
-      },
-      "assets/images/rightwall_decorated_corner.png": {
+      "assets/images/object_concreteblock_lower.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"wallcenter": [0, 0]}
       },
+     
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,

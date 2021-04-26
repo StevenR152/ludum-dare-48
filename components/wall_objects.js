@@ -32,18 +32,6 @@ Crafty.c("TorchPlaceable", {
   	}
 })
 
-Crafty.c("WallLeft", {
-	init: function() {
-    	this.addComponent("2D, TorchPlaceable, Destroyable, DOM, Color, wallleft");
-  	},
-});
-
-Crafty.c("WallRight", {
-	init: function() {
-    	this.addComponent("2D, TorchPlaceable, Destroyable, DOM, Color, wallright");
-  	},
-});
-
 Crafty.c("WallCenter", {
 	init: function() {
     	this.addComponent("2D, TorchPlaceable, Destroyable, DOM, Color, wallcenter");

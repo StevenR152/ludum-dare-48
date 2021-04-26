@@ -12,7 +12,14 @@ Crafty.c("LoadLevel", {
 				}
 			}
 		}
-
+		// Add two extra walls to complete the map; technically these are outside the map
+		// hence the loop didn't render them
+		this.tryPlaceWall(0,c,0);
+		this.tryPlaceWall(0,0,r);
+		// TODO These two were to place at left and right of screen to complete the wall...
+		// but apparently it displays down a level, not sure why.
+		// this.tryPlaceBoundary(map[level],0,c,0)
+		// this.tryPlaceBoundary(map[level],0,0,r)
 		var spawnpoint = {};
 		if(level === 0) {
 			spawnpoint = {x : 1, y : 5}; // Initial map start.
@@ -48,31 +55,25 @@ Crafty.c("LoadLevel", {
 			});
 		}
 
-		// var button = Crafty.e("Button");
-		// isos.place(button, player.posx+1, player.posy+1, 0);
-		// var tileSpikes1 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes1, player.posx, player.posy, 0);
-		// button.attachLink(tileSpikes1, tileSpikes1.disable);
-		// var tileSpikes4 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes4, player.posx-1, player.posy, 0);
-		// button.attachLink(tileSpikes4, tileSpikes4.disable);
-		// var tileSpikes5 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes5, player.posx-1, player.posy+1, 0);
-		// button.attachLink(tileSpikes5, tileSpikes4.disable);
 
-		// var button2 = Crafty.e("Button");
-		// isos.place(button2, player.posx+1, player.posy, 0);
+// Lever example.
+		// var lever = Crafty.e("Lever");
+		// isos.place(lever, player.posx, player.posy+3, 0);
 		// var tileSpikes2 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes2, player.posx, player.posy+1, 0);
-		// button2.attachLink(tileSpikes2, tileSpikes2.disable);
-		// button2.attachLink(tileSpikes4, tileSpikes4.enable);
+		// isos.place(tileSpikes2, player.posx+2, player.posy+1, 0);
+		// lever.attachLink(tileSpikes2, tileSpikes2.toggle);
+
+//Button example.
+		// var button2 = Crafty.e("Button");
+		// button2.attachLink(tileSpikes2, tileSpikes2.toggle);
+		// button2.attachLink(tileSpikes4, tileSpikes4.toggle);
 		// var button3 = Crafty.e("Button");
 		// isos.place(button3, player.posx+1, player.posy+2, 0);
 		// var tileSpikes3 = Crafty.e("TileSpikes");
 		// isos.place(tileSpikes3, player.posx, player.posy+2, 0);
-		// button3.attachLink(tileSpikes3, tileSpikes3.disable);
-		// button3.attachLink(tileSpikes1, tileSpikes1.enable);
-		// button3.attachLink(tileSpikes2, tileSpikes2.enable);
+		// button3.attachLink(tileSpikes3, tileSpikes3.toggle);
+		// button3.attachLink(tileSpikes1, tileSpikes1.toggle);
+		// button3.attachLink(tileSpikes2, tileSpikes2.toggle);
 		console.log("player placed" , player.posx, player.posy);
     },
 
@@ -139,39 +140,29 @@ Crafty.c("LoadLevel", {
 
     tryPlaceWall: function (l, c, r) {
     	var wall;
-    	if(l == 0 && c == 0){
-    		wall = Crafty.e("WallRight");
-	    	isos.place(wall,r,c,0);
+    	if(l == 0 && (c == 0 || r == 0)){
+    		wall = Crafty.e("WallCenter");
+	    	isos.place(wall,r,c,1);
 		    wall.generateTorch();
 	    } 
-
-	    if(l == 0 && r == 0 && c != 0){
-    		wall = Crafty.e("WallLeft");
-	    	isos.place(wall,r,c,0);
-		    wall.generateTorch();
-	    } 
-
-	    if (l == 0 && r == 0 && c == 0) {
-	    	wall = Crafty.e("WallCenter");
-	    	isos.place(wall,r,c,0);
-		    wall.generateTorch();
-	  	}
     },
 
     tryPlaceBoundary: function (levelMap, l, c, r) {
+    	if(l != 0) return;
+
     	var size = levelMap[0].length -1;
     	// Edge of map.
-    	if(l == 0 && r == size) {
+    	if(r >= size) {
     		var boundaryBlock = Crafty.e("EdgeTile_Right");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
 
-	    if(l == 0 && c == size){
+	    if(c >= size){
     		var boundaryBlock = Crafty.e("EdgeTile_Left");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
 
-		if(l == 0 && c == size && r == size){
+		if(c == size && r == size){
     		var boundaryBlock = Crafty.e("EdgeTile_Corner");
     		isos.place(boundaryBlock,r,c,-1);
 	    }
