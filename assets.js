@@ -231,11 +231,11 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 480,
         "map": {
-            "player": [0, 0],
-            "PlayerIdle1": [19,0],
+            "player": [14, 0],
+            "PlayerIdle1": [0,0],
             "PlayerLeftFootForward": [0,0],
-            "PlayerIdle2": [39,0],
-            "PlayerRightFootForward": [20,0]
+            "PlayerIdle2": [0,0],
+            "PlayerRightFootForward": [9,0]
         }
       },
       "assets/images/walltorch_left.png": {
