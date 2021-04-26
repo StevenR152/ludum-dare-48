@@ -177,6 +177,16 @@ var gameAssets = {
         "tileh": 480,
         "map": {"player": [0, 0]}
       },
+      "assets/images/walltorch_left.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"walltorch_left": [0, 0]}
+      },
+      "assets/images/walltorch_right.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"walltorch_right": [0, 0]}
+      },
       
       //start screen
       "assets/images/play_button.png": {

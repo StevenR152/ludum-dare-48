@@ -120,13 +120,17 @@ Crafty.c("LoadLevel", {
     },
 
     tryPlaceWall: function (l, c, r) {
+    	var wall;
     	if(l == 0 && c == 0){
-	    	isos.place(Crafty.e("WallRight"),r,c,0);
+    		wall = Crafty.e("WallRight");
+	    }
+	    else if(l == 0 && r == 0){
+    		wall = Crafty.e("WallLeft");
+	    } else {
 	    	return;
 	    }
-	    if(l == 0 && r == 0){
-	    	isos.place(Crafty.e("WallLeft"),r,c,0);
-	    	return;
-	    }
+
+    	isos.place(wall,r,c,0);
+	    wall.generateTorch();
     }
 })
