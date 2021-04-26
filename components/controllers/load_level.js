@@ -16,15 +16,18 @@ Crafty.c("LoadLevel", {
 		// link buttons to their associated triggered item.
 		// This loops over all Buttons that have been Linked to something,
 		// finds those things its linked to, and then attaches a link calling action.
-		Crafty("Button Linked").each(function (index) {
-			var button = Crafty(buttonsToLink[index])
-			var linkNumber = button.getLinkedNumber();
-			var ItemsLinkedTo = Crafty("Linked LinkedTo" + linkNumber);
-			ItemsLinkedTo.each(function (index) {
-				entityToLink = Crafty(ItemsLinkedTo[index])
-				button.attachLink(entityToLink, entityToLink.actionCallback);
-			})
-		});
+		var buttonsToLink = Crafty("Button Linked")
+		if(buttonsToLink.length > 0) {
+			buttonsToLink.each(function (index) {
+				var button = Crafty(buttonsToLink[index])
+				var linkNumber = button.getLinkedNumber();
+				var ItemsLinkedTo = Crafty("Linked LinkedTo" + linkNumber);
+				ItemsLinkedTo.each(function (index) {
+					entityToLink = Crafty(ItemsLinkedTo[index])
+					button.attachLink(entityToLink, entityToLink.actionCallback);
+				})
+			});
+		}
 
 		// var button = Crafty.e("Button");
 		// isos.place(button, player.posx+1, player.posy+1, 0);
