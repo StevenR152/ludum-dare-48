@@ -42,6 +42,7 @@ var chest = 'Destroyable, 2D, DOM, Color, chest';
 
 // Other
 var guard = 'Destroyable, 2D, DOM, Color, guard';
+var key = 'Destroyable, 2D, DOM, Color, key'
 
 // Interactive Objects
 var button = 'Button';
@@ -132,6 +133,12 @@ var randomBlockingObjects = [
 	vase3,
 	vase3,
 ]
+
+var items_to_be_placed =
+[
+	key
+];
+
 
 var max_puzzle_width = 9;
 var max_puzzle_height = 9;

@@ -29,6 +29,18 @@ var gameAssets = {
         "map": {"tile_purple": [0, 0]}
       },
 
+      // -- Collectibles -- //
+      "assets/images/props_scroll.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"scroll": [0, 0]}
+      },
+      "assets/images/props_key.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"key": [0, 0]}
+      },
+
       // -- Normal floor tiles -- //
       "assets/images/basic_tile_1.png": {
         "tile" : 256,
@@ -235,7 +247,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"walltorch_right": [0, 0]}
       },
-      
+
       //start screen
       "assets/images/play_button.png": {
         "tile" : 339,
