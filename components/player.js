@@ -6,13 +6,31 @@ Crafty.c("Player", {
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-
+    this.animationreel = "idle";
     this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, SpriteAnimation, player, Delay");
 
-    this.reel("walking_down_r", 500, [
+    this.reel("walking_down_left_leftfoot", 500, [
       [0, 0], [1, 0], [2, 0], [3, 0],[4, 0], [5, 0], [6, 0],[7, 0], [8, 0], [9, 0]]);
-    this.reel("walking_down_l", 500, [
-       [10, 0], [11, 0], [12, 0], [13, 0],[14, 0], [15, 0], [16, 0],[17, 0], [18, 0], [19, 0]]);
+    this.reel("walking_down_left_rightfoot", 500, [
+      [10, 0], [11, 0], [12, 0], [13, 0],[14, 0], [15, 0], [16, 0],[17, 0], [18, 0], [19, 0]]);
+    this.reel("walking_down_left_idle", 500, [
+      [20, 1], [21, 1], [22, 1], [23, 1],[24, 1], [25, 1], [26, 1],[27, 1], [28, 1], [29, 1], [30, 1], [31, 1], [32, 1], [33, 1],[34, 1], [35, 1], [36, 1],[37, 1], [38, 1], [39, 1]]);
+    
+
+
+
+
+
+
+
+    this.reel("walking_up_right_idle", 500, [
+       [20, 1], [21, 1], [22, 1], [23, 1],[24, 1], [25, 1], [26, 1],[27, 1], [28, 1], [29, 1]]);
+    this.reel("walking_down_up_right_idle2", 500, [
+       [30, 1], [31, 1], [32, 1], [33, 1],[34, 1], [35, 1], [36, 1],[37, 1], [38, 1], [39, 1]]);
+    this.reel("walking_down_right", 500, [
+       [40, 1], [41, 1], [42, 1], [43, 1],[44, 1], [45, 1], [46, 1],[47, 1], [48, 1], [49, 1]]);
+    this.reel("walking_x", 500, [
+       [50, 1], [51, 1], [52, 1], [53, 1],[54, 1], [55, 1], [56, 1],[57, 1], [58, 1], [59, 1]]);
 
     this.reel("idle", 1000, [
       [20, 0], [21, 0], [22, 0], [23, 0], [24, 0],[25, 0], [26, 0], [27, 0],[28, 0], [29, 0],[30, 0], [31, 0], [32, 0], [33, 0], [34, 0],[35, 0], [36, 0], [37, 0],[38, 0], [39, 0]]);
@@ -34,12 +52,15 @@ Crafty.c("Player", {
       var direction = {};
       if(e.key == Crafty.keys.LEFT_ARROW) {
         direction = {x : -1, y : 0};
-        this.animate("walking_down_l", -1);
+        this.animate("walking_down_left_leftfoot", -1);
+        this.animationreel = "walking_down_left_leftfoot";
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
 				direction = {x : 1, y : 0};
-        this.animate("walking_down_l", -1);
+        this.animate("walking_down_left_rightfoot", -1);
+        this.animationreel = "walking_down_left_rightfoot";
       } else if(e.key == Crafty.keys.UP_ARROW) {
-        this.animate("walking_down_l", -1);
+        this.animate("walking_down_left_idle", -1); // DONE
+        this.annimationreel = "walking_down_left_idle";
 				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
         this.animate("walking_down_l", -1);
