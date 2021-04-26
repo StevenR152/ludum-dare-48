@@ -24,6 +24,11 @@ Crafty.defineScene("Game", function() {
 		}
 	});
 
+	Crafty.bind('FoundSarcophagus', function(e) {
+		// this is where we put the game end check and any message toast trigger
+		Crafty.scene('End');
+	});
+
 // TODO if you uncomment this, you'll need to pass the previous level number into the load_level function, and check if we're going up or down levels
 // once you determine that you can switch if we look for the up-stairs or down-stairs
 	// Crafty.bind('GoUpAFloor', function(e) {
