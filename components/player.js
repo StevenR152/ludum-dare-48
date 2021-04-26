@@ -2,11 +2,11 @@ Crafty.c("Player", {
 	init: function() {
 		// this.direction_force = 0
 		// this.force_level_x = 0
-    var leftstep = true;
+    this.step = "l";
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-    this.animation_reel = "idle";
+    this.animation_reel = "walking_down_right_r";
     this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, SpriteAnimation, player, Delay");
 
     this.reel("walking_down_left_l", 500, [
@@ -51,35 +51,40 @@ Crafty.c("Player", {
         this.delay(function () {
 					var string = this.animation_reel.slice(0, -1);
 					string += "idle";
-             this.animate(string, -1) // this.animation_reel + "_idle"
+          this.animate(string, -1) // this.animation_reel + "_idle"
         }.bind(this), 450, 0);
     })
     this.bind('KeyDown', function(e) {
       if(this.isInputFrozen) return;
       var direction = {};
+
+			if (this.step === "r") {
+				this.step = "l";
+			} else {
+				this.step = "r";
+			}
+
       if(e.key == Crafty.keys.LEFT_ARROW) {
         direction = {x : -1, y : 0};
-        this.animate("walking_up_left_l", -1);
-        this.animation_reel = "walking_up_left_l";
+        this.animate("walking_up_left_"+this.step, -1);
+        this.animation_reel = "walking_up_left_"+this.step;
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
 				direction = {x : 1, y : 0};
-        this.animate("walking_down_right_r", -1);
-        this.animation_reel = "walking_down_right_r";
+        this.animate("walking_down_right_"+this.step, -1);
+        this.animation_reel = "walking_down_right_"+this.step;
       } else if(e.key == Crafty.keys.UP_ARROW) {
-        this.animate("walking_up_right_l", -1); // DONE
-        this.animation_reel = "walking_up_right_l";
+        this.animate("walking_up_right_"+this.step, -1); // DONE
+        this.animation_reel = "walking_up_right_"+this.step;
 				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
-        this.animate("walking_down_left_r", -1);
-				this.animation_reel = "walking_down_left_r";
+        this.animate("walking_down_left_"+this.step, -1);
+				this.animation_reel = "walking_down_left_"+this.step;
+
+
 				direction = {x : 0, y : 1};
       }
       this.undoLastMove = this.invertDirection(direction);
       Crafty.trigger("PlayerMovement", direction);
-      //   this.delay(function () {
-      //        this.animate("idle", -1)
-      //   }.bind(this), 450, 0);
-
     });
 
     this.bind("PLAYER_STOOD_SPIKE", function () {
