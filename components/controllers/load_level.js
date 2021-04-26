@@ -152,13 +152,11 @@ Crafty.c("LoadLevel", {
 	    	wall = Crafty.e("WallCenter");
 	    	isos.place(wall,r,c,0);
 		    wall.generateTorch();
-	    }
-
-
+	  	}
     },
 
     tryPlaceBoundary: function (map, l, c, r) {
-    
+    	console.log(map)
     	// Edge of map.
     	if(l == 0 && r == 4) {
     		var boundaryBlock = Crafty.e("EdgeTile_Right");
