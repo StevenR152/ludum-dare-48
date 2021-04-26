@@ -95,6 +95,16 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_rocks_5": [0, 0]}
       },
+      "assets/images/tile_marble1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_marble1": [0, 0]}
+      },
+      "assets/images/tile_marble2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_marble2": [0, 0]}
+      },
       // -- END: Normal floor tiles -- //
 
       // -- Start: Blocking objects -- //
@@ -157,6 +167,11 @@ var gameAssets = {
       },
 
       // -- Start Interactive stuff -- //
+      "assets/images/sarcophagus1.png": {
+        "tile" : 256,
+        "tileh": 543,
+        "map": {"sarcophagus": [0, 0]}
+      },
       "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
@@ -229,7 +244,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"wallcenter": [0, 0]}
       },
-     
+
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,

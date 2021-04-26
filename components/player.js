@@ -102,6 +102,11 @@ Crafty.c("Player", {
         return;
       }
 
+			// Holes!
+      if (map[current_level][0][newy][newx] === 0) {
+        return;
+      }
+
       // if we haven't returned already, we must be able to move there.
       this.posx += e.x;
       this.posy += e.y;

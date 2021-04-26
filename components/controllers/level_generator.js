@@ -165,7 +165,7 @@ Crafty.c("LevelGenerator", {
 
 			map.push([temp_tiles_map,temp_objects_map]);
 	    }
-
+		map.push(finalLevel);
 		return map;
 	}
 })

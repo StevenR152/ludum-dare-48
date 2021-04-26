@@ -86,6 +86,10 @@ Crafty.c("LoadLevel", {
 			var index = Math.floor(Math.random()*randomFloor.length);
 			tile = randomFloor[index];
 		}
+		if(mapPosition === 2) {
+			var index = Math.floor(Math.random()*randomMarble.length);
+			tile = randomMarble[index];
+		}
 		// objects are all 12's and randomly select which one.
 		if(mapPosition === 12) {
 			var index = Math.floor(Math.random()*randomBlockingObjects.length);
