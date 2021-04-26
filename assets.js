@@ -55,6 +55,16 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_leaves_2": [0, 0]}
       },
+      "assets/images/tile_twigs1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_twigs_1": [0, 0]}
+      },
+      "assets/images/tile_twigs2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_twigs_2": [0, 0]}
+      },
       "assets/images/tile_moss1.png": {
         "tile" : 256,
         "tileh": 128,
