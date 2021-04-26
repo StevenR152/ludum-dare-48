@@ -7,7 +7,7 @@ Crafty.c("Player", {
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
 
-    this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, SpriteAnimation, player");
+    this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, SpriteAnimation, player, Delay");
 
     this.reel("walking_down_r", 500, [
       [0, 0], [1, 0], [2, 0], [3, 0],[4, 0], [5, 0], [6, 0],[7, 0], [8, 0], [9, 0]]);
@@ -16,13 +16,13 @@ Crafty.c("Player", {
 
     this.reel("idle", 1000, [
       [20, 0], [21, 0], [22, 0], [23, 0], [24, 0],[25, 0], [26, 0], [27, 0],[28, 0], [29, 0],[30, 0], [31, 0], [32, 0], [33, 0], [34, 0],[35, 0], [36, 0], [37, 0],[38, 0], [39, 0]]);
-     //this.reel("walking_up", 1000, [
-     //[20, 0], [21, 0], [22, 0], [23, 0],[24, 0],[25, 0], [26, 0],[27, 0], [28, 0], [29, 0]]);
+     this.reel("walking_up", 1000, [
+     [20, 0], [21, 0], [22, 0], [23, 0],[24, 0],[25, 0], [26, 0],[27, 0], [28, 0], [29, 0]]);
 
      //.reel('PlayerRunning', 20, 0, 0, 3) // setup animation
      //.animate('PlayerRunning', -1);
 
-    this.animate("idle", -1);
+    this.animate("walking_down_l", -1);
     this.attr({
           posx : 1,
           posy : 50,
@@ -51,11 +51,11 @@ Crafty.c("Player", {
 				direction = {x : 0, y : 1};
 
 //THIS IS SUPPOSED TO DO IT BUT DOES NOT
-        Crafty.e("Delay").delay(
-             this.animate("idle", -1), 
-        500, 0);
+        this.delay(function () {
+             this.animate("idle", -1)
+        }.bind(this), 500, 0);
 
-        var ent = Crafty.e("Delay").delay(this.animate("idle", -1), 500, -1);
+        // var ent = Crafty.e("Delay").delay(this.animate("idle", -1), 500, -1);
 
 
       } else 
