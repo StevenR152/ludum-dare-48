@@ -66,6 +66,12 @@ Crafty.c("LoadLevel", {
 			var index = Math.floor(Math.random()*randomFloor.length);
 			tile = randomFloor[index];
 		}
+		// objects are all 12's and randomly select which one.
+		if(mapPosition === 12) {
+			var index = Math.floor(Math.random()*randomBlockingObjects.length);
+			console.log(randomBlockingObjects.length, index)
+			tile = randomBlockingObjects[index];
+		}
 
 		var tileNumber = mapPosition;
 		var linkingElement = null;
@@ -75,7 +81,6 @@ Crafty.c("LoadLevel", {
 			tileNumber = Math.floor(mapPosition / 100)
 			linkingElement = mapPosition - tileNumber*100;
 			var tile = tileMap[tileNumber];
-			console.log(tileNumber, linkingElement)
 		}
 
 		if(typeof tile !== 'undefined') {

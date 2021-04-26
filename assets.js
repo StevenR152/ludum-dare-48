@@ -28,21 +28,6 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_purple": [0, 0]}
       },
-      "assets/images/tile_spikes.png": {
-        "tile" : 256,
-        "tileh": 128,
-        "map": {"tile_spikes": [0, 0]}
-      },
-      "assets/images/tile_spikeholes.png": {
-        "tile" : 256,
-        "tileh": 128,
-        "map": {"tile_spikeholes": [0, 0]}
-      },
-      "assets/images/tile_spiketips.png": {
-        "tile" : 256,
-        "tileh": 128,
-        "map": {"tile_spiketips": [0, 0]}
-      },
 
       // -- Normal floor tiles -- //
       "assets/images/basic_tile_1.png": {
@@ -64,6 +49,11 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 128,
         "map": {"tile_leaves_1": [0, 0]}
+      },
+      "assets/images/tile_leaves_2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_leaves_2": [0, 0]}
       },
       "assets/images/tile_moss1.png": {
         "tile" : 256,
@@ -97,10 +87,21 @@ var gameAssets = {
       },
       // -- END: Normal floor tiles -- //
 
+      // -- Start: Blocking objects -- //
       "assets/images/pillar1.png": {
         "tile" : 256,
         "tileh": 309,
         "map": {"pillar1": [0, 0]}
+      },
+      "assets/images/object_pillarbigger.png": {
+        "tile" : 256,
+        "tileh": 405,
+        "map": {"pillarTall": [0, 0]}
+      },
+      "assets/images/pillar_marble.png": {
+        "tile" : 256,
+        "tileh": 405,
+        "map": {"pillarMarble": [0, 0]}
       },
       "assets/images/object_treasurechest.png": {
         "tile" : 256,
@@ -117,11 +118,13 @@ var gameAssets = {
         "tileh": 256,
         "map": {"vase2": [0, 0]}
       },
-      "assets/images/tile_leaves_2.png": {
+      "assets/images/object_vase3.png": {
         "tile" : 256,
-        "tileh": 128,
-        "map": {"tile_leaves_2": [0, 0]}
+        "tileh": 256,
+        "map": {"vase3": [0, 0]}
       },
+
+      // -- Start Interactive stuff -- //
       "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
@@ -131,6 +134,31 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 256,
         "map": {"stairs_up": [0, 0]}
+      },
+      "assets/images/button_unpressed2.png": {
+        "tile" : 256,
+        "tileh": 140,
+        "map": {"button_unpressed": [0, 0]}
+      },
+      "assets/images/button_pressed2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"button_pressed": [0, 0]}
+      },
+      "assets/images/tile_spikes.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spikes": [0, 0]}
+      },
+      "assets/images/tile_spikeholes.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spikeholes": [0, 0]}
+      },
+      "assets/images/tile_spiketips.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_spiketips": [0, 0]}
       },
 
       //wall
@@ -148,16 +176,6 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 480,
         "map": {"player": [0, 0]}
-      },
-      "assets/images/button_unpressed2.png": {
-        "tile" : 256,
-        "tileh": 140,
-        "map": {"button_unpressed": [0, 0]}
-      },
-      "assets/images/button_pressed2.png": {
-        "tile" : 256,
-        "tileh": 128,
-        "map": {"button_pressed": [0, 0]}
       },
       
       //start screen

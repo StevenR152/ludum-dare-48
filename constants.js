@@ -11,6 +11,7 @@ var MAX_STAIRS = 1;
 
 var levels_size = [5,9,13,17,25,37];
 
+// Default floor tiles
 var basic_tile_1 = 'Destroyable, 2D, DOM, Color, basic_tile_1';
 var basic_tile_2 = 'Destroyable, 2D, DOM, Color, basic_tile_2';
 var tile_leave1 = 'Destroyable, 2D, DOM, Color, tile_leaves_1';
@@ -22,6 +23,26 @@ var tile_rocks_4 = 'Destroyable, 2D, DOM, Color, tile_rocks_4';
 var tile_rocks_5 = 'Destroyable, 2D, DOM, Color, tile_rocks_5';
 var tile_moss = 'Destroyable, 2D, DOM, Color, tile_moss';
 var tile_cracked = 'Destroyable, 2D, DOM, Color, tile_cracked_1';
+
+// Stairs
+var stairs = 'Destroyable, 2D, DOM, Color, stairs';
+var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
+
+// Blocking Objects
+var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
+var pillarTall = 'Destroyable, 2D, DOM, Color, pillarTall';
+var pillarMarble = 'Destroyable, 2D, DOM, Color, pillarMarble';
+var vase = 'Destroyable, 2D, DOM, Color, vase';
+var vase2 = 'Destroyable, 2D, DOM, Color, vase2';
+var vase3 = 'Destroyable, 2D, DOM, Color, vase3';
+var chest = 'Destroyable, 2D, DOM, Color, chest';
+
+// Other
+var guard = 'Destroyable, 2D, DOM, Color, guard';
+
+// Interactive Objects
+var button = 'Button';
+var spikes = 'TileSpikes';
 
 // This array is selected for all floor tiles.
 // number of times controls frequency.
@@ -53,13 +74,31 @@ var randomFloor = [
 	tile_cracked
 ];
 
-var stairs = 'Destroyable, 2D, DOM, Color, stairs';
-var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
-var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
-var vase = 'Destroyable, 2D, DOM, Color, vase';
-var chest = 'Destroyable, 2D, DOM, Color, chest';
-var button = 'Button';
-var spikes = 'TileSpikes';
+var randomBlockingObjects = [
+	vase,
+	vase,
+	vase,
+	vase,
+	vase,
+	pillar1,
+	pillar1,
+	pillar1,
+	chest,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+	pillarTall,
+	pillarTall,
+	pillarTall,
+	pillarMarble
+]
 
 var max_puzzle_width = 9;
 var max_puzzle_height = 7;
@@ -72,9 +111,7 @@ var tileMap = {
 		// all normal floor tiles are 1 and randomly get picked later.
 		8 : stairs,
 		9 : stairs_up,
-		11 : pillar1,
-		12 : vase,
-		13 : chest,
+		// 12's will be randomly picked as blocking tiles.
 		20 : button,
 		21 : spikes
 }
