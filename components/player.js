@@ -37,7 +37,7 @@ Crafty.c("Player", {
       this.isInputFrozen = true;
     })
 
-    this.bind('PlayerMovement', function(e) { //this probably can stay inside the game component but we could also extract it later
+    this.bind('PlayerMovement', function(e) {
         var newy = this.posy+e.y-1;
         var newx = this.posx+e.x-1;
 
