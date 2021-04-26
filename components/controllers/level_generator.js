@@ -55,6 +55,8 @@ Crafty.c("LevelGenerator", {
 			}
 			var next_level_stairs = [];
 
+			console.log(puzzle_flag_map);
+
 			// here we will generate and place one stair puzzle into the object map
 			if (level % 2 == 0) { // every even level will have stairs on the right corner
 				// make a stairs puzzle at y=0, x = level max
@@ -82,7 +84,7 @@ Crafty.c("LevelGenerator", {
 						var count = 0;
 						for (var i=a; i < levels_size[level]; i++){
 
-							if (puzzle_flag_map[i][a] === 1) {
+							if (puzzle_flag_map[i][b] === 1) {
 								//there's already a "puzzle piece" here
 								break;
 							}
