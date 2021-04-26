@@ -15,7 +15,7 @@ Crafty.c("PlayerNotification", {
             if(this.messagesReceived[message] != "SEENBEFORE"){
                 this.text(message);
                 this.alpha = 1.3;
-                this.delay(this.decayMessage, (message.length * 15), this.alpha/0.1);
+                this.delay(this.decayMessage, (message.length * 10), this.alpha/0.1);
             }
             this.messagesReceived[message] = "SEENBEFORE";
 						all_messages = this.messagesReceived;
