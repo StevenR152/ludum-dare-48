@@ -8,11 +8,13 @@ var footstep_sounds = [
 	"foot_1", "foot_2", "foot_3", "foot_4", "foot_5", "foot_6"
 ];
 Crafty.audio.setChannels(20);
+var totalSeconds;
+var timer;
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);
-var current_level = 0;
+var current_level = 6;
 var MAX_STAIRS = 1;
 
 var levels_size = [5,9,13,17,25,37];

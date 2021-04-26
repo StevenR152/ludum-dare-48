@@ -1,5 +1,3 @@
-
-
 Crafty.defineScene("Game", function() {
 	var musicIcon = Crafty.e("MusicIcon")
 		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
@@ -14,6 +12,8 @@ Crafty.defineScene("Game", function() {
 	map = Crafty.e("LevelGenerator").generate_levels();
 	levelLoader = Crafty.e("LoadLevel");
 	levelLoader.loadLevel(current_level, map, isos);
+	totalSeconds = 0;
+	timer = Crafty.e("HudCounter");
 
 	Crafty.e("Background").place(-6000,-6000,12000,12000)
 

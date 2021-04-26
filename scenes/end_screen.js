@@ -36,9 +36,8 @@ Crafty.defineScene("End", function() {
     var score = Crafty.e("Score")
         .text("Number of Resets: " + numberOfResets)
         .attr({x: 330, y: GAME_SCREEN_HEIGHT-300});
-
     var time_taken = Crafty.e("Score")
-        .text("Time Elapsed: ")
+        .text("Time Elapsed: " + timer.text)
         .attr({x: 330, y: GAME_SCREEN_HEIGHT-240});
 
 
