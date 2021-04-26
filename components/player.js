@@ -92,6 +92,7 @@ Crafty.c("Player", {
     
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
+    // this.hitbox.color("red");
     this.hitbox.attr({
       w:96,
       h:48,
@@ -107,6 +108,11 @@ Crafty.c("Player", {
   },
 
   actionAnythingInRange : function () {
-    Crafty.trigger("PLAYER_TRIGGERED")
+    var hits = this.hitbox.hit("LeverHitBox");
+    if(!hits) return;
+    for (var i = 0; i < hits.length; i++) {
+      var obj = hits[i].obj;
+      Crafty.trigger("PLAYER_TRIGGERED_LEVER")
+    }
   }
 })

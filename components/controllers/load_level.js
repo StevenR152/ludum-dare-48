@@ -45,12 +45,14 @@ Crafty.c("LoadLevel", {
 			});
 		}
 
-		var lever = Crafty.e("Lever");
-		isos.place(lever, player.posx+1, player.posy, 0);
-		var tileSpikes2 = Crafty.e("TileSpikes");
-		isos.place(tileSpikes2, player.posx, player.posy+1, 0);
-		lever.attachLink(tileSpikes2, tileSpikes2.toggle);
-    	lever.z = 121;
+// Lever example.
+		// var lever = Crafty.e("Lever");
+		// isos.place(lever, player.posx, player.posy+3, 0);
+		// var tileSpikes2 = Crafty.e("TileSpikes");
+		// isos.place(tileSpikes2, player.posx+2, player.posy+1, 0);
+		// lever.attachLink(tileSpikes2, tileSpikes2.toggle);
+		
+//Button example.
 		// var button2 = Crafty.e("Button");
 		// button2.attachLink(tileSpikes2, tileSpikes2.toggle);
 		// button2.attachLink(tileSpikes4, tileSpikes4.toggle);
