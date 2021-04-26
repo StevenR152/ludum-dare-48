@@ -16,13 +16,6 @@ Crafty.c("Player", {
     this.reel("walking_down_left_idle", 500, [
       [20, 1], [21, 1], [22, 1], [23, 1],[24, 1], [25, 1], [26, 1],[27, 1], [28, 1], [29, 1], [30, 1], [31, 1], [32, 1], [33, 1],[34, 1], [35, 1], [36, 1],[37, 1], [38, 1], [39, 1]]);
     
-
-
-
-
-
-
-
     this.reel("walking_up_right_idle", 500, [
        [20, 1], [21, 1], [22, 1], [23, 1],[24, 1], [25, 1], [26, 1],[27, 1], [28, 1], [29, 1]]);
     this.reel("walking_down_up_right_idle2", 500, [
@@ -44,7 +37,7 @@ Crafty.c("Player", {
     })
     this.bind('KeyUp', function(e) {
         this.delay(function () {
-             this.animate("idle", -1)
+             this.animate("idle", -1) // this.annimationreel + "_idle" 
         }.bind(this), 450, 0);
     })
     this.bind('KeyDown', function(e) {
