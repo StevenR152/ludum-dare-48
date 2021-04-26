@@ -4,7 +4,7 @@ Crafty.c("Lever", {
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
     this.timesPressed = 0;
-    this.states = ["lever_left", "lever_middle", "lever_right", "lever_middle"];
+    this.states = ["lever_middle", "lever_right", "lever_middle", "lever_left"];
     this.hitbox.w = 120;
     this.hitbox.h = 120;
     this.hitbox.y = 0;
