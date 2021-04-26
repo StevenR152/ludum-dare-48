@@ -3,8 +3,11 @@
 var gameAssets = {
     "audio": {
 	   	"bgAudio" : ["assets/sounds/sand_dune.mp3"],
-	// 	"glass" : ["assets/sounds/glass.wav"],
-	// 	"unlock" : ["assets/sounds/unlock.wav"]
+      "gameOver" : ["assets/sounds/game_over.mp3"],
+      "bgIntro" : ["assets/sounds/sand_dune_intro_only.mp3"],
+      "spikeDown" : ["assets/sounds/spike_down_low_reverb.mp3"],
+      "spikeUp" : ["assets/sounds/spike_up_low_reverb.mp3"],
+      "stairsSound" : ["assets/sounds/stone_stairs_low_reverb.mp3"],
     },
     "sprites": {
       //tiles

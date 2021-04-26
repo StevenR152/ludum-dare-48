@@ -50,14 +50,14 @@ Crafty.c("TileSpikes", {
     this.addComponent("2D, Tile, Destroyable, DOM, Color, Delay, Keyboard, Collision, tile_spiketips");
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
-  
+
     this.bind("PLAYER_STOOD_ON", function () {
       if(!this.isEnabled) {
         // if in a bad state and player stands on update images.
         this.disable();
         return;
       }
-
+			audioController.playTrack("spikeUp", 1, 0.3);
       Crafty.trigger("PLAYER_FROZEN");
       this.announcementDelay = this.delay(function() {
         Crafty.trigger("PLAYER_STOOD_SPIKE");
@@ -84,7 +84,6 @@ Crafty.c("TileSpikes", {
     if(typeof this.activeDelay !== "undefined") {
       this.cancelDelay(this.activeDelay);
     }
-
     this.removeComponent("tile_spiketips");
     this.addComponent("tile_spikes");
   },
@@ -95,7 +94,7 @@ Crafty.c("TileSpikes", {
       this.addComponent("tile_spiketips");
     }
   },
-  
+
   toggle : function() {
     if(this.has("tile_spikeholes")) {
       this.enable();
@@ -108,11 +107,11 @@ Crafty.c("TileSpikes", {
     if(typeof this.activeDelay !== "undefined") {
       this.cancelDelay(this.activeDelay);
     }
-
     this.isEnabled = false;
     this.removeComponent("tile_spikes");
     this.removeComponent("tile_spiketips");
     this.addComponent("tile_spikeholes");
+
   },
 
   enable : function() {
@@ -156,7 +155,7 @@ Crafty.c("Button", {
 
     this.triggerButton = function() {
       // TODO Play button press sound here
-      // TODO play a mechanism sound here for the trap going off?
+      audioController.playTrack("spikeDown", 1, 0.3);
 
       // Clear the Delay on reset as player stood on the button
       if(typeof this.activeDelay !== "undefined") {

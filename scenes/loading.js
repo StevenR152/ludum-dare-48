@@ -1,5 +1,7 @@
 var audioController = Crafty.e("AudioController");
+audioController.loadTrack("bgIntro", -1, 0.25);
 audioController.loadTrack("bgAudio", -1, 0.25);
+var playingGame = false;
 
 Crafty.defineScene("Loading", function() {
     Crafty.background("#AAA");
