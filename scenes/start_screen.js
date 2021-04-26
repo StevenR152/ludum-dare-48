@@ -12,7 +12,8 @@ Crafty.defineScene("Start", function() {
                 audioController.stopTrack();
                 audioController.playTrack("bgAudio", -1, 0.1);
             }
-            Crafty.scene('Game');
+            
+            Crafty.e("GameController").resetGame();
         })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
