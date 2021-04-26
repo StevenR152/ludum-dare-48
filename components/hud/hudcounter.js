@@ -8,7 +8,7 @@ Crafty.c("HudCounter", {
         this.textColor('#EEE');
         this.unselectable();
         this.delay(this.updateTimer, 1000, -1);
-        this.textFont({ size: '17px', weight: 'bold' });
+        this.textFont({ size: '17px', weight: 'bold', family : "Garamond"});
     },
 
     updateTimer : function () {
