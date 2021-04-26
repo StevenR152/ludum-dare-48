@@ -81,18 +81,21 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 38) {
 				// you got a key
 				Crafty.trigger("KeyCollected", {});
+				audioController.playTrack("key", 1, 0.6);
 				has_key = true;
 			}
 
 			if (map[current_level][1][newy][newx] === 39) {
 				// you got a scroll
 				Crafty.trigger("ScrollCollected", {});
+				audioController.playTrack("scroll", 1, 0.6);
 				has_scroll = true;
 			}
 
 			if (map[current_level][1][newy][newx] === 40) {
 				// you got a scroll
 				Crafty.trigger("FoundCat", {});
+				audioController.playTrack("cat", 1, 0.6);
 				has_cat = true;
 			}
 
@@ -120,7 +123,11 @@ Crafty.c("Player", {
       // if we haven't returned already, we must be able to move there.
       this.posx += e.x;
       this.posy += e.y;
+			var footstep_sound = Math.floor(Math.random()*footstep_sounds.length);
+			var step = footstep_sounds[footstep_sound];
+			audioController.playTrack(step, 1, 0.1);
       isos.place(this, (this.posx), (this.posy), 1);
+
       return;
     });
 

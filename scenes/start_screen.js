@@ -1,7 +1,6 @@
-
-
 Crafty.defineScene("Start", function() {
 
+    audioController.playTrack("bgIntro", -1, 0.1);
     //background
     var gameStartBackground = Crafty.e("StartBackground");
 
@@ -10,17 +9,18 @@ Crafty.defineScene("Start", function() {
         .attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         .bind('Click', function(MouseEvent) {
             if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
-                audioController.playTrack("bgAudio", -1, 0.25);
-            } 
-            Crafty.scene('Game'); 
+                audioController.stopTrack();
+                audioController.playTrack("bgAudio", -1, 0.1);
+            }
+            Crafty.scene('Game');
         })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
-            this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})   
+            this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         })
         .bind('MouseOut', function(e) {
-            this.addComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
-            this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
+            this.addComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
+            this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
          });
 
     Crafty.e("MusicIcon")

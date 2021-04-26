@@ -2,7 +2,6 @@ function place_collectible(puzzle_flag_map, temp_objects_map, level) {
 	// place a random collectible from the into a random safe space INSIDE a puzzle
 	var collectible_index = [~~(items_to_be_placed.length * Math.random())];
 	var item = items_to_be_placed[collectible_index];
-	console.log(items_to_be_placed);
 
 	//find a puzzle location
 	for (var max_attempts=0; max_attempts < 10000; max_attempts++) {
@@ -149,7 +148,6 @@ Crafty.c("LevelGenerator", {
 
 			// put this level together into the map
 			if (items_to_be_placed.length > 0) {
-				console.log(level, items_to_be_placed);
 				if (items_to_be_placed.length === levels_size.length - (level+1)) {
 					//then we must place something NOW
 					puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);

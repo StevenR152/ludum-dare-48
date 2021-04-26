@@ -3,8 +3,20 @@
 var gameAssets = {
     "audio": {
 	   	"bgAudio" : ["assets/sounds/sand_dune.mp3"],
-	// 	"glass" : ["assets/sounds/glass.wav"],
-	// 	"unlock" : ["assets/sounds/unlock.wav"]
+      "gameOver" : ["assets/sounds/game_over.mp3"],
+      "bgIntro" : ["assets/sounds/sand_dune_intro_only.mp3"],
+      "spikeDown" : ["assets/sounds/spike_down_low_reverb.mp3"],
+      "spikeUp" : ["assets/sounds/spike_up_low_reverb.mp3"],
+      "stairsSound" : ["assets/sounds/stone_stairs_low_reverb.mp3"],
+      "cat" : ["assets/sounds/cat.mp3"],
+      "scroll" : ["assets/sounds/scroll.mp3"],
+      "key" : ["assets/sounds/key.mp3"],
+      "foot_1" : ["assets/sounds/stone_jump_low_reverb_1.mp3"],
+      "foot_2" : ["assets/sounds/stone_jump_low_reverb_2.mp3"],
+      "foot_3" : ["assets/sounds/stone_jump_low_reverb_3.mp3"],
+      "foot_4" : ["assets/sounds/stone_jump_low_reverb_4.mp3"],
+      "foot_5" : ["assets/sounds/stone_jump_low_reverb_5.mp3"],
+      "foot_6" : ["assets/sounds/stone_jump_low_reverb_6.mp3"],
     },
     "sprites": {
       //tiles
