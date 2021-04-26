@@ -144,7 +144,7 @@ Crafty.c("LoadLevel", {
     		wall = Crafty.e("WallCenter");
 	    	isos.place(wall,r,c,1);
 		    wall.generateTorch();
-	    } 
+	    }
     },
 
     tryPlaceBoundary: function (levelMap, l, c, r) {

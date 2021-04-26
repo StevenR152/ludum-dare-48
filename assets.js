@@ -209,13 +209,18 @@ var gameAssets = {
       },
       "assets/images/props_scroll.png": {
         "tile" : 256,
-        "tileh": 128,
+        "tileh": 256,
         "map": {"props_scroll": [0, 0]}
       },
       "assets/images/props_key.png": {
         "tile" : 256,
-        "tileh": 128,
+        "tileh": 256,
         "map": {"props_key": [0, 0]}
+      },
+      "assets/images/props_cat.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"props_cat": [0, 0]}
       },
 
       //wall
@@ -240,7 +245,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"walltorch_right": [0, 0]}
       },
-      
+
       //start screen
       "assets/images/play_button.png": {
         "tile" : 339,
