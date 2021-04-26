@@ -125,7 +125,7 @@ Crafty.c("LevelGenerator", {
 					}
 				}
 			}
-
+			console.log(puzzle_flag_map);
 			// put this level together into the map
 			map.push([temp_tiles_map,temp_objects_map]);
 	    }

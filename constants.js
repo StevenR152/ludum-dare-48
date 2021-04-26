@@ -136,9 +136,9 @@ var randomBlockingObjects = [
 ]
 
 var max_puzzle_width = 9;
-var max_puzzle_height = 7;
+var max_puzzle_height = 9;
 var min_puzzle_width = 3;
-var min_puzzle_height = 4;
+var min_puzzle_height = 3;
 
 //Keep 10-19 index values for solid objects, 20+ for interaction walkables
 // TODO code the interaction walkables functionality properly
