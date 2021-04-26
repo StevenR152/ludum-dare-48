@@ -12,10 +12,23 @@ Crafty.c("LoadLevel", {
 			}
 		}
 
+		var spawnpoint = {};
+		console.log("level", level)
+		if(level === 0) {
+			spawnpoint = {x : 1, y : 5}; // Initial map start.
+		} else {
+			var levelStartStairs = Crafty("stairs_up");
+			var spawnpoint = isos.px2pos(levelStartStairs.x, levelStartStairs.y);
+			spawnpoint.x += 3;
+			spawnpoint.y += 1;
+		} 
+
+		console.log()
 		var player = Crafty.e('Player');
 		makeCameraTrackEntity(player, 75);
 		Crafty.viewport.scale(0.4);
-		isos.place(player, 4, 4, 1);
+		player.posx = spawnpoint.x, player.posy = spawnpoint.y;
+		isos.place(player, player.posx, player.posy, 1);
 
 
 		// link buttons to their associated triggered item.
@@ -74,7 +87,6 @@ Crafty.c("LoadLevel", {
 		// objects are all 12's and randomly select which one.
 		if(mapPosition === 12) {
 			var index = Math.floor(Math.random()*randomBlockingObjects.length);
-			console.log(randomBlockingObjects.length, index)
 			tile = randomBlockingObjects[index];
 		}
 
