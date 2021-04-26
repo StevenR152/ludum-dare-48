@@ -149,6 +149,7 @@ Crafty.c("LevelGenerator", {
 
 			// put this level together into the map
 			if (items_to_be_placed.length > 0) {
+				console.log(level, items_to_be_placed);
 				if (items_to_be_placed.length === levels_size.length - (level+1)) {
 					//then we must place something NOW
 					puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);

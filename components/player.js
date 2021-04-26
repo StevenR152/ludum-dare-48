@@ -75,6 +75,24 @@ Crafty.c("Player", {
         return;
       }
 
+			if (map[current_level][1][newy][newx] === 38) {
+				// you got a key
+				Crafty.trigger("KeyCollected", {});
+				has_key = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 39) {
+				// you got a scroll
+				Crafty.trigger("ScrollCollected", {});
+				has_scroll = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 40) {
+				// you got a scroll
+				Crafty.trigger("FoundCat", {});
+				has_cat = true;
+			}
+
       // Pillar and other solid objects
       if (map[current_level][1][newy][newx] > 10 &&
           map[current_level][1][newy][newx] < 20) {

@@ -1,7 +1,9 @@
 var GAME_SCREEN_WIDTH = 900;
 var GAME_SCREEN_HEIGHT = 600;
 var numberOfResets = 0;
-
+var has_key = false;
+var has_scroll = false;
+var has_cat = false;
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
@@ -44,6 +46,7 @@ var chest = 'Destroyable, 2D, DOM, Color, chest';
 var guard = 'Destroyable, 2D, DOM, Color, guard';
 var item_key = 'Destroyable, 2D, DOM, Color, props_key';
 var item_scroll = 'Destroyable, 2D, DOM, Color, props_scroll';
+var item_cat = 'Destroyable, 2D, DOM, Color, props_cat';
 
 // Interactive Objects
 var button = 'Button';
@@ -137,7 +140,7 @@ var randomBlockingObjects = [
 
 var items_to_be_placed =
 [
-	38, 38, 39, 39 //key
+	38, 39, 40
 ];
 
 var max_puzzle_width = 9;
@@ -155,7 +158,8 @@ var tileMap = {
 		20 : button,
 		21 : spikes,
 		38 : item_key,
-		39 : item_scroll
+		39 : item_scroll,
+		40 : item_cat
 }
 
 //play button
