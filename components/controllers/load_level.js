@@ -13,7 +13,6 @@ Crafty.c("LoadLevel", {
 		}
 
 		var spawnpoint = {};
-		console.log("level", level)
 		if(level === 0) {
 			spawnpoint = {x : 1, y : 5}; // Initial map start.
 		} else {
@@ -21,8 +20,7 @@ Crafty.c("LoadLevel", {
 			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
 			spawnpoint.x += 1;
 		} 
-
-		console.log()
+		
 		var player = Crafty.e('Player');
 		makeCameraTrackEntity(player, 75);
 		Crafty.viewport.scale(0.4);
