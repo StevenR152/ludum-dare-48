@@ -1,7 +1,6 @@
-
-
 Crafty.defineScene("Start", function() {
 
+    audioController.playTrack("bgIntro", -1, 0.1);
     //background
     var gameStartBackground = Crafty.e("StartBackground");
 
@@ -10,17 +9,19 @@ Crafty.defineScene("Start", function() {
         .attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         .bind('Click', function(MouseEvent) {
             if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
-                audioController.playTrack("bgAudio", -1, 0.25);
-            } 
-            Crafty.scene('Game'); 
+                audioController.stopTrack();
+                audioController.playTrack("bgAudio", -1, 0.1);
+            }
+            
+            gameController.resetGame();
         })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
-            this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})   
+            this.addComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         })
         .bind('MouseOut', function(e) {
-            this.addComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
-            this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})               
+            this.addComponent("play_button").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
+            this.removeComponent("play_mouse").attr({x: PLAY_BUTTON_XPOS, y: PLAY_BUTTON_YPOS, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
          });
 
     Crafty.e("MusicIcon")
@@ -29,9 +30,6 @@ Crafty.defineScene("Start", function() {
         .initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
     //texts
-    var title = Crafty.e("2D, DOM, GameTitle")
-        .text("Ludum dare 48")
-        .attr({x: GAME_SCREEN_WIDTH/2-80, y: 80});
 
     var title = Crafty.e("CreditsText")
         .text("Game Art by ")

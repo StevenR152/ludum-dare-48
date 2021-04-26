@@ -1,7 +1,7 @@
 //TODO have a grid of different sized stair puzzles for randomness - Y=0
 // All stair puzzles can use the same linkage numbers of 0-10 which the other puzzles dont use.
 var simple_puzzle_xwall_stair = [
-  [12, 0000, 08, 0000, 12],
+  [12, 2001, 08, 0000, 12],
   [12, 0000, 0000, 0000, 12],
   [12, 2101, 2102, 2102, 12],
   [12, 0000, 0000, 0000, 12],
@@ -13,7 +13,7 @@ var simple_puzzle_ywall_stair = [
   [12, 12, 12, 12, 00],
   [00, 00, 2101, 00, 00],
   [08, 00, 2101, 00, 2001],
-  [00, 00, 2101, 00, 00],
+  [2101, 00, 2101, 00, 00],
   [12, 12, 12, 12, 00],
 ];
 

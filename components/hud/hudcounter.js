@@ -3,12 +3,12 @@ Crafty.c("HudCounter", {
         this.requires('2D, DOM, Text, Delay')
         this.attr({w: 65, h: 100, x: 0, y: 0})
         this.z = 1000;
-        this.text("00:00")
-        this.css('text-shadow', '1px 1px 1px black')
+        this.text("00:00");
+        this.css('text-shadow', '1px 1px 1px black');
         this.textColor('#EEE');
-        this.unselectable()
+        this.unselectable();
         this.delay(this.updateTimer, 1000, -1);
-        this.textFont({ size: '17px', weight: 'bold' });
+        this.textFont({ size: '17px', weight: 'bold', family : "Garamond"});
     },
 
     updateTimer : function () {
@@ -24,7 +24,7 @@ Crafty.c("HudCounter", {
 
         gametime = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2)
         //update time text
-        this.text(gametime);
+        this.text = gametime;
     },
 
     setCountdownOverAction : function (func) {
@@ -33,5 +33,10 @@ Crafty.c("HudCounter", {
 
     getTotalSeconds: function () {
         return this.totalSeconds;
+    },
+
+    getTimeText: function () {
+        return this.text;
+        console.log(this.text);
     }
 });

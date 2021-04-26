@@ -18,11 +18,13 @@
         <div id="game"></div>
 
         <div id="instructions">
-            Our game is about....
-            <h3>Controls</h3>
+          <p>Well, you had a good run as a Pharaoh, Esophagus. You were benevolent, your people loved you, and you lived a rich and powerful life. But all things must come to an end one day… Unless you can access eternal peace?</p>
+          <p>For that, you will have to go deeper and deeper and… well, <i>deeper</i>. Your sarcophagus is waiting for you… But quick! Explorers are on their way and Osiris is waiting for your offerings!</p>
+            <h3>Instructions</h3>
             <ul>
-                <li>Use keys to...</li>
-                <li>Space bar to reset</li>
+                <li>Use arrow keys to move your character around.</li>
+                <li>Space bar will pull any levers nearby.</li>
+                <li>Keep an eye out for offerings for Osiris on the way.</li>
             </ul>
         </div>
     </div>
@@ -63,10 +65,12 @@
     <script type="text/javascript" src="components/controllers/load_level.js"></script>
     <script type="text/javascript" src="components/wall_objects.js"></script>
     <script type="text/javascript" src="components/controllers/audio_controller.js"></script>
+    <script type="text/javascript" src="components/controllers/game_controller.js"></script>
 
     <script type="text/javascript" src="components/hud/hud.js"></script>
     <script type="text/javascript" src="components/linked.js"></script>
     <script type="text/javascript" src="components/edge_tiles.js"></script>
+    <script type="text/javascript" src="components/lever.js"></script>
     <script type="text/javascript" src="scenes/loading.js"></script>
     <script type="text/javascript" src="scenes/game.js"></script>
     <script type="text/javascript" src="main.js"></script>
@@ -75,10 +79,17 @@
     <script type="text/javascript" src="components/music_icon.js"></script>
     <script type="text/javascript" src="components/level.js"></script>
     <script type="text/javascript" src="components/player_notification.js"></script>
+    <script type="text/javascript" src="components/collectibles.js"></script>
+
+    <!-- HUD-->
+    <script type="text/javascript" src="components/hud/hud.js"></script>
+    <script type="text/javascript" src="components/hud/hudcounter.js"></script>
+
 
     <!-- start screen-->
     <script type="text/javascript" src="scenes/start_screen.js"></script>
     <script type="text/javascript" src="components/start_background.js"></script>
+    <script type="text/javascript" src="components/background.js"></script>
     <script type="text/javascript" src="components/credit_text.js"></script>
     <script type="text/javascript" src="components/game_title.js"></script>
 

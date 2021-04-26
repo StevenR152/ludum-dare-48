@@ -2,6 +2,7 @@ Crafty.c("Player", {
 	init: function() {
 		// this.direction_force = 0
 		// this.force_level_x = 0
+		var passed_guard = false;
     this.step = "l";
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
@@ -82,6 +83,9 @@ Crafty.c("Player", {
 
 
 				direction = {x : 0, y : 1};
+      } else if(e.key == Crafty.keys.SPACE) {
+        this.actionAnythingInRange();
+        return;
       }
       this.undoLastMove = this.invertDirection(direction);
       Crafty.trigger("PlayerMovement", direction);
@@ -90,12 +94,16 @@ Crafty.c("Player", {
     this.bind("PLAYER_STOOD_SPIKE", function () {
       Crafty.trigger("PlayerMovement", this.undoLastMove);
       this.isInputFrozen = false;
-    })
+    });
 
     this.bind("PLAYER_FROZEN", function () {
       this.isInputFrozen = true;
-    })
-
+    });
+		this.bind('WalkPastGuard', function() {
+			this.posx = 1;
+			this.posy = 20;
+			isos.place(this, this.posx, this.posy, 1);
+		});
     this.bind('PlayerMovement', function(e) {
         var newy = this.posy+e.y-1;
         var newx = this.posx+e.x-1;
@@ -121,18 +129,54 @@ Crafty.c("Player", {
 
       // Stairs up
       if (map[current_level][1][newy][newx] === 9) {
-        // if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
-        //   this.posx += e.x +1 ;
-        //   this.posy += e.y;
-        // }
-        // else {
-        //   this.posx += e.x -1 ;
-        //   this.posy += e.y;
-        // }
-        // Crafty.trigger("GoUpAFloor", {});
-				Crafty.trigger("TryUpStairs", {});
+        if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
+          this.posx += e.x +1 ;
+          this.posy += e.y;
+        }
+        else {
+          this.posx += e.x -1 ;
+          this.posy += e.y;
+        }
+        Crafty.trigger("GoUpAFloor", {});
+				// Crafty.trigger("TryUpStairs", {});
         return;
       }
+
+			if (map[current_level][1][newy][newx] === 38) {
+				// you got a key
+				Crafty.trigger("KeyCollected", {});
+				audioController.playTrack("key", 1, 0.6);
+				has_key = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 39) {
+				// you got a scroll
+				Crafty.trigger("ScrollCollected", {});
+				audioController.playTrack("scroll", 1, 0.6);
+				has_scroll = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 40) {
+				// you got a cat
+				Crafty.trigger("FoundCat", {});
+				audioController.playTrack("cat", 1, 0.6);
+				has_cat = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 55) {
+				// you found the guard
+				if (has_scroll === true && passed_guard === false) {
+					passed_guard = true;
+					Crafty.trigger("YesScrollGuard", {});
+					return;
+				}
+				else if (passed_guard === false) {
+					Crafty.trigger("NoScrollGuard", {});
+					return;
+				} else {
+					return;
+				}
+			}
 
       // Pillar and other solid objects
       if (map[current_level][1][newy][newx] > 10 &&
@@ -140,15 +184,34 @@ Crafty.c("Player", {
         return;
       }
 
+			// Holes!
+      if (map[current_level][0][newy][newx] === 0) {
+        return;
+      }
+
+			// The magical sarcophagus
+			if (map[current_level][1][newy][newx] === 50) {
+				Crafty.trigger("FoundSarcophagusNoCat", {});
+				if (has_cat === true) {
+					Crafty.trigger("FoundSarcophagusCat", {});
+				}
+        return;
+      }
+
       // if we haven't returned already, we must be able to move there.
       this.posx += e.x;
       this.posy += e.y;
+			var footstep_sound = Math.floor(Math.random()*footstep_sounds.length);
+			var step = footstep_sounds[footstep_sound];
+			audioController.playTrack(step, 1, 0.1);
       isos.place(this, (this.posx), (this.posy), 1);
+
       return;
     });
 
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
+    // this.hitbox.color("red");
     this.hitbox.attr({
       w:96,
       h:48,
@@ -163,9 +226,13 @@ Crafty.c("Player", {
   invertDirection : function (direction) {
     return {x : -1* direction.x, y: -1 * direction.y}
   },
-  goIdle : function (ms) {
-      sleep(ms);
-      this.animate("idle", -1);
-      }
 
+  actionAnythingInRange : function () {
+    var hits = this.hitbox.hit("LeverHitBox");
+    if(!hits) return;
+    for (var i = 0; i < hits.length; i++) {
+      var obj = hits[i].obj;
+      Crafty.trigger("PLAYER_TRIGGERED_LEVER")
+    }
+  }
 })

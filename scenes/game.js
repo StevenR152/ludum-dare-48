@@ -1,11 +1,9 @@
-
-
 Crafty.defineScene("Game", function() {
 	var musicIcon = Crafty.e("MusicIcon")
 		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: GAME_MUSIC_BUTTON_WIDTH, h: GAME_MUSIC_BUTTON_HEIGHT})
 		.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS)
 		.initClick(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS, GAME_MUSIC_BUTTON_WIDTH, GAME_MUSIC_BUTTON_HEIGHT)
-	
+
 
 	// var player = Crafty.e('Player');
 	// makeCameraTrackEntity(player, 75);
@@ -13,24 +11,33 @@ Crafty.defineScene("Game", function() {
 
 	map = Crafty.e("LevelGenerator").generate_levels();
 	levelLoader = Crafty.e("LoadLevel");
-	levelLoader.loadLevel(current_level, map, isos);
+	levelLoader.loadLevel(current_level, map, true);
+	totalSeconds = 0;
+	timer = Crafty.e("HudCounter");
 
-  	
+	Crafty.e("Background").place(-6000,-6000,12000,12000)
+
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
-			levelLoader.loadLevel(current_level, map);
+			levelLoader.loadLevel(current_level, map, true);
+			Crafty.trigger("DownFloorMessage");
 		}
 	});
-	
-// TODO if you uncomment this, you'll need to pass the previous level number into the load_level function, and check if we're going up or down levels 
-// once you determine that you can switch if we look for the up-stairs or down-stairs 
-	// Crafty.bind('GoUpAFloor', function(e) {
-	// 	if (current_level > 0) {
-	// 		current_level -= 1;
-	// 		levelLoader.loadLevel(current_level, map);
-	// 	}
-	// });
+
+	Crafty.bind('FoundSarcophagus', function(e) {
+		// this is where we put the game end check and any message toast trigger
+		Crafty.scene('End');
+	});
+
+// TODO if you uncomment this, you'll need to pass the previous level number into the load_level function, and check if we're going up or down levels
+// once you determine that you can switch if we look for the up-stairs or down-stairs
+	Crafty.bind('GoUpAFloor', function(e) {
+		if (current_level > 0) {
+			current_level -= 1;
+			levelLoader.loadLevel(current_level, map, false);
+		}
+	});
 
 	//current level label
 	Crafty.e("Level")

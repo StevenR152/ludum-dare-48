@@ -3,8 +3,20 @@
 var gameAssets = {
     "audio": {
 	   	"bgAudio" : ["assets/sounds/sand_dune.mp3"],
-	// 	"glass" : ["assets/sounds/glass.wav"],
-	// 	"unlock" : ["assets/sounds/unlock.wav"]
+      "gameOver" : ["assets/sounds/game_over.mp3"],
+      "bgIntro" : ["assets/sounds/sand_dune_intro_only.mp3"],
+      "spikeDown" : ["assets/sounds/spike_down_low_reverb.mp3"],
+      "spikeUp" : ["assets/sounds/spike_up_low_reverb.mp3"],
+      "stairsSound" : ["assets/sounds/stone_stairs_low_reverb.mp3"],
+      "cat" : ["assets/sounds/cat.mp3"],
+      "scroll" : ["assets/sounds/scroll.mp3"],
+      "key" : ["assets/sounds/key.mp3"],
+      "foot_1" : ["assets/sounds/stone_jump_low_reverb_1.mp3"],
+      "foot_2" : ["assets/sounds/stone_jump_low_reverb_2.mp3"],
+      "foot_3" : ["assets/sounds/stone_jump_low_reverb_3.mp3"],
+      "foot_4" : ["assets/sounds/stone_jump_low_reverb_4.mp3"],
+      "foot_5" : ["assets/sounds/stone_jump_low_reverb_5.mp3"],
+      "foot_6" : ["assets/sounds/stone_jump_low_reverb_6.mp3"],
     },
     "sprites": {
       //tiles
@@ -95,6 +107,16 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_rocks_5": [0, 0]}
       },
+      "assets/images/tile_marble1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_marble1": [0, 0]}
+      },
+      "assets/images/tile_marble2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_marble2": [0, 0]}
+      },
       // -- END: Normal floor tiles -- //
 
       // -- Start: Blocking objects -- //
@@ -157,6 +179,16 @@ var gameAssets = {
       },
 
       // -- Start Interactive stuff -- //
+      "assets/images/sarcophagus1.png": {
+        "tile" : 256,
+        "tileh": 543,
+        "map": {"sarcophagus": [0, 0]}
+      },
+      "assets/images/guard.png": {
+        "tile" : 256,
+        "tileh": 308,
+        "map": {"guard": [0, 0]}
+      },
       "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
@@ -192,34 +224,44 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_spiketips": [0, 0]}
       },
-
+      "assets/images/object_leverleft.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_left": [0, 0]}
+      },
+      "assets/images/object_levermiddle.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_middle": [0, 0]}
+      },
+      "assets/images/object_leverright.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_right": [0, 0]}
+      },
       "assets/images/props_scroll.png": {
         "tile" : 256,
-        "tileh": 128,
+        "tileh": 256,
         "map": {"props_scroll": [0, 0]}
       },
       "assets/images/props_key.png": {
         "tile" : 256,
-        "tileh": 128,
+        "tileh": 256,
         "map": {"props_key": [0, 0]}
+      },
+      "assets/images/props_cat.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"props_cat": [0, 0]}
       },
 
       //wall
-      "assets/images/leftwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallleft": [0, 0]}
-      },
-      "assets/images/rightwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallright": [0, 0]}
-      },
-      "assets/images/rightwall_decorated_corner.png": {
+      "assets/images/object_concreteblock_lower.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"wallcenter": [0, 0]}
       },
+
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
@@ -248,7 +290,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"walltorch_right": [0, 0]}
       },
-      
+
       //start screen
       "assets/images/play_button.png": {
         "tile" : 339,
@@ -261,8 +303,8 @@ var gameAssets = {
          "map": {"play_mouse": [0, 0]}
       },
       "assets/images/start_screen.png": {
-         "tile" : 2250,
-         "tileh": 1500,
+         "tile" : 900,
+         "tileh": 600,
          "map": {"start_screen": [0, 0]}
       },
       "assets/images/music_on.png": {
@@ -277,6 +319,11 @@ var gameAssets = {
      },
 
       //end screen
+      "assets/images/end_screen.png": {
+        "tile" : 900,
+        "tileh": 600,
+        "map": {"end_screen": [0, 0]}
+      },
       "assets/images/play_mouse.png": {
         "tile" : 339,
         "tileh": 130,
