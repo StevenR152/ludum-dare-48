@@ -4,6 +4,10 @@ var numberOfResets = 0;
 var has_key = false;
 var has_scroll = false;
 var has_cat = false;
+var footstep_sounds = [
+	"foot_1", "foot_2", "foot_3", "foot_4", "foot_5", "foot_6"
+];
+Crafty.audio.setChannels(20);
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
