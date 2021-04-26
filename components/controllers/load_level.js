@@ -8,6 +8,7 @@ Crafty.c("LoadLevel", {
 				for (var r = 0; r < map[level][l][c].length; r++) {
 					this.placeGroundTile(level, l,c,r);
 					this.tryPlaceWall(l,c,r);
+					this.tryPlaceBoundary(map, l,c,r);
 				}
 			}
 		}
@@ -137,14 +138,41 @@ Crafty.c("LoadLevel", {
     	var wall;
     	if(l == 0 && c == 0){
     		wall = Crafty.e("WallRight");
-	    }
-	    else if(l == 0 && r == 0){
+	    	isos.place(wall,r,c,0);
+		    wall.generateTorch();
+	    } 
+
+	    if(l == 0 && r == 0 && c != 0){
     		wall = Crafty.e("WallLeft");
-	    } else {
-	    	return;
+	    	isos.place(wall,r,c,0);
+		    wall.generateTorch();
+	    } 
+
+	    if (l == 0 && r == 0 && c == 0) {
+	    	wall = Crafty.e("WallCenter");
+	    	isos.place(wall,r,c,0);
+		    wall.generateTorch();
 	    }
 
-    	isos.place(wall,r,c,0);
-	    wall.generateTorch();
+
+    },
+
+    tryPlaceBoundary: function (map, l, c, r) {
+    
+    	// Edge of map.
+    	if(l == 0 && r == 4) {
+    		var boundaryBlock = Crafty.e("EdgeTile_Right");
+    		isos.place(boundaryBlock,r,c,-1);
+	    }
+
+	    if(l == 0 && c == 4){
+    		var boundaryBlock = Crafty.e("EdgeTile_Left");
+    		isos.place(boundaryBlock,r,c,-1);
+	    }
+
+		if(l == 0 && c == 4 && r == 4){
+    		var boundaryBlock = Crafty.e("EdgeTile_Corner");
+    		isos.place(boundaryBlock,r,c,-1);
+	    }
     }
 })
