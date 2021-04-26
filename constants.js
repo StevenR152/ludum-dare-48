@@ -13,6 +13,8 @@ var timer;
 var all_messages = {};
 var passed_guard;
 
+var cat, key, hud_scroll;
+
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);

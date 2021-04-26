@@ -1,6 +1,6 @@
 Crafty.c("HudCounter", {
     init : function () {
-        this.requires('2D, DOM, Text, Delay')
+        this.requires('2D, DOM, Text, Delay, HUD')
         this.attr({w: 65, h: 100, x: 0, y: 0})
         this.z = 1000;
         this.text("00:00");
