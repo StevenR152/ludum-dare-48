@@ -88,12 +88,15 @@ Crafty.c("LoadLevel", {
 	        // only every even number is a "real" layer of the pyramid
 	        var tileEntity = Crafty.e(tile);
 	        var layer = l; // assume the level we're on
+	        var row = r;
+	        var col = c;
 	        // override if the entity is a floor tile.
 	        if(tileEntity.has("Tile")) {
+	        	// generate the tile on the layer below
 	        	layer = 0;
 	        }
 
-	        if (l % 2 != 0) {
+	        if (layer % 2 != 0) {
 	          isos.place(tileEntity,r+1,c+1,layer);
 	        } else {
 	          isos.place(tileEntity,r,c,layer);
