@@ -138,12 +138,22 @@ var gameAssets = {
         "tileh": 256,
         "map": {"concreteblock": [0, 0]}
       },
-      
+
       // Map edge decoration.
-      "assets/images/object_concreteblock.png": {
+      "assets/images/undergroundblock_corner.png": {
         "tile" : 256,
         "tileh": 256,
-        "map": {"concreteEdgingBlock": [0, 0]}
+        "map": {"undergroundblock_corner": [0, 0]}
+      },
+      "assets/images/undergroundblock_right.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"undergroundblock_right": [0, 0]}
+      },
+      "assets/images/undergroundblock_left.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"undergroundblock_left": [0, 0]}
       },
 
       // -- Start Interactive stuff -- //
@@ -204,6 +214,11 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 256,
         "map": {"wallright": [0, 0]}
+      },
+      "assets/images/rightwall_decorated_corner.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"wallcenter": [0, 0]}
       },
       "assets/images/player.png": {
         "tile" : 256,
