@@ -133,10 +133,17 @@ var gameAssets = {
         "tileh": 256,
         "map": {"vase3": [0, 0]}
       },
-      "assets/images/object_concreteblock.png": {
+      "assets/images/object_concreteblock_lower.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"concreteblock": [0, 0]}
+      },
+      
+      // Map edge decoration.
+      "assets/images/object_concreteblock.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"concreteEdgingBlock": [0, 0]}
       },
 
       // -- Start Interactive stuff -- //

@@ -5,7 +5,7 @@ Crafty.c("Player", {
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-    this.addComponent("2D, DOM, Color, Distroyable, Collision, Keyboard, player");
+    this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, player");
     this.attr({
       posx : 1,
       posy : 5,

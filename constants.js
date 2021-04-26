@@ -80,10 +80,9 @@ var randomFloor = [
 ];
 
 var randomBlockingObjects = [
-// TODO maybe the concreteblocks here? - they're 18 pixels up from the bottom of their image though so it renders a gap.
-	// concreteblock,
-	// concreteblock,
-	// concreteblock,
+	concreteblock,
+	concreteblock,
+	concreteblock,
 	vase,
 	vase,
 	vase,
