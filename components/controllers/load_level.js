@@ -12,10 +12,20 @@ Crafty.c("LoadLevel", {
 			}
 		}
 
+		var spawnpoint = {};
+		if(level === 0) {
+			spawnpoint = {x : 1, y : 5}; // Initial map start.
+		} else {
+			var levelStartStairs = Crafty("stairs_up");
+			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
+			spawnpoint.x += 1;
+		} 
+		
 		var player = Crafty.e('Player');
 		makeCameraTrackEntity(player, 75);
 		Crafty.viewport.scale(0.4);
-		isos.place(player, 4, 4, 1);
+		player.posx = spawnpoint.x, player.posy = spawnpoint.y;
+		isos.place(player, player.posx, player.posy, 1);
 
 
 		// link buttons to their associated triggered item.
@@ -74,7 +84,6 @@ Crafty.c("LoadLevel", {
 		// objects are all 12's and randomly select which one.
 		if(mapPosition === 12) {
 			var index = Math.floor(Math.random()*randomBlockingObjects.length);
-			console.log(randomBlockingObjects.length, index)
 			tile = randomBlockingObjects[index];
 		}
 
@@ -117,7 +126,7 @@ Crafty.c("LoadLevel", {
 	        	// TODO maybe his map can be decoupled into a Actionable component
 	        	// for now theres only TileSpikes.
 	        	if(tileEntity.has("TileSpikes")) {
-	        		tileEntity.bindAction(tileEntity.disable)
+	        		tileEntity.bindAction(tileEntity.toggle)
 	        	}
 	        }
 

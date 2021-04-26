@@ -96,6 +96,14 @@ Crafty.c("TileSpikes", {
     }
   },
   
+  toggle : function() {
+    if(this.has("tile_spikeholes")) {
+      this.enable();
+    } else {
+      this.disable();
+    }
+  },
+
   disable : function() {
     if(typeof this.activeDelay !== "undefined") {
       this.cancelDelay(this.activeDelay);
