@@ -93,10 +93,20 @@ Crafty.c("Player", {
 			}
 
 			if (map[current_level][1][newy][newx] === 40) {
-				// you got a scroll
+				// you got a cat
 				Crafty.trigger("FoundCat", {});
 				audioController.playTrack("cat", 1, 0.6);
 				has_cat = true;
+			}
+
+			if (map[current_level][1][newy][newx] === 55) {
+				// you found the guard
+				if (has_scroll === true) {
+					Crafty.trigger("YesScrollGuard", {});
+				}
+				else {
+					Crafty.trigger("NoScrollGuard", {});
+				}
 			}
 
       // Pillar and other solid objects

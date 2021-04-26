@@ -34,7 +34,6 @@ Crafty.c("PlayerNotification", {
         	this.trigger("InstructionText", "I think the only way is down...deeper");
         })
 				Crafty.bind("StartGame", function (e) {
-					console.log("ok");
         	this.trigger("InstructionText", "Well, I guess it's time to try and find eternal peace...");
         }),
 				Crafty.bind("PLAYER_STOOD_SPIKE", function () {
@@ -54,6 +53,41 @@ Crafty.c("PlayerNotification", {
         }),
 				Crafty.bind("FoundCat", function () {
         	this.trigger("InstructionText", "Mafdet! Yay, I found you! Now Osiris will be able to rest in peace.");
+        }),
+				Crafty.bind("NoScrollGuard", function () {
+        	this.trigger("InstructionText", "Password?");
+					this.delay(this.respondGuard1, 1500);
+        }),
+				this.bind("YourResponse", function () {
+        	this.trigger("InstructionText", "Err, I don't have one?");
+					this.delay(this.respondGuard2, 1500);
+        }),
+				this.bind("TheirResponse", function () {
+        	this.trigger("InstructionText", "Then, no entry. You need the password first.");
+        }),
+				Crafty.bind("YesScrollGuard", function () {
+        	this.trigger("InstructionText", "Password?");
+					this.delay(this.respondGuard3, 1500);
+        }),
+				this.bind("YourGoodResponse", function () {
+        	this.trigger("InstructionText", "Qwerty1234?");
+					this.delay(this.respondGuard4, 1500);
+        }),
+				this.bind("TheirGoodResponse", function () {
+        	this.trigger("InstructionText", "Granted. Have a great eternal slumber.");
         })
-    }
+    },
+
+		respondGuard1: function () {
+			this.trigger("YourResponse");
+		},
+		respondGuard2: function () {
+			this.trigger("TheirResponse");
+		},
+		respondGuard3: function () {
+			this.trigger("YourGoodResponse");
+		},
+		respondGuard4: function () {
+			this.trigger("TheirGoodResponse");
+		}
 })

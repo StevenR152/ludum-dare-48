@@ -184,6 +184,11 @@ var gameAssets = {
         "tileh": 543,
         "map": {"sarcophagus": [0, 0]}
       },
+      "assets/images/guard.png": {
+        "tile" : 256,
+        "tileh": 308,
+        "map": {"guard": [0, 0]}
+      },
       "assets/images/tile_stairs_down.png": {
         "tile" : 256,
         "tileh": 128,
