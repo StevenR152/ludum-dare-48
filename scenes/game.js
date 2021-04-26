@@ -15,6 +15,7 @@ Crafty.defineScene("Game", function() {
 	levelLoader = Crafty.e("LoadLevel");
 	levelLoader.loadLevel(current_level, map, isos);
 
+	Crafty.e("Background").place(-6000,-6000,12000,12000)
 
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {

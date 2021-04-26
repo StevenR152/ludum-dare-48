@@ -1,9 +1,11 @@
 Crafty.c("Background", {
     init: function () {
         this.requires('2D, DOM, Image');
-        this.z = -100,
-        this.alpha = 0.7;
-        // this.image("assets/images/BACKGROUNDIMAGEHERE.PNG", "repeat");
+        this.w = 300;
+        this.h = 300;
+        this.z = -100000,
+        this.alpha = 0.1;
+        this.image("assets/images/backdrop_pattern.png", "repeat");
     },
     place: function (x,y,w,h) {
         // Add the width, height, and top left co-ordinates for the box/background
