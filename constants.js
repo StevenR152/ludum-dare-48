@@ -10,6 +10,7 @@ var footstep_sounds = [
 Crafty.audio.setChannels(20);
 var totalSeconds;
 var timer;
+var all_messages = {};
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;

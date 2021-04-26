@@ -21,6 +21,7 @@ Crafty.defineScene("Game", function() {
 		if (current_level < levels_size.length) {
 			current_level += 1;
 			levelLoader.loadLevel(current_level, map);
+			Crafty.trigger("DownFloorMessage");
 		}
 	});
 

@@ -37,8 +37,10 @@ Crafty.c("LoadLevel", {
 		player.posx = spawnpoint.x, player.posy = spawnpoint.y;
 		isos.place(player, player.posx, player.posy, 1);
 
-		var playerNotification = Crafty.e("PlayerNotification");
+		var playerNotification = Crafty.e("PlayerNotification").attr({x: player.x-150, y: player.y-250});
+		playerNotification.messagesReceived = all_messages;
 		player.attach(playerNotification);
+		Crafty.trigger("StartGame");
 
 
 		// link buttons to their associated triggered item.

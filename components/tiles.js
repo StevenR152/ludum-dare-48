@@ -154,7 +154,7 @@ Crafty.c("Button", {
     this.attach(this.hitbox);
 
     this.triggerButton = function() {
-      // TODO Play button press sound here
+      Crafty.trigger("StepButton");
       audioController.playTrack("spikeDown", 1, 0.3);
 
       // Clear the Delay on reset as player stood on the button
