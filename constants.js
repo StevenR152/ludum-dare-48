@@ -119,8 +119,6 @@ var randomBlockingObjects = [
 	vase,
 	pillarTall,
 	pillarTall,
-	chest,
-	chest,
 	vase2,
 	vase2,
 	vase2,
