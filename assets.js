@@ -167,8 +167,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"stairs_up": [0, 0]}
       },
-      "assets/images/button_
-      2.png": {
+      "assets/images/button_unpressed2.png": {
         "tile" : 256,
         "tileh": 140,
         "map": {"button_unpressed": [0, 0]}
