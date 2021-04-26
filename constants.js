@@ -31,6 +31,7 @@ var stairs = 'Destroyable, 2D, DOM, Color, stairs';
 var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
 
 // Blocking Objects
+var concreteblock = 'Destroyable, 2D, DOM, Color, concreteblock';
 var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
 var pillarTall = 'Destroyable, 2D, DOM, Color, pillarTall';
 var pillarMarble = 'Destroyable, 2D, DOM, Color, pillarMarble';
@@ -79,6 +80,12 @@ var randomFloor = [
 ];
 
 var randomBlockingObjects = [
+// TODO maybe the concreteblocks here? - they're 18 pixels up from the bottom of their image though so it renders a gap.
+	// concreteblock,
+	// concreteblock,
+	// concreteblock,
+	vase,
+	vase,
 	vase,
 	vase,
 	vase,
@@ -86,13 +93,17 @@ var randomBlockingObjects = [
 	vase,
 	pillarTall,
 	pillarTall,
-	pillarTall,
+	chest,
 	chest,
 	vase2,
 	vase2,
 	vase2,
 	vase2,
 	vase2,
+	vase2,
+	vase2,
+	vase3,
+	vase3,
 	vase3,
 	vase3,
 	vase3,
