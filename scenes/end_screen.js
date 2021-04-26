@@ -13,7 +13,7 @@ Crafty.defineScene("End", function() {
                 audioController.playTrack("bgAudio", -1, 0.10);
             }
             
-            Crafty.e("GameController").resetGame();
+            gameController.resetGame();
         })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
@@ -33,7 +33,22 @@ Crafty.defineScene("End", function() {
         .fixedPosition(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS)
         .initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
-    //texts
+    //achievements
+    Crafty.e("Score")
+        .text("Collected")
+        .attr({x: END_PLAY_BUTTON_XPOS - 30, y: END_PLAY_BUTTON_YPOS + 90});
+
+    if(!has_cat) 
+        Crafty.e("item_cat").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 130, w: PROPS_WIDTH, h: PROPS_HEIGHT})
+    
+    if(!has_key) 
+        Crafty.e("item_key").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 170, w: PROPS_WIDTH, h: PROPS_HEIGHT})
+
+    if(!has_scroll)
+        Crafty.e("item_scroll").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 210, w: PROPS_WIDTH, h: PROPS_HEIGHT})     
+
+
+
     var time_taken = Crafty.e("Score")
         .text("Time Elapsed: " + timer.text)
         .attr({x: 330, y: GAME_SCREEN_HEIGHT-240});
