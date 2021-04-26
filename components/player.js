@@ -2,10 +2,11 @@ Crafty.c("Player", {
 	init: function() {
 		// this.direction_force = 0
 		// this.force_level_x = 0
+		var passed_guard = false;
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-    this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, player");
+    this.addComponent("2D, DOM, Color, Delay, Destroyable, Collision, Keyboard, player");
     this.attr({
       posx : 1,
       posy : 5,
@@ -34,12 +35,16 @@ Crafty.c("Player", {
     this.bind("PLAYER_STOOD_SPIKE", function () {
       Crafty.trigger("PlayerMovement", this.undoLastMove);
       this.isInputFrozen = false;
-    })
+    });
 
     this.bind("PLAYER_FROZEN", function () {
       this.isInputFrozen = true;
-    })
-
+    });
+		this.bind('WalkPastGuard', function() {
+			this.posx = 1;
+			this.posy = 20;
+			isos.place(this, this.posx, this.posy, 1);
+		});
     this.bind('PlayerMovement', function(e) {
         var newy = this.posy+e.y-1;
         var newx = this.posx+e.x-1;
@@ -101,11 +106,16 @@ Crafty.c("Player", {
 
 			if (map[current_level][1][newy][newx] === 55) {
 				// you found the guard
-				if (has_scroll === true) {
+				if (has_scroll === true && passed_guard === false) {
+					passed_guard = true;
 					Crafty.trigger("YesScrollGuard", {});
+					return;
 				}
-				else {
+				else if (passed_guard === false) {
 					Crafty.trigger("NoScrollGuard", {});
+					return;
+				} else {
+					return;
 				}
 			}
 
