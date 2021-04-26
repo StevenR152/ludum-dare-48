@@ -2,9 +2,11 @@ Crafty.c("Player", {
 	init: function() {
 		// this.direction_force = 0
 		// this.force_level_x = 0
+    this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-    this.addComponent("2D, DOM, Color, Collision, Keyboard, SpriteAnimation, player");
+
+    this.addComponent("2D, DOM, Color, Destroyable, Collision, Keyboard, SpriteAnimation, player");
     this.reel("walking_down", 1000, [
       [0, 0], [1, 0], [2, 0], [3, 0],[4, 0], [5, 0], [6, 0],[7, 0], [8, 0], [9, 0],  [10, 0], [11, 0], [12, 0], [13, 0],[14, 0], [15, 0], [16, 0],[17, 0], [18, 0], [19, 0]
     ]);
@@ -20,18 +22,23 @@ Crafty.c("Player", {
       h : 480,
     })
     this.bind('KeyDown', function(e) {
+      if(this.isInputFrozen) return;
+      var direction = {};
       if(e.key == Crafty.keys.LEFT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : -1, y : 0});
+        direction = {x : -1, y : 0};
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
-				Crafty.trigger("PlayerMovement", {x : 1, y : 0});
+				direction = {x : 1, y : 0};
       } else if(e.key == Crafty.keys.UP_ARROW) {
         this.animate("walking_up", -1);
-				Crafty.trigger("PlayerMovement", {x : 0, y : -1});
+				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
         this.animate("walking_down", -1);
-				Crafty.trigger("PlayerMovement", {x : 0, y : 1});
+				direction = {x : 0, y : 1};
       }
+      this.undoLastMove = this.invertDirection(direction);
+      Crafty.trigger("PlayerMovement", direction);
     });
+
     this.bind('KeyUp', function(e) {
       if(e.key == Crafty.keys.LEFT_ARROW) {
 				Crafty.trigger("PlayerMovement", {x : -1, y : 0});
@@ -45,8 +52,67 @@ Crafty.c("Player", {
 				Crafty.trigger("PlayerMovement", {x : 0, y : 1});
       }
     });
-    
-    
+
+    this.bind("PLAYER_STOOD_SPIKE", function () {
+      Crafty.trigger("PlayerMovement", this.undoLastMove);
+      this.isInputFrozen = false;
+    })
+
+    this.bind("PLAYER_FROZEN", function () {
+      this.isInputFrozen = true;
+    })
+
+    this.bind('PlayerMovement', function(e) {
+        var newy = this.posy+e.y-1;
+        var newx = this.posx+e.x-1;
+
+      // walked outside of map, don't allow it.
+        if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
+          return;
+      }
+
+      // stairs down
+      if (map[current_level][1][newy][newx] === 8) {
+        if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
+          this.posx += e.x;
+          this.posy += e.y + 1;
+        }
+        else {
+          this.posx += e.x + 1;
+          this.posy += e.y;
+        }
+        Crafty.trigger("GoDownAFloor", {});
+        return;
+      }
+
+      // Stairs up
+      if (map[current_level][1][newy][newx] === 9) {
+        // if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
+        //   this.posx += e.x +1 ;
+        //   this.posy += e.y;
+        // }
+        // else {
+        //   this.posx += e.x -1 ;
+        //   this.posy += e.y;
+        // }
+        // Crafty.trigger("GoUpAFloor", {});
+				Crafty.trigger("TryUpStairs", {});
+        return;
+      }
+
+      // Pillar and other solid objects
+      if (map[current_level][1][newy][newx] > 10 &&
+          map[current_level][1][newy][newx] < 20) {
+        return;
+      }
+
+      // if we haven't returned already, we must be able to move there.
+      this.posx += e.x;
+      this.posy += e.y;
+      isos.place(this, (this.posx), (this.posy), 1);
+      return;
+    });
+
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
     this.hitbox.attr({
@@ -58,4 +124,8 @@ Crafty.c("Player", {
     });
     this.attach(this.hitbox)
   },
+
+  invertDirection : function (direction) {
+    return {x : -1* direction.x, y: -1 * direction.y}
+  }
 })

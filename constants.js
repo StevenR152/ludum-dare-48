@@ -9,33 +9,142 @@ var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);
 var current_level = 0;
 var MAX_STAIRS = 1;
 
-var levels_size = [5,9,13,17,27,39];
-var basic_tile_1 = 'Destroyable, 2D, DOM, Color, basic_tile_1';
-var basic_tile_2 = 'Destroyable, 2D, DOM, Color, basic_tile_2';
-var tile_leave1 = 'Destroyable, 2D, DOM, Color, tile_leaves_1';
-var tile_leave2 = 'Destroyable, 2D, DOM, Color, tile_leaves_2';
-var tile_cracked = 'Destroyable, 2D, DOM, Color, tile_cracked_1';
+var levels_size = [5,9,13,17,25,37];
+
+// Default floor tiles
+var basic_tile_1 = 'Tile, Destroyable, 2D, DOM, Color, basic_tile_1';
+var basic_tile_2 = 'Tile, Destroyable, 2D, DOM, Color, basic_tile_2';
+var tile_leave1 = 'Tile, Destroyable, 2D, DOM, Color, tile_leaves_1';
+var tile_leave2 = 'Tile, Destroyable, 2D, DOM, Color, tile_leaves_2';
+var tile_twigs_1 = 'Tile, Destroyable, 2D, DOM, Color, tile_twigs_1';
+var tile_twigs_2 = 'Tile, Destroyable, 2D, DOM, Color, tile_twigs_2';
+var tile_rocks_1 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_1';
+var tile_rocks_2 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_2';
+var tile_rocks_3 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_3';
+var tile_rocks_4 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_4';
+var tile_rocks_5 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_5';
+var tile_moss = 'Tile, Destroyable, 2D, DOM, Color, tile_moss';
+var tile_cracked = 'Tile, Destroyable, 2D, DOM, Color, tile_cracked_1';
+
+// Stairs
 var stairs = 'Destroyable, 2D, DOM, Color, stairs';
 var stairs_up = 'Destroyable, 2D, DOM, Color, stairs_up';
+
+// Blocking Objects
+var concreteblock = 'Destroyable, 2D, DOM, Color, concreteblock';
 var pillar1 = 'Destroyable, 2D, DOM, Color, pillar1';
+var pillarTall = 'Destroyable, 2D, DOM, Color, pillarTall';
+var pillarMarble = 'Destroyable, 2D, DOM, Color, pillarMarble';
 var vase = 'Destroyable, 2D, DOM, Color, vase';
+var vase2 = 'Destroyable, 2D, DOM, Color, vase2';
+var vase3 = 'Destroyable, 2D, DOM, Color, vase3';
 var chest = 'Destroyable, 2D, DOM, Color, chest';
+
+// Other
+var guard = 'Destroyable, 2D, DOM, Color, guard';
+
+// Interactive Objects
 var button = 'Button';
 var spikes = 'TileSpikes';
 
-//Keep 10+ index values for solid objects, 20+ for interaction walkables
+// This array is selected for all floor tiles.
+// number of times controls frequency.
+var randomFloor = [
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_1,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	basic_tile_2,
+	tile_twigs_1,
+	tile_twigs_1,
+	tile_twigs_2,
+	tile_twigs_2,
+	tile_leave1,
+	tile_leave1,
+	tile_leave2,
+	tile_leave2,
+	tile_rocks_1,
+	tile_rocks_2,
+	tile_rocks_3,
+	tile_rocks_4,
+	tile_rocks_5,
+	tile_moss,
+	tile_moss,
+	tile_moss,
+	tile_cracked,
+	tile_cracked
+];
+
+var randomBlockingObjects = [
+	concreteblock,
+	concreteblock,
+	concreteblock,
+	vase,
+	vase,
+	vase,
+	vase,
+	vase,
+	vase,
+	vase,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase2,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+	vase3,
+]
+
+var max_puzzle_width = 9;
+var max_puzzle_height = 9;
+var min_puzzle_width = 3;
+var min_puzzle_height = 3;
+
+//Keep 10-19 index values for solid objects, 20+ for interaction walkables
 // TODO code the interaction walkables functionality properly
 var tileMap = {
-		1 : basic_tile_1,
-		2 : basic_tile_2,
-		3 : tile_leave1,
-		4 : tile_leave2,
-		5 : tile_cracked,
+		// all normal floor tiles are 1 and randomly get picked later.
 		8 : stairs,
 		9 : stairs_up,
-		11 : pillar1,
-		12 : vase,
-		13 : chest,
+		// 12's will be randomly picked as blocking tiles.
 		20 : button,
 		21 : spikes
 }

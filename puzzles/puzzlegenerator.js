@@ -1,23 +1,29 @@
 // this will, given an x by m set of coordinates, find a puzzle to fit in the given spacing that fits these constraints
 // it should then return the object level it was given as an array with all the correct puzzle objects positioned
 
-function place_puzzle(sizex, sizey, startx, starty, object_map, stairs) {
-
+function place_puzzle(puz_width, puz_height, startcol, startrow, object_map, stairs, puzzle_flag_map) {
+  // console.log (puz_width, puz_height, startcol, startrow, puzzle_flag_map, object_map);
 
   //here usually you would choose a puzzle based on coordinates given
   //instead i'll keep it simple for now
-  var puzzle_map = get_spike_puzzle(sizex, sizey, startx, starty);
 
+  if (stairs === true) {
+    var puzzle_map = get_stair_puzzle(puz_width, puz_height, startcol, startrow);
+  }
+  else {
+    var puzzle_map = get_normal_puzzle(puz_width, puz_height);
+  }
    if (puzzle_map !== undefined) {
-    for (var row=0; row < sizex; row++) {
-      for (var col=0; col < sizey; col++) {
-        var this_row = startx + row;
-        var this_col = starty + col;
+    for (var row=0; row < puz_height; row++) {
+      var this_row = startrow + row;
+      for (var col=0; col < puz_width; col++) {
+        var this_col = startcol + col;
         object_map[this_row][this_col] = puzzle_map[row][col];
+        puzzle_flag_map[this_row][this_col] = 1;
         }
       }
     }
-  return object_map;
+  return [object_map, puzzle_flag_map];
 };
 
 
