@@ -59,7 +59,13 @@ Crafty.c("LoadLevel", {
 
     placeGroundTile : function (level, l, c, r) {
     	var mapPosition = map[level][l][c][r];
+
 		var tile = tileMap[mapPosition];
+		// ground tiles are all 1's now, so randomly select time to show.
+		if(mapPosition === 1) {
+			var index = Math.floor(Math.random()*randomFloor.length);
+			tile = randomFloor[index];
+		}
 
 		var tileNumber = mapPosition;
 		var linkingElement = null;

@@ -43,6 +43,8 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_spiketips": [0, 0]}
       },
+
+      // -- Normal floor tiles -- //
       "assets/images/basic_tile_1.png": {
         "tile" : 256,
         "tileh": 128,
@@ -63,6 +65,38 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_leaves_1": [0, 0]}
       },
+      "assets/images/tile_moss1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_moss": [0, 0]}
+      },
+      "assets/images/tile_rocks1.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_rocks_1": [0, 0]}
+      },
+      "assets/images/tile_rocks2.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_rocks_2": [0, 0]}
+      },
+      "assets/images/tile_rocks3.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_rocks_3": [0, 0]}
+      },
+      "assets/images/tile_rocks4.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_rocks_4": [0, 0]}
+      },
+      "assets/images/tile_rocks5.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"tile_rocks_5": [0, 0]}
+      },
+      // -- END: Normal floor tiles -- //
+
       "assets/images/pillar1.png": {
         "tile" : 256,
         "tileh": 309,
@@ -73,7 +107,7 @@ var gameAssets = {
         "tileh": 256,
         "map": {"chest": [0, 0]}
       },
-      "assets/images/object_vase1_shadow.png": {
+      "assets/images/object_vase1.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"vase": [0, 0]}
