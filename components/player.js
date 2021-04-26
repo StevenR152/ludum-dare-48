@@ -43,9 +43,9 @@ Crafty.c("Player", {
 
       // walked outside of map, don't allow it.
         if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
-          return; 
+          return;
       }
-        
+
       // stairs down
       if (map[current_level][1][newy][newx] === 8) {
         if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
@@ -62,15 +62,16 @@ Crafty.c("Player", {
 
       // Stairs up
       if (map[current_level][1][newy][newx] === 9) {
-        if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
-          this.posx += e.x +1 ;
-          this.posy += e.y;
-        }
-        else {
-          this.posx += e.x -1 ;
-          this.posy += e.y;
-        }
-        Crafty.trigger("GoUpAFloor", {});
+        // if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
+        //   this.posx += e.x +1 ;
+        //   this.posy += e.y;
+        // }
+        // else {
+        //   this.posx += e.x -1 ;
+        //   this.posy += e.y;
+        // }
+        // Crafty.trigger("GoUpAFloor", {});
+				Crafty.trigger("TryUpStairs", {});
         return;
       }
 
@@ -87,7 +88,7 @@ Crafty.c("Player", {
       return;
     });
 
-    
+
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
     this.hitbox.attr({
