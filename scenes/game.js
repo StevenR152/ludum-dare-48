@@ -9,7 +9,7 @@ Crafty.defineScene("Game", function() {
 
 	var player = Crafty.e('Player');
 	makeCameraTrackEntity(player, 75);
-	Crafty.viewport.scale(0.3);
+	Crafty.viewport.scale(0.5);
 
 
 	map = Crafty.e("LevelGenerator").generate_levels();
