@@ -128,7 +128,7 @@ Crafty.c("LoadLevel", {
 	        	// TODO maybe his map can be decoupled into a Actionable component
 	        	// for now theres only TileSpikes.
 	        	if(tileEntity.has("TileSpikes")) {
-	        		tileEntity.bindAction(tileEntity.disable)
+	        		tileEntity.bindAction(tileEntity.toggle)
 	        	}
 	        }
 
