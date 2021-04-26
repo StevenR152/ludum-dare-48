@@ -21,7 +21,11 @@ function place_puzzle(puz_width, puz_height, startcol, startrow, object_map, sta
         object_map[this_row][this_col] = puzzle_map[row][col];
         if (stairs === true) {
           puzzle_flag_map[this_row][this_col] = 2;
-        } else {
+        } else if (puzzle_map[row][col] === -1) {
+            object_map[this_row][this_col] = 0;
+            puzzle_flag_map[this_row][this_col] = 2;
+          }
+        else {
           puzzle_flag_map[this_row][this_col] = 1;
         }
         }

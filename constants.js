@@ -136,7 +136,7 @@ var randomBlockingObjects = [
 
 var items_to_be_placed =
 [
-	38 //key
+	38, 38, 38 //key
 ];
 
 var max_puzzle_width = 9;

@@ -1,24 +1,21 @@
 function place_collectible(puzzle_flag_map, temp_objects_map, level) {
 	// place a random collectible from the into a random safe space INSIDE a puzzle
-	var item = items_to_be_placed[~~(items_to_be_placed.length * Math.random())];
-console.log(item);
+	var collectible_index = [~~(items_to_be_placed.length * Math.random())];
+	var item = items_to_be_placed[collectible_index];
+	console.log(items_to_be_placed);
+
 	//find a puzzle location
-	while (true) {
+	for (var max_attempts=0; max_attempts < 1000; max_attempts++) {
 		random_row = Math.floor(Math.random() * levels_size[level]);
 		random_col = Math.floor(Math.random() * levels_size[level]);
 		if (puzzle_flag_map[random_row][random_col] === 1
 			&& temp_objects_map[random_row][random_col] === 0) {
 				temp_objects_map[random_row][random_col] = item;
 				console.log("placed", level, random_row, random_col)
-				console.log(temp_objects_map);
-
+				items_to_be_placed.splice(collectible_index, 1);
 				break;
 			}
-	}
-
-	//in this puzzle find a 0 tile in objects map
-
-
+		}
 	return puzzle_flag_map, temp_objects_map;
 }
 
@@ -67,14 +64,14 @@ Crafty.c("LevelGenerator", {
 			// Stop objects / puzzles spawning by the stairs up
 			if (next_level_stairs !== undefined) {
 				temp_objects_map[next_level_stairs[0]][next_level_stairs[1]] = 9;
-				puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]] = 1;
-				puzzle_flag_map[next_level_stairs[0]+1][next_level_stairs[1]] = 1;
-				puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]+1] = 1;
+				puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]] = 2;
+				puzzle_flag_map[next_level_stairs[0]+1][next_level_stairs[1]] = 2;
+				puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]+1] = 2;
 				if (next_level_stairs[0] === 0) {
-					puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]-1] = 1;
+					puzzle_flag_map[next_level_stairs[0]][next_level_stairs[1]-1] = 2;
 				}
 				else {
-					puzzle_flag_map[next_level_stairs[0]-1][next_level_stairs[1]] = 1;
+					puzzle_flag_map[next_level_stairs[0]-1][next_level_stairs[1]] = 2;
 				}
 			}
 			var next_level_stairs = [];
@@ -151,10 +148,17 @@ Crafty.c("LevelGenerator", {
 			}
 
 			// put this level together into the map
-
-			if (items_to_be_placed.length === levels_size.length - level) {
-				//then we must place something NOW
-				puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);
+			if (items_to_be_placed.length > 0) {
+				if (items_to_be_placed.length === levels_size.length - (level+1)) {
+					//then we must place something NOW
+					puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);
+				}
+				else {
+					var chance = Math.floor(Math.random() * (Math.floor(items_to_be_placed.length+1)));
+					if (chance === items_to_be_placed.length) {
+						puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);
+					}
+				}
 			}
 
 
