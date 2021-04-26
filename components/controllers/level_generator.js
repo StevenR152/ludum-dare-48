@@ -10,7 +10,6 @@ function place_collectible(puzzle_flag_map, temp_objects_map, level) {
 		if (puzzle_flag_map[random_row][random_col] === 1
 			&& temp_objects_map[random_row][random_col] === 0) {
 				temp_objects_map[random_row][random_col] = item;
-				console.log("placed", level, random_row, random_col)
 				items_to_be_placed.splice(collectible_index, 1);
 				break;
 			}

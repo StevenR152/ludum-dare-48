@@ -132,10 +132,9 @@ Crafty.c("Player", {
 
 			// The magical sarcophagus
 			if (map[current_level][1][newy][newx] === 50) {
-				Crafty.trigger("FoundSarcophagus", {});
-				console.log("get a cat to win");
+				Crafty.trigger("FoundSarcophagusNoCat", {});
 				if (has_cat === true) {
-					console.log("you win");
+					Crafty.trigger("FoundSarcophagusCat", {});
 				}
         return;
       }

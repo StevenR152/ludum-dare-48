@@ -15,7 +15,7 @@ Crafty.c("PlayerNotification", {
             if(this.messagesReceived[message] != "SEENBEFORE"){
                 this.text(message);
                 this.alpha = 1.3;
-                this.delay(this.decayMessage, 500, this.alpha/0.1);
+                this.delay(this.decayMessage, (message.length * 15), this.alpha/0.1);
             }
             this.messagesReceived[message] = "SEENBEFORE";
 						all_messages = this.messagesReceived;
@@ -76,8 +76,19 @@ Crafty.c("PlayerNotification", {
 				this.bind("TheirGoodResponse", function () {
         	this.trigger("InstructionText", "Granted. Have a great eternal slumber.");
 					Crafty.trigger('WalkPastGuard');
+        }),
+				this.bind("FoundSarcophagusNoCat", function () {
+        	this.trigger("InstructionText", "-I appreciate you making the effort to come here. I am, howoever, disappointed you did not bring Mafdet with you. Don't expect any favours from me for the next eternity.-");
+					this.delay(this.triggerEnd, 4000);
+				}),
+				this.bind("FoundSarcophagusCat", function () {
+        	this.trigger("InstructionText", "-Thank you so very much for bringing Mafdet home to me. Crazy cat always getting out and running wild. Now we can all rest in peace.-");
+					this.delay(this.triggerEnd, 4000);
         })
     },
+		triggerEnd: function () {
+			Crafty.trigger("FoundSarcophagus");
+		},
 
 		respondGuard1: function () {
 			this.trigger("YourResponse");

@@ -87,7 +87,6 @@ Crafty.c("LoadLevel", {
 		// button3.attachLink(tileSpikes3, tileSpikes3.toggle);
 		// button3.attachLink(tileSpikes1, tileSpikes1.toggle);
 		// button3.attachLink(tileSpikes2, tileSpikes2.toggle);
-		console.log("player placed" , player.posx, player.posy);
     },
 
     placeGroundTile : function (level, l, c, r) {
