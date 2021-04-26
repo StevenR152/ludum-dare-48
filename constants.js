@@ -14,7 +14,7 @@ var timer;
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
 var isos = Crafty.diamondIso.init(TILE_WIDTH,TILE_HEIGHT,100,100);
-var current_level = 6;
+var current_level = 0;
 var MAX_STAIRS = 1;
 
 var levels_size = [5,9,13,17,25,37];
