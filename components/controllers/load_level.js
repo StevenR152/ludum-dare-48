@@ -27,13 +27,16 @@ Crafty.c("LoadLevel", {
 			var levelStartStairs = Crafty("stairs_up");
 			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
 			spawnpoint.x += 1;
-		} 
-		
+		}
+
 		var player = Crafty.e('Player');
 		makeCameraTrackEntity(player, 75);
 		Crafty.viewport.scale(0.4);
 		player.posx = spawnpoint.x, player.posy = spawnpoint.y;
 		isos.place(player, player.posx, player.posy, 1);
+
+		var playerNotification = Crafty.e("PlayerNotification");
+		player.attach(playerNotification);
 
 
 		// link buttons to their associated triggered item.
@@ -51,6 +54,7 @@ Crafty.c("LoadLevel", {
 				})
 			});
 		}
+
 
 // Lever example.
 		// var lever = Crafty.e("Lever");
@@ -90,7 +94,7 @@ Crafty.c("LoadLevel", {
 
 		var tileNumber = mapPosition;
 		var linkingElement = null;
-		// For composite position like 2101 split it into 21 and 01 as the 
+		// For composite position like 2101 split it into 21 and 01 as the
 		// tile number being 21 and the linking being 01.
 		if(mapPosition > 1000) {
 			tileNumber = Math.floor(mapPosition / 100)
@@ -119,7 +123,7 @@ Crafty.c("LoadLevel", {
 
 	        // If the tile contains a triggerable/triggered item, link them.
 	        if(linkingElement !== null) {
-	        	// Two components, one to state its linked, 
+	        	// Two components, one to state its linked,
 	        	// the other to allow us to look them up later with Crafty(LinkedToXXX)
 	        	tileEntity.addComponent("Linked");
 	        	tileEntity.addComponent("LinkedTo"+linkingElement);
