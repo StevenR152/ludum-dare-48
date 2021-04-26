@@ -18,9 +18,8 @@ Crafty.c("LoadLevel", {
 			spawnpoint = {x : 1, y : 5}; // Initial map start.
 		} else {
 			var levelStartStairs = Crafty("stairs_up");
-			var spawnpoint = isos.px2pos(levelStartStairs.x, levelStartStairs.y);
-			spawnpoint.x += 3;
-			spawnpoint.y += 1;
+			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
+			spawnpoint.x += 1;
 		} 
 
 		console.log()
