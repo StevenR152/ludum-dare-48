@@ -70,16 +70,16 @@ Crafty.c("Player", {
 
       // Stairs up
       if (map[current_level][1][newy][newx] === 9) {
-        // if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
-        //   this.posx += e.x +1 ;
-        //   this.posy += e.y;
-        // }
-        // else {
-        //   this.posx += e.x -1 ;
-        //   this.posy += e.y;
-        // }
-        // Crafty.trigger("GoUpAFloor", {});
-				Crafty.trigger("TryUpStairs", {});
+        if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
+          this.posx += e.x +1 ;
+          this.posy += e.y;
+        }
+        else {
+          this.posx += e.x -1 ;
+          this.posy += e.y;
+        }
+        Crafty.trigger("GoUpAFloor", {});
+				// Crafty.trigger("TryUpStairs", {});
         return;
       }
 
