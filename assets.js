@@ -133,6 +133,11 @@ var gameAssets = {
         "tileh": 256,
         "map": {"vase3": [0, 0]}
       },
+      "assets/images/object_concreteblock.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"concreteblock": [0, 0]}
+      },
 
       // -- Start Interactive stuff -- //
       "assets/images/tile_stairs_down.png": {
@@ -169,6 +174,17 @@ var gameAssets = {
         "tile" : 256,
         "tileh": 128,
         "map": {"tile_spiketips": [0, 0]}
+      },
+
+      "assets/images/props_scroll.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"props_scroll": [0, 0]}
+      },
+      "assets/images/props_key.png": {
+        "tile" : 256,
+        "tileh": 128,
+        "map": {"props_key": [0, 0]}
       },
 
       //wall
