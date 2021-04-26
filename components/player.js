@@ -23,6 +23,9 @@ Crafty.c("Player", {
 				direction = {x : 0, y : -1};
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
 				direction = {x : 0, y : 1};
+      } else if(e.key == Crafty.keys.SPACE) {
+        this.actionAnythingInRange();
+        return;
       }
       this.undoLastMove = this.invertDirection(direction);
       Crafty.trigger("PlayerMovement", direction);
@@ -86,7 +89,6 @@ Crafty.c("Player", {
       isos.place(this, (this.posx), (this.posy), 1);
       return;
     });
-
     
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");
@@ -102,5 +104,9 @@ Crafty.c("Player", {
 
   invertDirection : function (direction) {
     return {x : -1* direction.x, y: -1 * direction.y}
+  },
+
+  actionAnythingInRange : function () {
+    Crafty.trigger("PLAYER_TRIGGERED")
   }
 })

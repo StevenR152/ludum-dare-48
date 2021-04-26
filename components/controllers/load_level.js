@@ -45,22 +45,13 @@ Crafty.c("LoadLevel", {
 			});
 		}
 
-		// var button = Crafty.e("Button");
-		// isos.place(button, player.posx+1, player.posy+1, 0);
-		// var tileSpikes1 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes1, player.posx, player.posy, 0);
-		// button.attachLink(tileSpikes1, tileSpikes1.disable);
-		// var tileSpikes4 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes4, player.posx-1, player.posy, 0);
-		// button.attachLink(tileSpikes4, tileSpikes4.disable);		
-		// var tileSpikes5 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes5, player.posx-1, player.posy+1, 0);
-		// button.attachLink(tileSpikes5, tileSpikes4.disable);
-
+		var lever = Crafty.e("Lever");
+		isos.place(lever, player.posx+1, player.posy, 0);
+		var tileSpikes2 = Crafty.e("TileSpikes");
+		isos.place(tileSpikes2, player.posx, player.posy+1, 0);
+		lever.attachLink(tileSpikes2, tileSpikes2.disable);
+    	lever.z = 121;
 		// var button2 = Crafty.e("Button");
-		// isos.place(button2, player.posx+1, player.posy, 0);
-		// var tileSpikes2 = Crafty.e("TileSpikes");
-		// isos.place(tileSpikes2, player.posx, player.posy+1, 0);
 		// button2.attachLink(tileSpikes2, tileSpikes2.disable);
 		// button2.attachLink(tileSpikes4, tileSpikes4.enable);
 		// var button3 = Crafty.e("Button");

@@ -192,7 +192,21 @@ var gameAssets = {
         "tileh": 128,
         "map": {"tile_spiketips": [0, 0]}
       },
-
+      "assets/images/object_leverleft.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_left": [0, 0]}
+      },
+      "assets/images/object_levermiddle.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_middle": [0, 0]}
+      },
+      "assets/images/object_leverright.png": {
+        "tile" : 256,
+        "tileh": 256,
+        "map": {"lever_right": [0, 0]}
+      },
       "assets/images/props_scroll.png": {
         "tile" : 256,
         "tileh": 128,
