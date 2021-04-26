@@ -8,6 +8,8 @@ var footstep_sounds = [
 	"foot_1", "foot_2", "foot_3", "foot_4", "foot_5", "foot_6"
 ];
 Crafty.audio.setChannels(20);
+var totalSeconds;
+var timer;
 
 var TILE_HEIGHT = 128;
 var TILE_WIDTH = 256;
