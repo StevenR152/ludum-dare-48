@@ -1,5 +1,5 @@
 Crafty.c("LoadLevel", {
-	loadLevel: function(level, map) {
+	loadLevel: function(level, map, direction_down) {
 		audioController.loadTrack("stairsSound");
 		audioController.playTrack("stairsSound", 1, 0.3);
 		Crafty("Destroyable").each(function(i) {
@@ -23,13 +23,22 @@ Crafty.c("LoadLevel", {
 		// this.tryPlaceBoundary(map[level],0,c,0)
 		// this.tryPlaceBoundary(map[level],0,0,r)
 		var spawnpoint = {};
-		if(level === 0) {
+		if (level === 0 && direction_down === true) {
 			spawnpoint = {x : 1, y : 5}; // Initial map start.
+		} else if (direction_down === false) {
+			var levelStartStairs = Crafty("stairs");
+			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
+			if (level % 2 == 0) {
+				spawnpoint.x -= 1;
+			}
+			else {spawnpoint.y -= 1;}
 		} else {
 			var levelStartStairs = Crafty("stairs_up");
 			var spawnpoint = isos.px2pos(levelStartStairs.x+128, levelStartStairs.y+128);
 			spawnpoint.x += 1;
 		}
+
+
 
 		var player = Crafty.e('Player');
 		makeCameraTrackEntity(player, 75);

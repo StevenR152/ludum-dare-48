@@ -11,7 +11,7 @@ Crafty.defineScene("Game", function() {
 
 	map = Crafty.e("LevelGenerator").generate_levels();
 	levelLoader = Crafty.e("LoadLevel");
-	levelLoader.loadLevel(current_level, map, isos);
+	levelLoader.loadLevel(current_level, map, true);
 	totalSeconds = 0;
 	timer = Crafty.e("HudCounter");
 
@@ -20,7 +20,7 @@ Crafty.defineScene("Game", function() {
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
-			levelLoader.loadLevel(current_level, map);
+			levelLoader.loadLevel(current_level, map, true);
 			Crafty.trigger("DownFloorMessage");
 		}
 	});
@@ -32,12 +32,12 @@ Crafty.defineScene("Game", function() {
 
 // TODO if you uncomment this, you'll need to pass the previous level number into the load_level function, and check if we're going up or down levels
 // once you determine that you can switch if we look for the up-stairs or down-stairs
-	// Crafty.bind('GoUpAFloor', function(e) {
-	// 	if (current_level > 0) {
-	// 		current_level -= 1;
-	// 		levelLoader.loadLevel(current_level, map);
-	// 	}
-	// });
+	Crafty.bind('GoUpAFloor', function(e) {
+		if (current_level > 0) {
+			current_level -= 1;
+			levelLoader.loadLevel(current_level, map, false);
+		}
+	});
 
 	//current level label
 	Crafty.e("Level")
