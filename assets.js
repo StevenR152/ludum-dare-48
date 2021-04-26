@@ -219,21 +219,12 @@ var gameAssets = {
       },
 
       //wall
-      "assets/images/leftwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallleft": [0, 0]}
-      },
-      "assets/images/rightwall_decorated.png": {
-        "tile" : 256,
-        "tileh": 256,
-        "map": {"wallright": [0, 0]}
-      },
-      "assets/images/rightwall_decorated_corner.png": {
+      "assets/images/object_concreteblock_lower.png": {
         "tile" : 256,
         "tileh": 256,
         "map": {"wallcenter": [0, 0]}
       },
+     
       "assets/images/player.png": {
         "tile" : 256,
         "tileh": 480,
