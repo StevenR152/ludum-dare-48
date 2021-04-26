@@ -301,6 +301,11 @@ var gameAssets = {
      },
 
       //end screen
+      "assets/images/end_screen.png": {
+        "tile" : 900,
+        "tileh": 600,
+        "map": {"end_screen": [0, 0]}
+      },
       "assets/images/play_mouse.png": {
         "tile" : 339,
         "tileh": 130,
