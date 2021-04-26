@@ -12,17 +12,17 @@ var MAX_STAIRS = 1;
 var levels_size = [5,9,13,17,25,37];
 
 // Default floor tiles
-var basic_tile_1 = 'Destroyable, 2D, DOM, Color, basic_tile_1';
-var basic_tile_2 = 'Destroyable, 2D, DOM, Color, basic_tile_2';
-var tile_leave1 = 'Destroyable, 2D, DOM, Color, tile_leaves_1';
-var tile_leave2 = 'Destroyable, 2D, DOM, Color, tile_leaves_2';
-var tile_rocks_1 = 'Destroyable, 2D, DOM, Color, tile_rocks_1';
-var tile_rocks_2 = 'Destroyable, 2D, DOM, Color, tile_rocks_2';
-var tile_rocks_3 = 'Destroyable, 2D, DOM, Color, tile_rocks_3';
-var tile_rocks_4 = 'Destroyable, 2D, DOM, Color, tile_rocks_4';
-var tile_rocks_5 = 'Destroyable, 2D, DOM, Color, tile_rocks_5';
-var tile_moss = 'Destroyable, 2D, DOM, Color, tile_moss';
-var tile_cracked = 'Destroyable, 2D, DOM, Color, tile_cracked_1';
+var basic_tile_1 = 'Tile, Destroyable, 2D, DOM, Color, basic_tile_1';
+var basic_tile_2 = 'Tile, Destroyable, 2D, DOM, Color, basic_tile_2';
+var tile_leave1 = 'Tile, Destroyable, 2D, DOM, Color, tile_leaves_1';
+var tile_leave2 = 'Tile, Destroyable, 2D, DOM, Color, tile_leaves_2';
+var tile_rocks_1 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_1';
+var tile_rocks_2 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_2';
+var tile_rocks_3 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_3';
+var tile_rocks_4 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_4';
+var tile_rocks_5 = 'Tile, Destroyable, 2D, DOM, Color, tile_rocks_5';
+var tile_moss = 'Tile, Destroyable, 2D, DOM, Color, tile_moss';
+var tile_cracked = 'Tile, Destroyable, 2D, DOM, Color, tile_cracked_1';
 
 // Stairs
 var stairs = 'Destroyable, 2D, DOM, Color, stairs';
@@ -80,9 +80,9 @@ var randomBlockingObjects = [
 	vase,
 	vase,
 	vase,
-	pillar1,
-	pillar1,
-	pillar1,
+	pillarTall,
+	pillarTall,
+	pillarTall,
 	chest,
 	vase2,
 	vase2,
@@ -94,10 +94,6 @@ var randomBlockingObjects = [
 	vase3,
 	vase3,
 	vase3,
-	pillarTall,
-	pillarTall,
-	pillarTall,
-	pillarMarble
 ]
 
 var max_puzzle_width = 9;

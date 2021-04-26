@@ -47,7 +47,7 @@ Crafty.c("TileSpikes", {
     this.activeDelay = null;
     this.isEnabled = true; // will spike you if true.
 
-    this.addComponent("2D, Destroyable, DOM, Color, Delay, Keyboard, Collision, tile_spiketips");
+    this.addComponent("2D, Tile, Destroyable, DOM, Color, Delay, Keyboard, Collision, tile_spiketips");
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
   
@@ -142,7 +142,7 @@ Crafty.c("CentralHitbox", {
 
 Crafty.c("Button", {
   init: function() {
-    this.addComponent("2D, Destroyable, Delay, Collision, DOM, Color, Keyboard, LinkMechanism, button_unpressed");
+    this.addComponent("2D, Tile, Destroyable, Delay, Collision, DOM, Color, Keyboard, LinkMechanism, button_unpressed");
     this.hitbox = Crafty.e("CentralHitbox");
     this.attach(this.hitbox);
 

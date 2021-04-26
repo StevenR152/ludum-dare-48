@@ -87,10 +87,16 @@ Crafty.c("LoadLevel", {
 	        // as we're grouping 2 layers into one for tiles and objects
 	        // only every even number is a "real" layer of the pyramid
 	        var tileEntity = Crafty.e(tile);
+	        var layer = l; // assume the level we're on
+	        // override if the entity is a floor tile.
+	        if(tileEntity.has("Tile")) {
+	        	layer = 0;
+	        }
+
 	        if (l % 2 != 0) {
-	          isos.place(tileEntity,r+1,c+1,l);
+	          isos.place(tileEntity,r+1,c+1,layer);
 	        } else {
-	          isos.place(tileEntity,r,c,l);
+	          isos.place(tileEntity,r,c,layer);
 	        }
 
 	        // If the tile contains a triggerable/triggered item, link them.
