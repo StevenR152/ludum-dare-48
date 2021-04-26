@@ -1,10 +1,10 @@
 //TODO have a grid of different sized stair puzzles for randomness - Y=0
 var simple_puzzle_xwall_stair = [
-  [12, 00, 08, 00, 12],
-  [12, 00, 00, 00, 12],
-  [12, 21, 21, 21, 12],
-  [12, 00, 00, 00, 12],
-  [00, 00, 20, 00, 00],
+  [12, 0000, 0008, 0000, 12],
+  [12, 0000, 0000, 0000, 12],
+  [12, 2101, 2101, 2102, 12],
+  [12, 0000, 0000, 0000, 12],
+  [00, 0000, 2001, 2002, 00],
 ];
 
 //TODO have a grid of different sized stair puzzles for randomness - X=0

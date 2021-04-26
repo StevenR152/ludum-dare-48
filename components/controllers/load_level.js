@@ -13,6 +13,19 @@ Crafty.c("LoadLevel", {
 		}
 		isos.place(player, player.posx, player.posy, 1);
 
+		// link buttons to their associated triggered item.
+		// This loops over all Buttons that have been Linked to something,
+		// finds those things its linked to, and then attaches a link calling action.
+		Crafty("Button Linked").each(function (index) {
+			var button = Crafty(buttonsToLink[index])
+			var linkNumber = button.getLinkedNumber();
+			var ItemsLinkedTo = Crafty("Linked LinkedTo" + linkNumber);
+			ItemsLinkedTo.each(function (index) {
+				entityToLink = Crafty(ItemsLinkedTo[index])
+				button.attachLink(entityToLink, entityToLink.actionCallback);
+			})
+		});
+
 		// var button = Crafty.e("Button");
 		// isos.place(button, player.posx+1, player.posy+1, 0);
 		// var tileSpikes1 = Crafty.e("TileSpikes");
@@ -44,15 +57,42 @@ Crafty.c("LoadLevel", {
     placeGroundTile : function (level, l, c, r) {
     	var mapPosition = map[level][l][c][r];
 		var tile = tileMap[mapPosition];
+
+		var tileNumber = mapPosition;
+		var linkingElement = null;
+		// For composite position like 2101 split it into 21 and 01 as the 
+		// tile number being 21 and the linking being 01.
+		if(mapPosition > 1000) {
+			tileNumber = Math.floor(mapPosition / 100)
+			linkingElement = mapPosition - tileNumber*100;
+			var tile = tileMap[tileNumber];
+			console.log(tileNumber, linkingElement)
+		}
+
 		if(typeof tile !== 'undefined') {
 	        // as we're grouping 2 layers into one for tiles and objects
 	        // only every even number is a "real" layer of the pyramid
+	        var tileEntity = Crafty.e(tile);
 	        if (l % 2 != 0) {
-	          isos.place(Crafty.e(tile),r+1,c+1,l);
+	          isos.place(tileEntity,r+1,c+1,l);
+	        } else {
+	          isos.place(tileEntity,r,c,l);
 	        }
-	        else {
-	          isos.place(Crafty.e(tile),r,c,l);
+
+	        // If the tile contains a triggerable/triggered item, link them.
+	        if(linkingElement !== null) {
+	        	// Two components, one to state its linked, 
+	        	// the other to allow us to look them up later with Crafty(LinkedToXXX)
+	        	tileEntity.addComponent("Linked");
+	        	tileEntity.addComponent("LinkedTo"+linkingElement);
+	        	tileEntity.linkedTo(linkingElement);
+	        	// TODO maybe his map can be decoupled into a Actionable component
+	        	// for now theres only TileSpikes.
+	        	if(tileEntity.has("TileSpikes")) {
+	        		tileEntity.bindAction(tileEntity.disable)
+	        	}
 	        }
+
 		}
     },
 
