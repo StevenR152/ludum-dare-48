@@ -8,11 +8,12 @@ Crafty.defineScene("End", function() {
     var playGameButton = Crafty.e("2D, DOM, Image, Mouse, play_button")
         .attr({x: END_PLAY_BUTTON_XPOS, y: GAME_SCREEN_HEIGHT/2-100, w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         .bind('Click', function(MouseEvent) {
-          if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
-              audioController.stopTrack();
-              audioController.playTrack("bgAudio", -1, 0.10);
-          }
-            Crafty.scene('Game');
+            if (Crafty.audio.isPlaying("bgAudio") == false && audioController.muted == false) {
+                audioController.stopTrack();
+                audioController.playTrack("bgAudio", -1, 0.10);
+            }
+            
+            Crafty.e("GameController").resetGame();
         })
         .bind('MouseOver', function(e) {
             this.removeComponent("play_button").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
