@@ -1,3 +1,27 @@
+function place_collectible(puzzle_flag_map, temp_objects_map, level) {
+	// place a random collectible from the into a random safe space INSIDE a puzzle
+	var item = items_to_be_placed[~~(items_to_be_placed.length * Math.random())];
+console.log(item);
+	//find a puzzle location
+	while (true) {
+		random_row = Math.floor(Math.random() * levels_size[level]);
+		random_col = Math.floor(Math.random() * levels_size[level]);
+		if (puzzle_flag_map[random_row][random_col] === 1
+			&& temp_objects_map[random_row][random_col] === 0) {
+				temp_objects_map[random_row][random_col] = item;
+				console.log("placed", level, random_row, random_col)
+				console.log(temp_objects_map);
+
+				break;
+			}
+	}
+
+	//in this puzzle find a 0 tile in objects map
+
+
+	return puzzle_flag_map, temp_objects_map;
+}
+
 Crafty.c("LevelGenerator", {
 	// this components will generate all the levels of the pyramid on every play
 	generate_levels: function() {
@@ -55,8 +79,6 @@ Crafty.c("LevelGenerator", {
 			}
 			var next_level_stairs = [];
 
-			console.log(puzzle_flag_map);
-
 			// here we will generate and place one stair puzzle into the object map
 			if (level % 2 == 0) { // every even level will have stairs on the right corner
 				// make a stairs puzzle at y=0, x = level max
@@ -84,7 +106,7 @@ Crafty.c("LevelGenerator", {
 						var count = 0;
 						for (var i=a; i < levels_size[level]; i++){
 
-							if (puzzle_flag_map[i][b] === 1) {
+							if (puzzle_flag_map[i][b] !== 0) {
 								//there's already a "puzzle piece" here
 								break;
 							}
@@ -95,7 +117,7 @@ Crafty.c("LevelGenerator", {
 						var count = 0;
 						for (var i=b; i < levels_size[level]; i++){
 
-							if (puzzle_flag_map[a][i] === 1) {
+							if (puzzle_flag_map[a][i] !== 0) {
 								//there's already a "puzzle piece" here
 								break;
 							}
@@ -127,8 +149,15 @@ Crafty.c("LevelGenerator", {
 					}
 				}
 			}
-			console.log(puzzle_flag_map);
+
 			// put this level together into the map
+
+			if (items_to_be_placed.length === levels_size.length - level) {
+				//then we must place something NOW
+				puzzle_flag_map, temp_objects_map = place_collectible(puzzle_flag_map, temp_objects_map, level);
+			}
+
+
 			map.push([temp_tiles_map,temp_objects_map]);
 	    }
 

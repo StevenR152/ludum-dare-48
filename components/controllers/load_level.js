@@ -143,13 +143,13 @@ Crafty.c("LoadLevel", {
     		wall = Crafty.e("WallRight");
 	    	isos.place(wall,r,c,0);
 		    wall.generateTorch();
-	    } 
+	    }
 
 	    if(l == 0 && r == 0 && c != 0){
     		wall = Crafty.e("WallLeft");
 	    	isos.place(wall,r,c,0);
 		    wall.generateTorch();
-	    } 
+	    }
 
 	    if (l == 0 && r == 0 && c == 0) {
 	    	wall = Crafty.e("WallCenter");

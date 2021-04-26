@@ -19,7 +19,11 @@ function place_puzzle(puz_width, puz_height, startcol, startrow, object_map, sta
       for (var col=0; col < puz_width; col++) {
         var this_col = startcol + col;
         object_map[this_row][this_col] = puzzle_map[row][col];
-        puzzle_flag_map[this_row][this_col] = 1;
+        if (stairs === true) {
+          puzzle_flag_map[this_row][this_col] = 2;
+        } else {
+          puzzle_flag_map[this_row][this_col] = 1;
+        }
         }
       }
     }

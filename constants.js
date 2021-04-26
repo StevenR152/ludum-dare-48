@@ -42,7 +42,7 @@ var chest = 'Destroyable, 2D, DOM, Color, chest';
 
 // Other
 var guard = 'Destroyable, 2D, DOM, Color, guard';
-var key = 'Destroyable, 2D, DOM, Color, key'
+var item_key = 'Destroyable, 2D, DOM, Color, props_key';
 
 // Interactive Objects
 var button = 'Button';
@@ -136,9 +136,8 @@ var randomBlockingObjects = [
 
 var items_to_be_placed =
 [
-	key
+	38 //key
 ];
-
 
 var max_puzzle_width = 9;
 var max_puzzle_height = 9;
@@ -153,7 +152,8 @@ var tileMap = {
 		9 : stairs_up,
 		// 12's will be randomly picked as blocking tiles.
 		20 : button,
-		21 : spikes
+		21 : spikes,
+		38 : item_key
 }
 
 //play button
