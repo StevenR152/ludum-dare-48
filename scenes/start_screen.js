@@ -29,9 +29,6 @@ Crafty.defineScene("Start", function() {
         .initClick(MUSIC_BUTTON_XPOS, MUSIC_BUTTON_YPOS, MUSIC_BUTTON_WIDTH, MUSIC_BUTTON_HEIGHT)
 
     //texts
-    var title = Crafty.e("2D, DOM, GameTitle")
-        .text("Ludum dare 48")
-        .attr({x: GAME_SCREEN_WIDTH/2-80, y: 80});
 
     var title = Crafty.e("CreditsText")
         .text("Game Art by ")

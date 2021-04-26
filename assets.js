@@ -285,8 +285,8 @@ var gameAssets = {
          "map": {"play_mouse": [0, 0]}
       },
       "assets/images/start_screen.png": {
-         "tile" : 2250,
-         "tileh": 1500,
+         "tile" : 900,
+         "tileh": 600,
          "map": {"start_screen": [0, 0]}
       },
       "assets/images/music_on.png": {
