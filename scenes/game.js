@@ -10,7 +10,7 @@ Crafty.defineScene("Game", function() {
 	// Crafty.viewport.scale(0.4);
 
 	map = Crafty.e("LevelGenerator").generate_levels();
-	levelLoader = Crafty.e("LoadLevel");
+	var levelLoader = Crafty.e("LoadLevel");
 	levelLoader.loadLevel(current_level, map, true);
 	totalSeconds = 0;
 	timer = Crafty.e("HudCounter");

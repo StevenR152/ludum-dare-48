@@ -38,13 +38,13 @@ Crafty.defineScene("End", function() {
         .text("Collected")
         .attr({x: END_PLAY_BUTTON_XPOS - 30, y: END_PLAY_BUTTON_YPOS + 90});
 
-    if(!has_cat)
+    if(has_cat)
         Crafty.e("item_cat").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 130, w: PROPS_WIDTH, h: PROPS_HEIGHT})
 
-    if(!has_key)
+    if(has_key)
         Crafty.e("item_key").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 170, w: PROPS_WIDTH, h: PROPS_HEIGHT})
 
-    if(!passed_guard)
+    if(passed_guard)
         Crafty.e("item_scroll").attr({x: END_PLAY_BUTTON_XPOS + 40, y: END_PLAY_BUTTON_YPOS + 210, w: PROPS_WIDTH, h: PROPS_HEIGHT})
 
 
