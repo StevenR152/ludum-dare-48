@@ -18,13 +18,13 @@ Crafty.defineScene("End", function() {
         .bind('MouseOver', function(e) {
             this.removeComponent("play_again").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
-            this.addComponent("play_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
+            this.addComponent("play_again_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
         })
         .bind('MouseOut', function(e) {
             this.addComponent("play_again").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
-            this.removeComponent("play_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
+            this.removeComponent("play_again_mouse").attr({x: END_PLAY_BUTTON_XPOS, y: END_PLAY_BUTTON_YPOS,
                 w: PLAY_BUTTON_WIDTH, h: PLAY_BUTTON_HEIGHT})
          });
 
@@ -50,8 +50,8 @@ Crafty.defineScene("End", function() {
 
 
     var time_taken = Crafty.e("Score")
-        .text("Time Elapsed: " + timer.text)
-        .attr({x: 330, y: GAME_SCREEN_HEIGHT-240});
+        .text("Time Spent Exploring: " + timer.text)
+        .attr({x: END_PLAY_BUTTON_XPOS - 80, y: GAME_SCREEN_HEIGHT-240, w: 300});
 
 
 });

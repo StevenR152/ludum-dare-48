@@ -319,10 +319,15 @@ var gameAssets = {
      },
 
       //end screen
-      "assets/images/play_again.png": {
+      "assets/images/playagain_button.png": {
         "tile" : 339,
         "tileh": 130,
          "map": {"play_again": [0, 0]}
+      },
+      "assets/images/playagain_mouse.png": {
+        "tile" : 339,
+        "tileh": 130,
+         "map": {"play_again_mouse": [0, 0]}
       },
       "assets/images/end_screen.png": {
         "tile" : 900,
