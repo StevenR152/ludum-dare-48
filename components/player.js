@@ -5,7 +5,7 @@ Crafty.c("Player", {
     this.isInputFrozen = false;
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
-    this.addComponent("2D, DOM, Color, Collision, Keyboard, player");
+    this.addComponent("2D, DOM, Color, Distroyable, Collision, Keyboard, player");
     this.attr({
       posx : 1,
       posy : 5,
@@ -36,6 +36,57 @@ Crafty.c("Player", {
     this.bind("PLAYER_FROZEN", function () {
       this.isInputFrozen = true;
     })
+
+    this.bind('PlayerMovement', function(e) { //this probably can stay inside the game component but we could also extract it later
+        var newy = this.posy+e.y-1;
+        var newx = this.posx+e.x-1;
+
+      // walked outside of map, don't allow it.
+        if(newy < 0 || newx < 0 || newy >= map[current_level][0].length || newx >= map[current_level][0][newy].length) {
+          return; 
+      }
+        
+      // stairs down
+      if (map[current_level][1][newy][newx] === 8) {
+        if(newy < 0 || newx <= 0 || newy >= map[current_level+1][0].length || newx >= map[current_level+1][0][newy].length) {
+          this.posx += e.x;
+          this.posy += e.y + 1;
+        }
+        else {
+          this.posx += e.x + 1;
+          this.posy += e.y;
+        }
+        Crafty.trigger("GoDownAFloor", {});
+        return;
+      }
+
+      // Stairs up
+      if (map[current_level][1][newy][newx] === 9) {
+        if(newy < 0 || newx <= 0 || newy >= map[current_level-1][0].length || newx >= map[current_level-1][0][newy].length) {
+          this.posx += e.x +1 ;
+          this.posy += e.y;
+        }
+        else {
+          this.posx += e.x -1 ;
+          this.posy += e.y;
+        }
+        Crafty.trigger("GoUpAFloor", {});
+        return;
+      }
+
+      // Pillar and other solid objects
+      if (map[current_level][1][newy][newx] > 10 &&
+          map[current_level][1][newy][newx] < 20) {
+        return;
+      }
+
+      // if we haven't returned already, we must be able to move there.
+      this.posx += e.x;
+      this.posy += e.y;
+      isos.place(this, (this.posx), (this.posy), 1);
+      return;
+    });
+
     
     // ------- Hitbox under the Mummys feet ------- //
     this.hitbox = Crafty.e("2D, Color, DOM, Collision, PlayerHitbox");

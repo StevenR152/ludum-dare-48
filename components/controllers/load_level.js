@@ -1,5 +1,5 @@
 Crafty.c("LoadLevel", {
-	loadLevel: function(player, level, map) {
+	loadLevel: function(level, map) {
 		Crafty("Destroyable").each(function(i) {
       		this.destroy();
 		});
@@ -11,7 +11,12 @@ Crafty.c("LoadLevel", {
 				}
 			}
 		}
-		isos.place(player, player.posx, player.posy, 1);
+
+		var player = Crafty.e('Player');
+		makeCameraTrackEntity(player, 75);
+		Crafty.viewport.scale(0.4);
+		isos.place(player, 4, 4, 1);
+
 
 		// link buttons to their associated triggered item.
 		// This loops over all Buttons that have been Linked to something,
