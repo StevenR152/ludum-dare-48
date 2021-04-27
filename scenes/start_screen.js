@@ -12,7 +12,7 @@ Crafty.defineScene("Start", function() {
                 audioController.stopTrack();
                 audioController.playTrack("bgAudio", -1, 0.1);
             }
-            
+
             gameController.resetGame();
         })
         .bind('MouseOver', function(e) {
@@ -32,14 +32,22 @@ Crafty.defineScene("Start", function() {
     //texts
 
     var title = Crafty.e("CreditsText")
-        .text("Game Art by ")
-        .attr({x: 50, y: GAME_SCREEN_HEIGHT-37});
+        .text("Game Art by Adele Illustration")
+        .attr({x: 230, y: GAME_SCREEN_HEIGHT-60});
 
     var title = Crafty.e("CreditsText")
-        .text("Game Dev by ")
-        .attr({x: 350, y: GAME_SCREEN_HEIGHT-37});
+        .text("3D modelling by Mr. Cheeseball")
+        .attr({x: 480, y: GAME_SCREEN_HEIGHT-60});
 
     var title = Crafty.e("CreditsText")
-        .text("Game Dev by ")
-        .attr({x: 650, y: GAME_SCREEN_HEIGHT-37});
+        .text("Game Dev by Joshua Pearson")
+        .attr({x: 80, y: GAME_SCREEN_HEIGHT-23});
+
+    var title = Crafty.e("CreditsText")
+        .text("Game Dev by Steven Rutherford")
+        .attr({x: 330, y: GAME_SCREEN_HEIGHT-23});
+
+    var title = Crafty.e("CreditsText")
+        .text("Sound and Music by Jakob Eriksson")
+        .attr({x: 580, y: GAME_SCREEN_HEIGHT-23});
 });
