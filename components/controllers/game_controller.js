@@ -14,6 +14,27 @@ Crafty.c("GameController", {
         	38, 39, 40
         ];
 
+        if(!cat) {
+            cat = Crafty.e("item_cat")
+            .attr({x: GAME_MUSIC_BUTTON_XPOS + 100, y: GAME_MUSIC_BUTTON_YPOS, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
+            .fixedPosition(GAME_MUSIC_BUTTON_XPOS + 100, GAME_MUSIC_BUTTON_YPOS)
+        }
+
+        if(!key) {
+            key = Crafty.e("item_key")
+            .attr({x: GAME_MUSIC_BUTTON_XPOS + 220, y: GAME_MUSIC_BUTTON_YPOS - 10, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
+            .fixedPosition(GAME_MUSIC_BUTTON_XPOS + 220, GAME_MUSIC_BUTTON_YPOS - 10)
+        }
+
+        if(!hud_scroll) {
+            hud_scroll = Crafty.e("item_scroll")
+            .attr({x: GAME_MUSIC_BUTTON_XPOS + 320, y: GAME_MUSIC_BUTTON_YPOS - 10, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
+            .fixedPosition(GAME_MUSIC_BUTTON_XPOS + 320, GAME_MUSIC_BUTTON_YPOS - 10)
+        }
+
+        cat.setAlpha(0.4);
+        key.setAlpha(0.4);
+        hud_scroll.setAlpha(0.4);
         Crafty.scene('Game');
     }
 });

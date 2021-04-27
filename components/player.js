@@ -146,21 +146,24 @@ Crafty.c("Player", {
 				// you got a key
 				Crafty.trigger("KeyCollected", {});
 				audioController.playTrack("key", 1, 0.6);
-				has_key = true;
+        has_key = true;
+        key.setAlpha(1);
 			}
 
 			if (map[current_level][1][newy][newx] === 39) {
 				// you got a scroll
 				Crafty.trigger("ScrollCollected", {});
 				audioController.playTrack("scroll", 1, 0.6);
-				has_scroll = true;
+        has_scroll = true;
+        hud_scroll.setAlpha(1);
 			}
 
 			if (map[current_level][1][newy][newx] === 40) {
 				// you got a cat
 				Crafty.trigger("FoundCat", {});
 				audioController.playTrack("cat", 1, 0.6);
-				has_cat = true;
+        has_cat = true;
+        cat.setAlpha(1);
 			}
 
 			if (map[current_level][1][newy][newx] === 55) {
