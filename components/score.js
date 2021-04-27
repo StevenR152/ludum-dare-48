@@ -1,6 +1,6 @@
 Crafty.c("Score", {
 	init: function() {
-        this.requires('2D, DOM, Text, HUD')
+        this.requires('2D, DOM, Text')
         this.attr({w: 200, h: 100, x: -60, y: -35})
         this.z = 1000;
         this.textAlign("center");

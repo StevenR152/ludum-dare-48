@@ -26,13 +26,7 @@ Crafty.defineScene("Game", function() {
 	totalSeconds = 0;
 	timer = Crafty.e("HudCounter")
 
-	//todo: make it work
-	// Crafty.e('2D, DOM, Text, HUD')
-    //     .attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_SCREEN_HEIGHT * 1.5 - 100, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
-	// 	.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_SCREEN_HEIGHT * 1.5 - 100)
-	// 	.unselectable()
-    //     .css('text-shadow', '3px 3px 3px black')
-	// 	.text("Time Elapsed: " + timer.text);
+	
 
 	Crafty.e("Background").place(-6000,-6000,12000,12000)
 
@@ -64,5 +58,11 @@ Crafty.defineScene("Game", function() {
 		.fixedPosition(GAME_SCREEN_WIDTH * 2.8, GAME_SCREEN_HEIGHT * 0.15)
 		.text("Level: " + (current_level + 1) + " of " + map.length)
 
+		//todo: make it work
+	timetext = Crafty.e('2D, DOM, Text, Delay, HUD')
+		.attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_SCREEN_HEIGHT * 1.5 - 100, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
+		.fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_SCREEN_HEIGHT * 2.5 - 100)
+		.textFont({ size: '27px', weight: 'bold', family : "Garamond"})
+	
 
 });

@@ -25,6 +25,7 @@ Crafty.c("HudCounter", {
         gametime = ("0" + minutes).slice(-2) + ":" + ("0" + seconds).slice(-2)
         //update time text
         this.text = gametime;
+        timetext.text(gametime)
     },
 
     setCountdownOverAction : function (func) {
@@ -37,6 +38,5 @@ Crafty.c("HudCounter", {
 
     getTimeText: function () {
         return this.text;
-        console.log(this.text);
     }
 });
