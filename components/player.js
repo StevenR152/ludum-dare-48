@@ -100,6 +100,8 @@ Crafty.c("Player", {
 			if (this.player_moved === true) {
 				Crafty.viewport.pan(TILE_WIDTH/2*this.movement_coords[0], TILE_HEIGHT/2*this.movement_coords[1], 500);
 				this.player_moved = false;
+				// TODO needs to account for fast moving players
+				// TODO needs to account for edge cases (spikes, guard cat)
 			}
 		});
 
