@@ -161,7 +161,7 @@ Crafty.c("Button", {
       if(typeof this.activeDelay !== "undefined") {
         this.cancelDelay(this.activeDelay);
       }
-
+      gtag('event', 'button_pressed', {'button_pressed': 1});
       this.removeComponent("button_unpressed");
       this.addComponent("button_pressed");
 

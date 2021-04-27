@@ -92,6 +92,7 @@ Crafty.c("Player", {
     });
 
     this.bind("PLAYER_STOOD_SPIKE", function () {
+      gtag('event', 'spike_hit', {'spike_hit': 1});
       Crafty.trigger("PlayerMovement", this.undoLastMove);
       this.isInputFrozen = false;
     });
@@ -145,6 +146,7 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 38) {
 				// you got a key
 				Crafty.trigger("KeyCollected", {});
+        gtag('event', 'key_collected', {'key_collected': 1});
 				audioController.playTrack("key", 1, 0.6);
         has_key = true;
         key.setAlpha(1);
@@ -153,6 +155,7 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 39) {
 				// you got a scroll
 				Crafty.trigger("ScrollCollected", {});
+        gtag('event', 'scroll_collected', {'scroll_collected': 1});
 				audioController.playTrack("scroll", 1, 0.6);
         has_scroll = true;
         hud_scroll.setAlpha(1);
@@ -161,6 +164,7 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 40) {
 				// you got a cat
 				Crafty.trigger("FoundCat", {});
+        gtag('event', 'cat_collected', {'cat_collected': 1});
 				audioController.playTrack("cat", 1, 0.6);
         has_cat = true;
         cat.setAlpha(1);
@@ -170,10 +174,12 @@ Crafty.c("Player", {
 				// you found the guard
 				if (has_scroll === true && passed_guard === false) {
 					passed_guard = true;
+          gtag('event', 'guard_yes', {'guard_yes': 1});
 					Crafty.trigger("YesScrollGuard", {});
 					return;
 				}
 				else if (passed_guard === false) {
+          gtag('event', 'guard_no', {'guard_no': 1});
 					Crafty.trigger("NoScrollGuard", {});
 					return;
 				} else {
