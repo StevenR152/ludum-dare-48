@@ -13,6 +13,7 @@ Crafty.c("GameController", {
         [
         	38, 39, 40
         ];
+        map = [];
 
         if(!cat) {
             cat = Crafty.e("item_cat")
