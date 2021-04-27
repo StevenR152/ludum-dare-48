@@ -36,7 +36,7 @@ Crafty.defineScene("Start", function() {
         .attr({x: 230, y: GAME_SCREEN_HEIGHT-60});
 
     var title = Crafty.e("CreditsText")
-        .text("3D modelling by Mr. Cheeseball")
+        .text("3D modelling by Andreas Schule")
         .attr({x: 480, y: GAME_SCREEN_HEIGHT-60});
 
     var title = Crafty.e("CreditsText")
