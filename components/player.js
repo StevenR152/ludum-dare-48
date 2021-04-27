@@ -146,6 +146,8 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 38) {
 				// you got a key
 				Crafty.trigger("KeyCollected", {});
+				audioController.loadTrack("keySound");
+				audioController.playTrack("keySound", 1, 0.6);
         gtag('event', 'key_collected', {'key_collected': 1});
 				audioController.playTrack("key", 1, 0.6);
         has_key = true;
@@ -155,6 +157,7 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 39) {
 				// you got a scroll
 				Crafty.trigger("ScrollCollected", {});
+				audioController.playTrack("scrollSound", 1, 0.6);
         gtag('event', 'scroll_collected', {'scroll_collected': 1});
 				audioController.playTrack("scroll", 1, 0.6);
         has_scroll = true;
@@ -164,6 +167,7 @@ Crafty.c("Player", {
 			if (map[current_level][1][newy][newx] === 40) {
 				// you got a cat
 				Crafty.trigger("FoundCat", {});
+				audioController.playTrack("catSound", 1, 0.6);
         gtag('event', 'cat_collected', {'cat_collected': 1});
 				audioController.playTrack("cat", 1, 0.6);
         has_cat = true;

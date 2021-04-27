@@ -1,6 +1,6 @@
 Crafty.c("LoadLevel", {
 	loadLevel: function(level, map, direction_down) {
-		console.log(level, direction_down);
+		// console.log(level, direction_down);
 		audioController.loadTrack("stairsSound");
 		audioController.playTrack("stairsSound", 1, 0.3);
 		Crafty("Destroyable").each(function(i) {
