@@ -1,7 +1,6 @@
 Crafty.c("HudCollectibles", {
     
     init: function() {
-        console.log("ich bin hier nicht")
         this.cat = Crafty.e("item_cat")
             .attr({x: GAME_MUSIC_BUTTON_XPOS, y: GAME_MUSIC_BUTTON_YPOS, w: PROPS_WIDTH * 2, h: PROPS_HEIGHT * 2})
             .fixedPosition(GAME_MUSIC_BUTTON_XPOS, GAME_MUSIC_BUTTON_YPOS)
