@@ -33,6 +33,7 @@ Crafty.defineScene("Game", function() {
 	Crafty.bind('GoDownAFloor', function(e) {
 		if (current_level < levels_size.length) {
 			current_level += 1;
+			gtag('event', 'level_complete', {'level_complete': 1});
 			levelLoader.loadLevel(current_level, map, true);
 			Crafty.trigger("DownFloorMessage");
 		}
@@ -40,6 +41,7 @@ Crafty.defineScene("Game", function() {
 
 	Crafty.bind('FoundSarcophagus', function(e) {
 		// this is where we put the game end check and any message toast trigger
+		gtag('event', 'game_complete', {'game_complete': 1});
 		Crafty.scene('End');
 	});
 
