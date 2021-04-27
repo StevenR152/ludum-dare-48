@@ -10,6 +10,7 @@ var footstep_sounds = [
 Crafty.audio.setChannels(20);
 var totalSeconds;
 var timer;
+var timetext;
 var all_messages = {};
 var passed_guard;
 
