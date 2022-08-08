@@ -5,6 +5,8 @@ Crafty.c("Player", {
 		passed_guard = false;
     this.step = "l";
     this.isInputFrozen = false;
+		this.player_moved = false;
+		this.movement_coords = [0, 0];
 		this.holding_key = false; //holding down a keyboard key
 		// this.has_key = false; // has a key for the door
     this.animation_reel = "walking_down_right_r";
@@ -69,27 +71,43 @@ Crafty.c("Player", {
         direction = {x : -1, y : 0};
         this.animate("walking_up_left_"+this.step, -1);
         this.animation_reel = "walking_up_left_"+this.step;
+				this.movement_coords = [-1, -1];
       } else if(e.key == Crafty.keys.RIGHT_ARROW) {
 				direction = {x : 1, y : 0};
+				this.movement_coords = [1, 1];
         this.animate("walking_down_right_"+this.step, -1);
         this.animation_reel = "walking_down_right_"+this.step;
       } else if(e.key == Crafty.keys.UP_ARROW) {
         this.animate("walking_up_right_"+this.step, -1); // DONE
         this.animation_reel = "walking_up_right_"+this.step;
 				direction = {x : 0, y : -1};
+				this.movement_coords = [1, -1];
       } else if(e.key == Crafty.keys.DOWN_ARROW) {
         this.animate("walking_down_left_"+this.step, -1);
 				this.animation_reel = "walking_down_left_"+this.step;
-
-
+				this.movement_coords = [-1, 1];
 				direction = {x : 0, y : 1};
       } else if(e.key == Crafty.keys.SPACE) {
         this.actionAnythingInRange();
+				Crafty.viewport.pan(100, 100, 2000);
         return;
       }
       this.undoLastMove = this.invertDirection(direction);
       Crafty.trigger("PlayerMovement", direction);
     });
+
+		this.bind("EnterFrame", function () {
+			//find the distance between the camera and the Player
+
+			if (this.player_moved === true) {
+				Crafty.viewport.pan(TILE_WIDTH/2*this.movement_coords[0], TILE_HEIGHT/2*this.movement_coords[1], 20);
+				this.player_moved = false;
+				console.log(Crafty.viewport.width/Crafty.viewport._scale - this.w);
+				console.log(this.x, this.w);
+				// TODO needs to account for fast moving players
+				// TODO needs to account for edge cases (spikes, guard cat)
+			}
+		});
 
     this.bind("PLAYER_STOOD_SPIKE", function () {
       gtag('event', 'spike_hit', {'spike_hit': 1});
@@ -152,6 +170,7 @@ Crafty.c("Player", {
 				audioController.playTrack("key", 1, 0.6);
         has_key = true;
         key.setAlpha(1);
+				this.player_moved = true;
 			}
 
 			if (map[current_level][1][newy][newx] === 39) {
@@ -162,6 +181,7 @@ Crafty.c("Player", {
 				audioController.playTrack("scroll", 1, 0.6);
         has_scroll = true;
         hud_scroll.setAlpha(1);
+				this.player_moved = true;
 			}
 
 			if (map[current_level][1][newy][newx] === 40) {
@@ -172,6 +192,7 @@ Crafty.c("Player", {
 				audioController.playTrack("cat", 1, 0.6);
         has_cat = true;
         cat.setAlpha(1);
+				this.player_moved = true;
 			}
 
 			if (map[current_level][1][newy][newx] === 55) {
@@ -214,6 +235,7 @@ Crafty.c("Player", {
       // if we haven't returned already, we must be able to move there.
       this.posx += e.x;
       this.posy += e.y;
+			this.player_moved = true;
 			var footstep_sound = Math.floor(Math.random()*footstep_sounds.length);
 			var step = footstep_sounds[footstep_sound];
 			audioController.playTrack(step, 1, 0.1);
